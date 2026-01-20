@@ -11,8 +11,6 @@ interface HeroProps {
   logoAlt?: string;
 }
 
-const NAVBAR_HEIGHT = "4rem";
-
 export default function Hero({
   text,
   videoId,
@@ -44,7 +42,7 @@ export default function Hero({
 
   return (
     <motion.section
-      className={`relative min-h-[calc(100vh-${NAVBAR_HEIGHT})] w-full`}
+      className="relative min-h-[calc(100vh-4rem)] w-full"
       animate={{
         paddingLeft: isExpanded ? 0 : "clamp(1rem, 4vw, 3rem)",
         paddingRight: isExpanded ? 0 : "clamp(1rem, 4vw, 3rem)",
@@ -52,7 +50,7 @@ export default function Hero({
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <motion.div
-        className={`relative w-full h-[calc(100vh-${NAVBAR_HEIGHT})] overflow-hidden`}
+        className="relative w-full h-[calc(100vh-4rem)] overflow-hidden"
         animate={{
           borderRadius: isExpanded ? 0 : "1rem",
         }}
