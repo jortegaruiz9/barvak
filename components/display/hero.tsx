@@ -16,8 +16,8 @@ const NAVBAR_HEIGHT = "4rem";
 export default function Hero({
   text,
   videoId,
-  logoSrc = "/logos/barvak-white.png",
-  logoAlt = "Barvak Estate",
+  logoSrc,
+  logoAlt = "Logo",
 }: HeroProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -72,16 +72,18 @@ export default function Hero({
         <div className="relative z-10 flex flex-col items-center justify-between h-full px-4 md:px-6 py-12 md:py-16">
           <div className="flex-1 flex items-center justify-center">
             <div className="max-w-4xl text-center flex flex-col items-center gap-8 md:gap-12">
-              <div className="w-24 h-24 lg:w-32 lg:h-32">
-                <Image
-                  src={logoSrc}
-                  alt={logoAlt}
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-contain"
-                  priority
-                />
-              </div>
+              {logoSrc && (
+                <div className="w-24 h-24 lg:w-32 lg:h-32">
+                  <Image
+                    src={logoSrc}
+                    alt={logoAlt}
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-contain"
+                    priority
+                  />
+                </div>
+              )}
               <h1 className="text-lg md:text-2xl lg:text-3xl text-white/90 w-5/6 max-w-3xl">
                 {text}
               </h1>
