@@ -25,7 +25,9 @@ export default function RootLayout({
         <header>
           <Navbar />
         </header>
-        {children}
+        <main className="pt-16 mb-12">
+          {children}
+        </main>
         <footer>
           <Footer/>
         </footer>
