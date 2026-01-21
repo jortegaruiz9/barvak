@@ -41,7 +41,7 @@ export default function Footer() {
   );
 
   return (
-    <footer className="bg-[#1E3B32] py-12 px-4 text-white">
+    <footer className="bg-custom-primary py-12 px-4 md:px-12 text-white">
        
       <div className="max-w-7xl mx-auto">
         
