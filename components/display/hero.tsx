@@ -18,6 +18,7 @@ export default function Hero({
   logoAlt = "Logo",
 }: HeroProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   const handleScroll = useCallback(() => {
     setIsExpanded(window.scrollY > 50);
@@ -40,6 +41,15 @@ export default function Hero({
     return () => window.removeEventListener("scroll", onScroll);
   }, [handleScroll]);
 
+  // Lazy load the YouTube iframe after initial page load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVideoLoaded(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <motion.section
       className="relative min-h-[calc(100vh-4rem)] w-full"
@@ -56,21 +66,36 @@ export default function Hero({
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        <iframe
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350%] h-full md:w-[120%] md:h-[120%] md:scale-125 pointer-events-none"
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&modestbranding=1`}
-          title="Background video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          aria-hidden="true"
-          tabIndex={-1}
+        {/* YouTube thumbnail as placeholder */}
+        <Image
+          src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+          alt="Video background"
+          fill
+          className={`object-cover transition-opacity duration-500 ${
+            isVideoLoaded ? "opacity-0" : "opacity-100"
+          }`}
+          priority
         />
+
+        {/* YouTube iframe - loaded after delay */}
+        {isVideoLoaded && (
+          <iframe
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350%] h-full md:w-[120%] md:h-[120%] md:scale-125 pointer-events-none"
+            src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&modestbranding=1&rel=0`}
+            title="Background video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            aria-hidden="true"
+            tabIndex={-1}
+            loading="lazy"
+          />
+        )}
 
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative z-10 flex flex-col items-center justify-between h-full px-4 md:px-6 py-12 md:py-16">
           <div className="flex-1 flex items-center justify-center">
             <div className="max-w-4xl text-center flex flex-col items-center gap-8 md:gap-12">
-              {logoSrc && (
+              {logoSrc && logoSrc.trim() !== "" && (
                 <div className="w-24 h-24 lg:w-32 lg:h-32">
                   <Image
                     src={logoSrc}
