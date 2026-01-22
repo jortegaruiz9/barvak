@@ -1,6 +1,7 @@
 import Hero from "@/components/display/hero";
 import Section from "@/components/display/section";
 import StoryCards from "@/components/display/storyCards";
+import { HorizontalScroll } from "@/components/display/horizontalScroll";
 
 export default function Home() {
   return (
@@ -34,6 +35,56 @@ export default function Home() {
             description: "From Hacienda Barvak two natural giants rise over the horizon, shaping the region's landscape and climate. Their presence reminds us of the power and beauty of the land we call home.",
             alt: "Deer in forest with volcanoes in background"
           }
+        ]}
+      />
+      <HorizontalScroll
+        title="A place where life flows with purpose."
+        cards={[
+          {
+            id: "barvak-estate",
+            url: "#",
+            title: "Barvak Estate",
+            summary:
+              "Live surrounded by authenticity. Within the hacienda, Barvak Estate offers spacious, private parcels for those who seek to build their own refuge in harmony with nature.",
+            image: "/photos/home/horizontal-scroll-1.png",
+            imageAlt: "Aerial view of Barvak Estate surrounded by forest",
+          },
+          {
+            id: "equestrian-world",
+            url: "#",
+            title: "Equestrian World - Equestrian passion at its finest",
+            summary:
+              "Riding is lived here from age 4 and up whether to learn, train, or enjoy open to public show jumping and dressage competitions throughout the year.",
+            image: "/photos/home/horizontal-scroll-2.png",
+            imageAlt: "Equestrian facilities with horses and riders",
+          },
+          {
+            id: "reforestation",
+            url: "#",
+            title: "Reforestation - Restoring the land, honoring the future",
+            summary:
+              "Our reforestation program invites companies, schools, and families to be part of the forest's renewal. Each tree planted helps restore the local ecosystem and strengthen the biological corridor that sustains life in Barva.",
+            image: "/photos/home/horizontal-scroll-3.png",
+            imageAlt: "Lush green forest with native trees",
+          },
+          {
+            id: "life-at-hacienda",
+            url: "#",
+            title: "Life at the Hacienda - Nature, calm, and authentic experiences",
+            summary:
+              "Between trails, rivers, and rolling hills, Barvak offers space to walk, run, or simply breathe. The dairy and family farm reflect our rural soul simple, genuine, and deeply connected to the earth.",
+            image: "/photos/home/horizontal-scroll-4.png",
+            imageAlt: "Rolling hills and trails at the hacienda",
+          },
+          {
+            id: "events",
+            url: "#",
+            title: "Events",
+            summary:
+              "At Hacienda Barvak, every event unfolds amid forests, rivers, and mountains. We design intimate, corporate, and family gatherings that connect with nature, good food, and the calm of the valley, a place to celebrate, create, and remember.",
+            image: "/photos/home/horizontal-scroll-5.png",
+            imageAlt: "Event space surrounded by nature",
+          },
         ]}
       />
     </div>

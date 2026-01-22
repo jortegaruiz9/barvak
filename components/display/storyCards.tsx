@@ -31,7 +31,7 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
               src={firstCard.image}
               alt={firstCard.alt || firstCard.title || "Story card"}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 100vw"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
@@ -64,7 +64,7 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
                   src={card.image}
                   alt={card.alt || card.title || `Story card ${index + 2}`}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
