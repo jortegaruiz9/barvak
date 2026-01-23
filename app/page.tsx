@@ -2,6 +2,7 @@ import Hero from "@/components/display/hero";
 import Section from "@/components/display/section";
 import StoryCards from "@/components/display/storyCards";
 import { HorizontalScroll } from "@/components/display/horizontalScroll";
+import { FullscreenMedia } from "@/components/display/fullscreenMedia";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         videoId="5xqgvRIUffI"
         logoSrc="/logos/barvak-white.png"
         logoAlt="Barvak Estate"
+        endTime={220}
       />
       <Section
         title="Where nature, legacy, and wellbeing meet "
@@ -20,21 +22,24 @@ export default function Home() {
         cards={[
           {
             image: "/photos/home/storyCard-2.png",
-            description: "In the heart of Costa Rica, Hacienda Barvak was born surrounded by volcanoes, forests, and traditions that reflect the country's purest essence.",
-            alt: "Mountain landscape with fog in Costa Rica"
+            description:
+              "In the heart of Costa Rica, Hacienda Barvak was born surrounded by volcanoes, forests, and traditions that reflect the country's purest essence.",
+            alt: "Mountain landscape with fog in Costa Rica",
           },
           {
             image: "/photos/home/storyCard-3.png",
             title: "Barva, a Blend of Nature and Culture",
-            description: "Forests, birds, and rivers surround Hacienda Barvak, while traditions and legends keep its authentic spirit alive.",
-            alt: "Cultural dance event in Barva"
+            description:
+              "Forests, birds, and rivers surround Hacienda Barvak, while traditions and legends keep its authentic spirit alive.",
+            alt: "Cultural dance event in Barva",
           },
           {
             image: "/photos/home/storyCard-1.png",
             title: "Heredia's Volcanoes: Barva and Poás",
-            description: "From Hacienda Barvak two natural giants rise over the horizon, shaping the region's landscape and climate. Their presence reminds us of the power and beauty of the land we call home.",
-            alt: "Deer in forest with volcanoes in background"
-          }
+            description:
+              "From Hacienda Barvak two natural giants rise over the horizon, shaping the region's landscape and climate. Their presence reminds us of the power and beauty of the land we call home.",
+            alt: "Deer in forest with volcanoes in background",
+          },
         ]}
       />
       <HorizontalScroll
@@ -70,7 +75,8 @@ export default function Home() {
           {
             id: "life-at-hacienda",
             url: "#",
-            title: "Life at the Hacienda - Nature, calm, and authentic experiences",
+            title:
+              "Life at the Hacienda - Nature, calm, and authentic experiences",
             summary:
               "Between trails, rivers, and rolling hills, Barvak offers space to walk, run, or simply breathe. The dairy and family farm reflect our rural soul simple, genuine, and deeply connected to the earth.",
             image: "/photos/home/horizontal-scroll-4.png",
@@ -85,6 +91,14 @@ export default function Home() {
             image: "/photos/home/horizontal-scroll-5.png",
             imageAlt: "Event space surrounded by nature",
           },
+        ]}
+      />
+      <FullscreenMedia
+        images={["/photos/home/carousel-home.jpeg"]}
+        imageAlt={[
+          "Deer in forest with volcanoes in background",
+          "Mountain landscape with fog in Costa Rica",
+          "Cultural dance event in Barva",
         ]}
       />
     </div>

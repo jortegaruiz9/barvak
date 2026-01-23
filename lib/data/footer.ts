@@ -3,7 +3,7 @@ export { contactInfo, socialLinks } from "./contact";
 // Footer navigation links
 export const footerNavLinks = [
     { path: "/", label: "Home" },
-    { path: "/barvak-estate", label: "Barvak State" },
+    { path: "/barvak", label: "Barvak State" },
     { path: "/equestrian-world", label: "Equestrian World" },
     { path: "/reforestation", label: "Reforestation" },
     { path: "/experiences", label: "Experiences" },

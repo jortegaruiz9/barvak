@@ -25,11 +25,15 @@ interface HorizontalScrollProps {
 
 const MOBILE_BREAKPOINT = 768;
 
-const HorizontalScroll = ({ cards, title, className }: HorizontalScrollProps) => {
+const HorizontalScroll = ({
+  cards,
+  title,
+  className,
+}: HorizontalScrollProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [wrapperHeight, setWrapperHeight] = useState<string | undefined>(
-    undefined
+    undefined,
   );
 
   useEffect(() => {
@@ -133,7 +137,12 @@ const HorizontalScroll = ({ cards, title, className }: HorizontalScrollProps) =>
     const isTextTop = index % 2 === 0;
 
     return (
-      <div key={card.id} className="contents" role="group" aria-label={card.title}>
+      <div
+        key={card.id}
+        className="contents"
+        role="group"
+        aria-label={card.title}
+      >
         {/* Text Card */}
         <Link
           href={card.url}
@@ -144,7 +153,7 @@ const HorizontalScroll = ({ cards, title, className }: HorizontalScrollProps) =>
             <div
               className={cn(
                 "flex w-full flex-col bg-muted p-6 text-right",
-                isTextTop ? "justify-end pb-12" : "justify-start pt-12"
+                isTextTop ? "justify-end pb-12" : "justify-start pt-12",
               )}
             >
               <h3 className="mb-3 text-xl font-semibold text-balance">
@@ -180,7 +189,10 @@ const HorizontalScroll = ({ cards, title, className }: HorizontalScrollProps) =>
   };
 
   return (
-    <section className={cn("relative", className)} aria-label={title ?? "Horizontal scroll gallery"}>
+    <section
+      className={cn("relative", className)}
+      aria-label={title ?? "Horizontal scroll gallery"}
+    >
       {title && (
         <h2 className="px-4 md:px-12 pb-10 text-2xl md:text-3xl font-normal text-center text-balance">
           {title}
