@@ -20,7 +20,7 @@ import {
 
 const navItems = [
   { path: "/", label: navLabels.home },
-  { path: "/barvak-estate", label: navLabels.barvakEstate },
+  { path: "/barvak", label: navLabels.barvakEstate },
   { path: "/equestrian-world", label: navLabels.equestrianWorld },
   { path: "/reforestation", label: navLabels.reforestation },
   { path: "/experiences", label: navLabels.experiences },
@@ -33,7 +33,7 @@ const UserIcon = User;
 const PlusIcon = Plus;
 
 const mobileSocialLinks = socialLinks.filter((link) =>
-  ["Instagram", "Facebook"].includes(link.label)
+  ["Instagram", "Facebook"].includes(link.label),
 );
 
 export default function Navbar() {
@@ -69,8 +69,8 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className=
-          "fixed top-0 w-full z-40 transition-all duration-300 bg-white">
+        className="fixed top-0 w-full z-40 transition-all duration-300 bg-white"
+      >
         <div className="flex h-16 justify-between items-center px-6 md:px-12 text-neutral-800">
           {/* Logo */}
           <Link href="/">
@@ -99,9 +99,7 @@ export default function Navbar() {
                     href={item.path}
                     className={cn(
                       "transition-opacity hover:opacity-60",
-                      pathname === item.path
-                        ? "opacity-60"
-                        : "opacity-100"
+                      pathname === item.path ? "opacity-60" : "opacity-100",
                     )}
                   >
                     {item.label}
@@ -143,7 +141,7 @@ export default function Navbar() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="size-6" strokeWidth={1}/>
+                    <X className="size-6" strokeWidth={1} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -153,7 +151,7 @@ export default function Navbar() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="size-6" strokeWidth={1}/>
+                    <Menu className="size-6" strokeWidth={1} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -197,7 +195,7 @@ export default function Navbar() {
                           "text-3xl transition-colors hover:text-lime-500 items-center",
                           pathname === item.path
                             ? "text-lime-500"
-                            : "text-neutral-800"
+                            : "text-neutral-800",
                         )}
                       >
                         {item.label}
@@ -207,7 +205,6 @@ export default function Navbar() {
                   </motion.li>
                 ))}
               </ul>
-              
 
               {/* Property Portal Section */}
               <motion.div
@@ -216,7 +213,9 @@ export default function Navbar() {
                 transition={{ delay: (navItems.length + 1) * 0.1 }}
                 className="flex flex-col gap-y-3"
               >
-                <h3 className="text-sm font-bold text-green-900">Property Portal</h3>
+                <h3 className="text-sm font-bold text-green-900">
+                  Property Portal
+                </h3>
                 {propertyPortalLinks.map((link) => {
                   const LinkIcon = link.icon === "User" ? UserIcon : PlusIcon;
                   return (
@@ -239,7 +238,9 @@ export default function Navbar() {
                 transition={{ delay: (navItems.length + 2) * 0.1 }}
                 className="flex flex-col gap-y-3"
               >
-                <h3 className="text-sm font-bold text-green-900">General Inquiries</h3>
+                <h3 className="text-sm font-bold text-green-900">
+                  General Inquiries
+                </h3>
                 <a
                   href={contactInfo.phone.href}
                   className="flex items-center gap-x-3 text-neutral-800 hover:text-lime-500 transition-colors"
@@ -254,17 +255,16 @@ export default function Navbar() {
                   <Mail strokeWidth={1.5} size={20} />
                   <span>{contactInfo.email.text}</span>
                 </a>
-                
+
                 <div>
-                <Button 
-                  variant="outline" 
-                  size="normal"
-                  className=" border-neutral-900 text-neutral-900 hover:bg-neutral-50 rounded-full mt-2"
-                >
-                  Contact us
-                </Button>
+                  <Button
+                    variant="outline"
+                    size="normal"
+                    className=" border-neutral-900 text-neutral-900 hover:bg-neutral-50 rounded-full mt-2"
+                  >
+                    Contact us
+                  </Button>
                 </div>
-         
               </motion.div>
 
               {/* Follow us Section */}
