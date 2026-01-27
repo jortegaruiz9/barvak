@@ -38,7 +38,7 @@ const VisualStorySection = ({
             </h2>
           )}
           {description && (
-            <p className="mx-auto max-w-3xl text-base text-muted-foreground">
+            <p className="mx-auto max-w-3xl text-base text-muted-foreground text-balance">
               {description}
             </p>
           )}

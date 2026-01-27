@@ -25,8 +25,8 @@ export default function BarvakState() {
         imageAlt="Barvak Estate"
       />
       <VisualStorySection
-        title="Lifestyle at Barvak Estate"
-        description="Each property allows you to design an authentic and functional lifestyle in balance with nature , from a pool beside the forest to a fire pit under the stars, every space comes to life with your personal touch."
+        title="A project that grows in harmony with the mountain."
+        description="Each stage of Hacienda Barvak Estate has been carefully planned to integrate with the landscape, preserving the natural beauty of Barva de Heredia and offering every owner a secure, exclusive environment connected to the earth."
         topImages={[
           {
             src: "/photos/state/state-1.webp",
