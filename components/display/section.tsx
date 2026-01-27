@@ -14,7 +14,15 @@ interface SectionProps {
     text: string;
     href: string;
   };
-  buttonVariant?: "default" | "normal" | "destructive" | "outline" | "outline_white" | "secondary" | "ghost" | "link";
+  buttonVariant?:
+    | "default"
+    | "normal"
+    | "destructive"
+    | "outline"
+    | "outline_white"
+    | "secondary"
+    | "ghost"
+    | "link";
   backgroundColor?: string;
 }
 
@@ -30,8 +38,8 @@ const Section = ({
   const descriptionArray = Array.isArray(description)
     ? description
     : description
-    ? [description]
-    : [];
+      ? [description]
+      : [];
 
   return (
     <section className={cn("w-full py-24 lg:py-48 px-6", backgroundColor)}>
@@ -61,7 +69,7 @@ const Section = ({
 
         {/* Description */}
         {descriptionArray.length > 0 && (
-          <div className="flex flex-col gap-4 md:gap-5 text-white text-center max-w-2xl">
+          <div className="flex flex-col gap-4 md:gap-5 text-white text-center max-w-2xl text-balance">
             {descriptionArray.map((paragraph, index) => (
               <p key={index} className="text-base md:text-lg leading-relaxed">
                 {paragraph}
@@ -73,14 +81,8 @@ const Section = ({
         {/* Button */}
         {button && (
           <div className="flex justify-center pt-2">
-            <Button
-              variant={buttonVariant}
-              asChild
-              className="rounded-full"
-            >
-              <Link href={button.href}>
-                {button.text}
-              </Link>
+            <Button variant={buttonVariant} asChild className="rounded-full">
+              <Link href={button.href}>{button.text}</Link>
             </Button>
           </div>
         )}
