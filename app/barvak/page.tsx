@@ -1,6 +1,7 @@
 import Hero from "@/components/display/hero";
 import Section from "@/components/display/section";
 import { FullscreenMedia } from "@/components/display/fullscreenMedia";
+import { VisualStorySection } from "@/components/display/visualStorySection";
 
 export default function BarvakState() {
   return (
@@ -22,6 +23,34 @@ export default function BarvakState() {
         description="Each property allows you to design an authentic and functional lifestyle in balance with nature , from a pool beside the forest to a fire pit under the stars, every space comes to life with your personal touch."
         images={["/photos/state/real-1.png"]}
         imageAlt="Barvak Estate"
+      />
+      <VisualStorySection
+        title="Lifestyle at Barvak Estate"
+        description="Each property allows you to design an authentic and functional lifestyle in balance with nature , from a pool beside the forest to a fire pit under the stars, every space comes to life with your personal touch."
+        topImages={[
+          {
+            src: "/photos/state/state-1.webp",
+            alt: "Lifestyle at Barvak Estate",
+          },
+          {
+            src: "/photos/state/state-2.webp",
+            alt: "Nature and wellbeing",
+          },
+        ]}
+        carouselImages={[
+          {
+            src: "/photos/state/state-3.webp",
+            alt: "Yoga and wellness",
+          },
+          {
+            src: "/photos/state/state-4.webp",
+            alt: "Natural surroundings",
+          },
+          {
+            src: "/photos/state/state-5.webp",
+            alt: "Barvak Estate views",
+          },
+        ]}
       />
     </div>
   );

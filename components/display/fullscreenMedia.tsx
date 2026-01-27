@@ -83,14 +83,14 @@ const FullscreenMedia = ({
   const renderTextSection = () => {
     if (!title && !description) return null;
     return (
-      <div className="w-full px-4 py-12 text-center">
+      <div className="w-full px-4 pb-8 md:pb-12 text-center">
         {title && (
           <h1 className="mb-3 text-2xl md:text-3xl font-normal text-balance">
             {title}
           </h1>
         )}
         {description && (
-          <p className="mx-auto max-w-3xl text-base text-gray-700">
+          <p className="mx-auto max-w-3xl text-base text-muted-foreground">
             {description}
           </p>
         )}
