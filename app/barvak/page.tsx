@@ -2,6 +2,7 @@ import Hero from "@/components/display/hero";
 import Section from "@/components/display/section";
 import { FullscreenMedia } from "@/components/display/fullscreenMedia";
 import { VisualStorySection } from "@/components/display/visualStorySection";
+import ContactCard from "@/components/display/contactCard";
 
 export default function BarvakState() {
   return (
@@ -51,6 +52,17 @@ export default function BarvakState() {
             alt: "Barvak Estate views",
           },
         ]}
+      />
+      <ContactCard
+        title="Each lot is a unique opportunity to build your vision of life."
+        description="Discover the available parcels within Hacienda Barvak Estate, surrounded by nature, privacy, and incomparable views."
+        imageSrc="/photos/state/contactCard.webp"
+        imageAlt="Contact Barvak Estate"
+        label="Barvak Estate"
+        headline="Build with us, visualize your home today"
+        details="8 Rooms | 31,973 m² Plot | 1,950 m² GFA"
+        buttonText="Know more"
+        buttonHref="/contact"
       />
     </div>
   );

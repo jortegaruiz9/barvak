@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { CarouselIndicators } from "@/components/ui/carousel-indicators";
 import { cn } from "@/lib/utils";
+import { SectionHeader } from "./sectionHeader";
 
 interface FullscreenMediaProps {
   images: string[];
@@ -81,20 +82,13 @@ const FullscreenMedia = ({
   }, [api, images.length, autoplayDelay]);
 
   const renderTextSection = () => {
-    if (!title && !description) return null;
+    if (!title) return null;
     return (
-      <div className="w-full px-4 pb-8 md:pb-12 text-center">
-        {title && (
-          <h1 className="mb-3 text-2xl md:text-3xl font-normal text-balance">
-            {title}
-          </h1>
-        )}
-        {description && (
-          <p className="mx-auto max-w-3xl text-base text-muted-foreground text-balance">
-            {description}
-          </p>
-        )}
-      </div>
+      <SectionHeader
+        title={title}
+        description={description}
+        className="pb-8 md:pb-12"
+      />
     );
   };
 
@@ -119,9 +113,9 @@ const FullscreenMedia = ({
             alt={altText}
             fill
             sizes="100vw"
-            quality={90}
+            quality={85}
             className="object-cover"
-            priority
+            loading="lazy"
           />
         </section>
       </div>
@@ -159,9 +153,9 @@ const FullscreenMedia = ({
                     alt={getAltText(index)}
                     fill
                     sizes="100vw"
-                    quality={90}
+                    quality={85}
                     className="object-cover"
-                    priority={index === 0}
+                    loading="lazy"
                   />
                 </div>
               </CarouselItem>
