@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { SectionHeader } from "./sectionHeader";
 
 interface VisualStoryImage {
   src: string;
@@ -30,19 +31,8 @@ const VisualStorySection = ({
       aria-label="Visual story section"
     >
       {/* Title and description */}
-      {(title || description) && (
-        <div className="w-full px-4 pb-4 text-center">
-          {title && (
-            <h2 className="mb-3 text-2xl md:text-3xl font-normal text-balance">
-              {title}
-            </h2>
-          )}
-          {description && (
-            <p className="mx-auto max-w-3xl text-base text-muted-foreground text-balance">
-              {description}
-            </p>
-          )}
-        </div>
+      {title && (
+        <SectionHeader title={title} description={description} className="pb-4" />
       )}
 
       {/* Top section - Two images side by side */}

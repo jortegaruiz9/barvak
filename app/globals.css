@@ -133,4 +133,25 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .animate-scroll-arrow-1 {
+    animation: scroll-arrow 1.5s ease-in-out infinite;
+  }
+  .animate-scroll-arrow-2 {
+    animation: scroll-arrow 1.5s ease-in-out infinite 0.15s;
+  }
+  .animate-scroll-arrow-3 {
+    animation: scroll-arrow 1.5s ease-in-out infinite 0.3s;
+  }
+}
+
+@keyframes scroll-arrow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
 }
