@@ -4,6 +4,7 @@ import { FullscreenMedia } from "@/components/display/fullscreenMedia";
 import { VisualStorySection } from "@/components/display/visualStorySection";
 import ContactCard from "@/components/display/contactCard";
 import { VideoPlay } from "@/components/display/videoPlay";
+import FormSection from "@/components/display/formSection";
 
 export default function BarvakState() {
   return (
@@ -75,6 +76,45 @@ export default function BarvakState() {
           },
         ]}
         buttonText="Watch Video"
+      />
+      <FormSection
+        title="Request information about your lot"
+        stageOptions={[
+          { value: "stage1", label: "Stage 1 - Planning" },
+          { value: "stage2", label: "Stage 2 - Development" },
+          { value: "stage3", label: "Stage 3 - Construction" },
+          { value: "stage4", label: "Stage 4 - Completion" },
+        ]}
+        infoTexts={[
+          "It will be our pleasure to speak with you and answer any questions you may have about our services, projects, or experiences.",
+          "You can also follow us on social media, write to us directly, or call whenever you need.",
+          "We're here to help you discover everything Barvak has to offer.",
+        ]}
+        contactInfoItems={[
+          {
+            icon: "mail",
+            title: "Mail",
+            text: "info@barvak.com",
+            href: "mailto:info@barvak.com",
+          },
+          {
+            icon: "location",
+            title: "Ubicacion",
+            text: "Ecuador",
+          },
+          {
+            icon: "whatsapp",
+            title: "Whatsapp",
+            text: "+593 99 999 9999",
+            href: "https://wa.me/5939999999999",
+          },
+          {
+            icon: "phone",
+            title: "Phone",
+            text: "+593 99 999 9999",
+            href: "tel:+5939999999999",
+          },
+        ]}
       />
     </div>
   );
