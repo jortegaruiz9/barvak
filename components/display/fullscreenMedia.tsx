@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -30,56 +31,10 @@ const FullscreenMedia = ({
   description,
 }: FullscreenMediaProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
-  const autoplayRef = React.useRef<NodeJS.Timeout | null>(null);
-  const resumeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  // Handle autoplay for carousel
-  React.useEffect(() => {
-    if (!api || images.length <= 1) return;
-
-    const startAutoplay = () => {
-      if (autoplayRef.current) return;
-      autoplayRef.current = setInterval(() => {
-        if (api.canScrollNext()) {
-          api.scrollNext();
-        } else {
-          api.scrollTo(0);
-        }
-      }, autoplayDelay);
-    };
-
-    const stopAutoplay = () => {
-      if (autoplayRef.current) {
-        clearInterval(autoplayRef.current);
-        autoplayRef.current = null;
-      }
-    };
-
-    const clearResumeTimeout = () => {
-      if (resumeTimeoutRef.current) {
-        clearTimeout(resumeTimeoutRef.current);
-        resumeTimeoutRef.current = null;
-      }
-    };
-
-    startAutoplay();
-
-    const handleSelect = () => {
-      stopAutoplay();
-      clearResumeTimeout();
-      resumeTimeoutRef.current = setTimeout(() => {
-        startAutoplay();
-      }, autoplayDelay);
-    };
-
-    api.on("select", handleSelect);
-
-    return () => {
-      stopAutoplay();
-      clearResumeTimeout();
-      api.off("select", handleSelect);
-    };
-  }, [api, images.length, autoplayDelay]);
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: autoplayDelay, stopOnInteraction: true })
+  );
 
   const renderTextSection = () => {
     if (!title) return null;
@@ -142,6 +97,7 @@ const FullscreenMedia = ({
             align: "start",
             loop: true,
           }}
+          plugins={[autoplayPlugin.current]}
           className="h-full w-full [&>div]:h-full"
         >
           <CarouselContent className="h-full [&>div]:h-full">

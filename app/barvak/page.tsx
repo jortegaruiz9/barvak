@@ -3,6 +3,7 @@ import Section from "@/components/display/section";
 import { FullscreenMedia } from "@/components/display/fullscreenMedia";
 import { VisualStorySection } from "@/components/display/visualStorySection";
 import ContactCard from "@/components/display/contactCard";
+import { VideoPlay } from "@/components/display/videoPlay";
 
 export default function BarvakState() {
   return (
@@ -17,7 +18,7 @@ export default function BarvakState() {
       />
       <Section
         title="In the mountains of Barva de Heredia"
-        description="Hacienda Barvak Estate is a collection of agricultural parcels that blend elegance, privacy, and an authentic connection with nature. Each property, starting at 7,000 m² (75,000 sq ft), offers unique views and the possibility to build up to 10 % of the land,  surrounded by forest, serenity, and pure air.Hacienda Barvak Estate redefines the art of living in harmony with the land."
+        description="Hacienda Barvak Estate is a collection of agricultural parcels that blend elegance, privacy, and an authentic connection with nature. Each property, starting at 7,000 m² (75,000 sq ft), offers unique views and the possibility to build up to 10 % of the land, surrounded by forest, serenity, and pure air.Hacienda Barvak Estate redefines the art of living in harmony with the land."
       />
       <FullscreenMedia
         title="Live surrounded by what you love."
@@ -53,6 +54,7 @@ export default function BarvakState() {
           },
         ]}
       />
+
       <ContactCard
         title="Each lot is a unique opportunity to build your vision of life."
         description="Discover the available parcels within Hacienda Barvak Estate, surrounded by nature, privacy, and incomparable views."
@@ -63,6 +65,16 @@ export default function BarvakState() {
         details="8 Rooms | 31,973 m² Plot | 1,950 m² GFA"
         buttonText="Know more"
         buttonHref="/contact"
+      />
+      <VideoPlay
+        items={[
+          {
+            image: "/photos/state/houseVideo.webp",
+            alt: "Barvak Estate Video 1",
+            videoId: "6cXawULEjlE",
+          },
+        ]}
+        buttonText="Watch Video"
       />
     </div>
   );
