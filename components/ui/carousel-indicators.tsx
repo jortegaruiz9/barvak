@@ -8,12 +8,14 @@ interface CarouselIndicatorsProps {
   api: CarouselApi | undefined;
   images: string[];
   className?: string;
+  orientation?: "horizontal" | "vertical";
 }
 
 const CarouselIndicators = ({
   api,
   images,
   className,
+  orientation = "horizontal",
 }: CarouselIndicatorsProps) => {
   const [current, setCurrent] = React.useState(0);
 
@@ -55,7 +57,10 @@ const CarouselIndicators = ({
   return (
     <div
       className={cn(
-        "absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-3",
+        "absolute z-10 flex gap-3",
+        orientation === "horizontal"
+          ? "bottom-6 left-1/2 -translate-x-1/2"
+          : "left-6 top-1/2 -translate-y-1/2 flex-col",
         className
       )}
       role="tablist"
