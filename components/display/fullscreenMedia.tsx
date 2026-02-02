@@ -49,12 +49,13 @@ const FullscreenMedia = ({
 
   // Single image mode
   if (images.length === 1) {
-    const altText =
+    const rawAlt =
       typeof imageAlt === "string"
         ? imageAlt
         : Array.isArray(imageAlt)
           ? imageAlt[0]
-          : "Fullscreen media";
+          : "";
+    const altText = rawAlt?.trim() ? rawAlt : "Fullscreen media";
 
     return (
       <div className={cn("w-full", className)}>
@@ -79,8 +80,9 @@ const FullscreenMedia = ({
 
   // Carousel mode (2+ images)
   const getAltText = (index: number): string => {
-    if (typeof imageAlt === "string") return imageAlt;
-    if (Array.isArray(imageAlt) && imageAlt[index]) return imageAlt[index];
+    if (typeof imageAlt === "string" && imageAlt.trim()) return imageAlt;
+    if (Array.isArray(imageAlt) && imageAlt[index]?.trim())
+      return imageAlt[index];
     return `Slide ${index + 1} of ${images.length}`;
   };
 

@@ -82,7 +82,7 @@ export default function Navbar() {
             >
               <Image
                 src={logo.src}
-                alt={logo.alt}
+                alt={logo.alt?.trim() ? logo.alt : "Site logo"}
                 width={100}
                 height={100}
                 className="w-full h-full object-contain"

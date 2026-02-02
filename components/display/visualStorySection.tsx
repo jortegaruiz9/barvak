@@ -45,7 +45,7 @@ const VisualStorySection = ({
             >
               <Image
                 src={image.src}
-                alt={image.alt}
+                alt={image.alt?.trim() ? image.alt : "Story image"}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 50vw"
@@ -66,7 +66,7 @@ const VisualStorySection = ({
               >
                 <Image
                   src={image.src}
-                  alt={image.alt}
+                  alt={image.alt?.trim() ? image.alt : "Story image"}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 85vw, 50vw"

@@ -49,7 +49,7 @@ export default function Footer() {
         <div className="flex justify-center mb-8 border-b border-white/20 pb-8 lg:border-none lg:pb-0 lg:flex-col">
           <Image
             src={footerLogo.src}
-            alt={footerLogo.alt}
+            alt={footerLogo.alt?.trim() ? footerLogo.alt : "Site logo"}
             width={100}
             height={100}
             className="object-contain"

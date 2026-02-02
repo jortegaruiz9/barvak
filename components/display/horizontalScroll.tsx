@@ -181,7 +181,7 @@ const HorizontalScroll = ({
         <div className="absolute inset-0">
           <Image
             src={card.image}
-            alt={card.imageAlt}
+            alt={card.imageAlt?.trim() ? card.imageAlt : "Card image"}
             fill
             sizes="(max-width: 767px) 45vw, 33vw"
             className="object-cover"
@@ -245,7 +245,7 @@ const HorizontalScroll = ({
             <div className="relative h-full w-full">
               <Image
                 src={card.image}
-                alt={card.imageAlt}
+                alt={card.imageAlt?.trim() ? card.imageAlt : "Card image"}
                 fill
                 sizes="40vw"
                 className="object-cover"

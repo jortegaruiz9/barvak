@@ -33,7 +33,7 @@ export default function ContactCard({
         <div className="w-full h-64 md:h-96 md:w-1/2 md:rounded-l-md">
           <Image
             src={imageSrc}
-            alt={imageAlt}
+            alt={imageAlt?.trim() ? imageAlt : "Card image"}
             width={600}
             height={400}
             className="w-full h-full object-cover md:rounded-l-md"

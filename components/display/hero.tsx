@@ -113,7 +113,7 @@ export default function Hero({
               <div className="w-24 h-24 lg:w-32 lg:h-32">
                 <Image
                   src={logoSrc}
-                  alt={logoAlt}
+                  alt={logoAlt?.trim() ? logoAlt : "Logo"}
                   width={128}
                   height={128}
                   className="w-full h-full object-contain"

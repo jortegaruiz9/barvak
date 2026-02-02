@@ -38,7 +38,7 @@ const ContactSection = ({
           <div className="w-32 h-32 rounded-full overflow-hidden mb-4">
             <Image
               src={personImage}
-              alt={personImageAlt}
+              alt={personImageAlt?.trim() ? personImageAlt : "Contact person"}
               width={128}
               height={128}
               className="w-full h-full object-cover"

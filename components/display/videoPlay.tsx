@@ -87,7 +87,7 @@ const VideoPlay = ({
               <div className="relative h-[calc(100vh-4rem)] w-full overflow-hidden">
                 <Image
                   src={item.image}
-                  alt={item.alt}
+                  alt={item.alt?.trim() ? item.alt : "Video thumbnail"}
                   fill
                   className={cn(
                     "object-cover transition-opacity duration-500",
