@@ -16,6 +16,23 @@ export const contactInfo = {
   },
 };
 
+// Contact section data
+export const contactSectionData = {
+  personImage: "/photos/state/call-center.webp",
+  personImageAlt: "Sarah Johnson - Director of Call Center",
+  personName: "Sarah Johnson",
+  personRole: "Director of Call Center",
+  bookingTitle: "Book a Personal Call",
+  bookingDescription:
+    "A dedicated member of our sales team is available to speak with you by phone or video call. We'd love to offer you a firsthand insight into the exceptional lifestyle and residential opportunities at Hacienda Barvak States. ",
+  bookingButtonText: "Book a Call",
+  bookingButtonHref: "/contact",
+  contactTitle: "Telephone & Email",
+  contactDescription:
+    "Feel free to contact us at the numbers below",
+  countryLabel: "Costa Rica:",
+};
+
 // Social media links
 export const socialLinks = [
   { href: "#", label: "Instagram", icon: "ion:logo-instagram" },
