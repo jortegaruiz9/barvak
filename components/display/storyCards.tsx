@@ -29,7 +29,9 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
           <div className="relative w-full aspect-square md:aspect-auto md:h-[calc(100vh-4rem)] rounded-lg overflow-hidden group">
             <Image
               src={firstCard.image}
-              alt={firstCard.alt || firstCard.title || "Story card"}
+              alt={
+                firstCard.alt?.trim() || firstCard.title?.trim() || "Story card"
+              }
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 100vw"
@@ -62,7 +64,11 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
               >
                 <Image
                   src={card.image}
-                  alt={card.alt || card.title || `Story card ${index + 2}`}
+                  alt={
+                    card.alt?.trim() ||
+                    card.title?.trim() ||
+                    `Story card ${index + 2}`
+                  }
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
