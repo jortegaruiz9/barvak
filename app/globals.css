@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-custom-primary: #1E3B32;
+  --color-custom-primary: #1e3b32;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -143,15 +143,29 @@
   .animate-scroll-arrow-3 {
     animation: scroll-arrow 1.5s ease-in-out infinite 0.3s;
   }
+
+  .animate-horizontal-scroll-animation {
+    animation: horizontal-scroll-animation 20s linear infinite;
+  }
 }
 
 @keyframes scroll-arrow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: translateY(0);
   }
   50% {
     opacity: 1;
     transform: translateY(4px);
+  }
+}
+
+@keyframes horizontal-scroll-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }

@@ -127,19 +127,22 @@ const ShowCard = ({
       className={cn("w-full mt-10", className)}
       aria-label="Show card carousel"
     >
-      {/* Mobile: text on top, carousel below (no overlap) */}
-      <div className="flex flex-col md:hidden">
-        <div className="px-6 py-8 bg-custom-primary text-center">
-          {renderTextContent(currentSlide, true)}
-        </div>
-        <div className="relative w-full">{carouselContent}</div>
-      </div>
+      {/* Mobile: text on top, carousel below */}
+      {/* Desktop: image left, text right */}
+      <div className="md:flex md:justify-center md:px-6 lg:px-8">
+        <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-8 lg:gap-12 items-stretch">
+          {/* Mobile text - shows above carousel on mobile only */}
+          <div className="px-6 py-8 bg-custom-primary text-center md:hidden">
+            {renderTextContent(currentSlide, true)}
+          </div>
 
-      {/* Desktop: centered card with side spacing, image left, text right */}
-      <div className="hidden md:flex md:justify-center md:px-6 lg:px-8">
-        <div className="w-full max-w-6xl grid md:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-stretch">
-          <div className="relative min-h-0">{carouselContent}</div>
-          <div className="flex flex-col justify-center items-center text-center lg:text-left py-8 px-8">
+          {/* Carousel - single instance */}
+          <div className="relative min-h-0 order-2 md:order-1">
+            {carouselContent}
+          </div>
+
+          {/* Desktop text - shows beside carousel on desktop only */}
+          <div className="hidden md:flex flex-col justify-center items-center text-center lg:text-left py-8 px-8 order-3 md:order-2">
             {renderTextContent(currentSlide)}
           </div>
         </div>
