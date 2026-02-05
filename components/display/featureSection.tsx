@@ -28,6 +28,7 @@ interface FeatureSectionProps {
     | "link";
   images: { src: string; alt: string }[];
   cardPosition?: "left" | "right";
+  textPosition?: "top" | "bottom";
   autoplayDelay?: number;
   className?: string;
 }
@@ -39,6 +40,7 @@ const FeatureSection = ({
   buttonVariant = "normal",
   images,
   cardPosition = "right",
+  textPosition = "top",
   autoplayDelay = 5000,
   className,
 }: FeatureSectionProps) => {
@@ -136,12 +138,23 @@ const FeatureSection = ({
 
   return (
     <section className={cn("w-full", className)}>
-      {/* Mobile: flex-col, text above, image below */}
+      {/* Mobile: flex-col, text position based on prop */}
       <div className="md:hidden flex flex-col">
-        <div className="px-6 pb-8 text-center bg-white/80">
-          {renderTextContent()}
-        </div>
-        <div className="relative">{renderMedia("aspect-[4/3]")}</div>
+        {textPosition === "top" ? (
+          <>
+            <div className="px-6 pb-8 text-center bg-white/80">
+              {renderTextContent()}
+            </div>
+            <div className="relative">{renderMedia("aspect-[4/3]")}</div>
+          </>
+        ) : (
+          <>
+            <div className="relative">{renderMedia("aspect-[4/3]")}</div>
+            <div className="px-6 pt-8 text-center bg-white/80">
+              {renderTextContent()}
+            </div>
+          </>
+        )}
       </div>
 
       {/* Desktop: image with overlaid card */}
