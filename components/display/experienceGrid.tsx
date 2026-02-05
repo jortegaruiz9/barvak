@@ -22,7 +22,7 @@ const ExperienceGrid = ({ items, className }: ExperienceGridProps) => {
       )}
     >
       {items.map((item, index) => (
-        <div key={index} className="flex flex-col gap-4">
+        <div key={index} className="flex flex-col gap-4 min-w-0">
           <div className="relative aspect-4/3 w-full overflow-hidden md:rounded-sm">
             <Image
               src={item.imageSrc}

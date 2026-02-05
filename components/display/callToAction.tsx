@@ -23,7 +23,7 @@ export default function CallToAction({
           {title}
         </h2>
         {description && (
-          <p className="text-gray-600 leading-relaxed">{description}</p>
+          <p className="mt-2 text-gray-600 leading-relaxed">{description}</p>
         )}
         <Button
           variant="normal"

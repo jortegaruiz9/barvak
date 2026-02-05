@@ -55,6 +55,7 @@ const ImageCard = ({ src, alt }: { src: string; alt: string }) => (
       alt={alt?.trim() ? alt : "Image"}
       fill
       className="object-cover"
+      sizes="(max-width: 640px) 75vw, (max-width: 1024px) 360px, 25vw"
     />
   </div>
 );

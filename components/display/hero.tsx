@@ -89,6 +89,7 @@ export default function Hero({
           src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
           alt="Video background"
           fill
+          sizes="100vw"
           className={`object-cover transition-opacity duration-500 ${
             isVideoLoaded ? "opacity-0" : "opacity-100"
           }`}

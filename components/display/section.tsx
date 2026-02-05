@@ -24,6 +24,7 @@ interface SectionProps {
     | "ghost"
     | "link";
   backgroundColor?: string;
+  textColor?: string;
 }
 
 const Section = ({
@@ -33,6 +34,7 @@ const Section = ({
   button,
   buttonVariant = "normal",
   backgroundColor = "bg-custom-primary",
+  textColor = "text-white",
 }: SectionProps) => {
   // Handle description as string or array of strings
   const descriptionArray = Array.isArray(description)
@@ -62,14 +64,14 @@ const Section = ({
 
         {/* Title */}
         {title && (
-          <h2 className="text-2xl font-medium lg:font-light lg:text-3xl text-white text-center max-w-3xl">
+          <h2 className={cn("text-2xl font-medium lg:font-light lg:text-3xl text-center max-w-3xl", textColor)}>
             {title}
           </h2>
         )}
 
         {/* Description */}
         {descriptionArray.length > 0 && (
-          <div className="flex flex-col gap-4 md:gap-5 text-white text-center max-w-2xl text-balance">
+          <div className={cn("flex flex-col gap-4 md:gap-5 text-center max-w-2xl text-balance", textColor)}>
             {descriptionArray.map((paragraph, index) => (
               <p key={index} className="text-base md:text-lg leading-relaxed">
                 {paragraph}

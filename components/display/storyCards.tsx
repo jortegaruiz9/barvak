@@ -36,7 +36,9 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 100vw"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+            {(firstCard.title || firstCard.description) && (
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+            )}
             {(firstCard.title || firstCard.description) && (
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-10 text-white text-center md:text-left">
                 {firstCard.title && (
@@ -73,7 +75,9 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+                {(card.title || card.description) && (
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+                )}
                 {(card.title || card.description) && (
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white text-center md:text-left w-full lg:w-10/12">
                     {card.title && (
