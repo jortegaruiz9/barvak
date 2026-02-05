@@ -92,7 +92,7 @@ const FeatureSection = ({
         src={images[0].src}
         alt={images[0].alt?.trim() ? images[0].alt : "Section image"}
         fill
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 90vw"
         quality={85}
         className="object-cover"
         loading="lazy"
@@ -119,7 +119,7 @@ const FeatureSection = ({
                   src={image.src}
                   alt={image.alt?.trim() ? image.alt : "Section image"}
                   fill
-                  sizes="100vw"
+                  sizes="(max-width: 768px) 100vw, 90vw"
                   quality={85}
                   className="object-cover"
                   loading="lazy"

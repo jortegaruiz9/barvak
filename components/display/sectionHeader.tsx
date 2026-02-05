@@ -6,10 +6,14 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-const SectionHeader = ({ title, description, className }: SectionHeaderProps) => {
+const SectionHeader = ({
+  title,
+  description,
+  className,
+}: SectionHeaderProps) => {
   return (
     <div className={cn("w-full px-4 text-center", className)}>
-      <h2 className="mb-3 text-2xl md:text-3xl font-normal text-balance">
+      <h2 className="mb-3 text-2xl md:text-3xl font-normal text-balance md:max-w-6/12 text-center mx-auto">
         {title}
       </h2>
       {description && (
