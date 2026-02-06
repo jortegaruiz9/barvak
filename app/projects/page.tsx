@@ -2,6 +2,7 @@ import Hero from "@/components/display/hero";
 import Section from "@/components/display/section";
 import { FullscreenMedia } from "@/components/display/fullscreenMedia";
 import { FeatureSection } from "@/components/display/featureSection";
+import Image from "next/image";
 
 export default function ProjectsPage() {
   return (
@@ -25,6 +26,12 @@ export default function ProjectsPage() {
           text: "Know more about Barvak",
           href: "/contact",
         }}
+      />
+      <Image
+        src="/mapa-2.webp"
+        alt="Barvak Estate"
+        width={5000}
+        height={5000}
       />
       <FullscreenMedia
         title="Montain Boutique Hotel"

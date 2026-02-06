@@ -3,13 +3,14 @@ import Section from "@/components/display/section";
 import StoryCards from "@/components/display/storyCards";
 import { HorizontalScroll } from "@/components/display/horizontalScroll";
 import { FullscreenMedia } from "@/components/display/fullscreenMedia";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         text="Here, the wind smells of forest, horses run free, and time flows at the rhythm of the landscape. More than an estate it is a living community in constant evolution."
-        videoId="5xqgvRIUffI"
+        videoId="7IGPtHZFQrc"
         logoSrc="/logos/barvak-white.png"
         logoAlt="Barvak Estate"
         endTime={220}
@@ -93,6 +94,7 @@ export default function Home() {
           },
         ]}
       />
+      <Image src="/ruta.png" alt="Barvak Estate" width={5000} height={5000} />
       <FullscreenMedia
         images={["/photos/home/carousel-home.jpeg"]}
         imageAlt={[
