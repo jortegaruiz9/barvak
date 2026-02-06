@@ -5,7 +5,7 @@ import CallToAction from "@/components/display/callToAction";
 
 export default function NewsPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         text="What the world is saying about Hacienda Barvak"
         videoId="278IRQ6HSi4"

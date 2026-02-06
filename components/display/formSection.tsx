@@ -1,6 +1,13 @@
 "use client";
 
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
 import { CountryCodeSelect } from "../ui/country-code-select";
@@ -13,7 +20,7 @@ import ContactSection from "./contactSection";
 import { contactSectionData } from "@/lib/data/contact";
 
 interface ContactInfo {
-  icon: "mail" | "location" | "whatsapp" | "phone";
+  icon: "mail" | "location" | "whatsapp" | "phone" | "facebook" | "instagram";
   title: string;
   text: string;
   href?: string;
@@ -25,6 +32,8 @@ interface FormSectionProps {
   stageOptions: { value: string; label: string }[];
   contactInfoItems: ContactInfo[];
   infoTexts: string[];
+  mapEmbedUrl?: string;
+  showContactSection?: boolean;
   countryCode?: string;
   submitButtonText?: string;
   privacyPolicyText?: string;
@@ -58,6 +67,8 @@ const iconComponents = {
   location: MapPin,
   whatsapp: WhatsappIcon,
   phone: Phone,
+  facebook: Facebook,
+  instagram: Instagram,
 };
 
 export default function FormSection({
@@ -66,7 +77,9 @@ export default function FormSection({
   stageOptions,
   contactInfoItems,
   infoTexts,
-  countryCode = "+593",
+  mapEmbedUrl,
+  showContactSection = true,
+  countryCode = "+506",
   submitButtonText = "Schedule your visit",
   privacyPolicyText = "I accept the privacy policy and the processing of my personal data.",
   onSubmit,
@@ -83,12 +96,12 @@ export default function FormSection({
     <section className="flex flex-col gap-8 py-12">
       <SectionHeader title={title} description={description} />
 
-      <div className="flex flex-col px-4 lg:px-0 lg:flex-row lg:justify-center space-y-8">
+      <div className="flex flex-col px-4 lg:px-0 lg:flex-row lg:justify-center gap-y-8 lg:gap-x-16">
         {/* Form Section */}
         <div className="w-full lg:w-4/12">
           <form
             onSubmit={handleSubmit}
-            className="bg-neutral-200 p-6 md:p-10 rounded-lg"
+            className="bg-neutral-200 p-6 md:p-10 rounded-md"
           >
             <div className="space-y-4">
               {/* Full Name */}
@@ -100,7 +113,7 @@ export default function FormSection({
                   id="fullName"
                   name="fullName"
                   placeholder="Full Name"
-                  className="bg-white border-0"
+                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                 />
               </div>
 
@@ -114,7 +127,7 @@ export default function FormSection({
                   name="email"
                   type="email"
                   placeholder="Email Address"
-                  className="bg-white border-0"
+                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                 />
               </div>
 
@@ -126,7 +139,7 @@ export default function FormSection({
                   </Label>
                   <CountryCodeSelect
                     defaultValue={countryCode}
-                    className="bg-white border-0"
+                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                   />
                 </div>
                 <div className="flex-1">
@@ -138,7 +151,7 @@ export default function FormSection({
                     name="phone"
                     type="tel"
                     placeholder="Phone Number"
-                    className="bg-white border-0"
+                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                   />
                 </div>
               </div>
@@ -151,7 +164,7 @@ export default function FormSection({
                 <NativeSelect
                   id="stage"
                   name="stage"
-                  className="bg-white border-0 w-full"
+                  className="bg-white border-0 w-full md:text-lg md:h-auto md:py-3"
                 >
                   <NativeSelectOption value="">
                     Which stage are you interested in?
@@ -173,7 +186,7 @@ export default function FormSection({
                   id="comments"
                   name="comments"
                   placeholder="Comments"
-                  className="bg-white border-0 min-h-[120px]"
+                  className="bg-white border-0 min-h-[120px] text-sm md:text-lg md:py-3"
                 />
               </div>
 
@@ -186,7 +199,7 @@ export default function FormSection({
                 />
                 <Label
                   htmlFor="privacyPolicy"
-                  className="text-sm text-muted-foreground font-normal cursor-pointer"
+                  className="text-sm md:text-md text-muted-foreground font-normal cursor-pointer"
                 >
                   {privacyPolicyText}
                 </Label>
@@ -207,11 +220,11 @@ export default function FormSection({
 
         {/* Info Section */}
         <div className="w-full lg:w-6/12 flex flex-col justify-center">
-          <div className="space-y-6 mb-10">
+          <div className="space-y-5 mb-8">
             {infoTexts.map((text, index) => (
               <p
                 key={index}
-                className="text-muted-foreground text-md md:text-base text-center lg:text-right px-4 lg:px-0 text-balance"
+                className="text-muted-foreground text-sm md:text-lg text-center lg:text-right px-4 lg:px-0 text-balance leading-relaxed"
               >
                 {text}
               </p>
@@ -219,19 +232,19 @@ export default function FormSection({
           </div>
 
           {/* Contact Icons */}
-          <div className="flex justify-center lg:justify-end gap-8 lg:gap-16">
+          <div className="flex flex-wrap justify-center lg:justify-end gap-6 lg:gap-10">
             {contactInfoItems.map((item, index) => {
               const IconComponent = iconComponents[item.icon];
               const content = (
-                <div className="flex flex-col items-center text-center gap-1">
+                <div className="flex flex-col items-center text-center gap-2">
                   <IconComponent
                     className="size-6 text-muted-foreground"
-                    strokeWidth={1}
+                    strokeWidth={1.5}
                   />
-                  <span className="font-medium text-sm hidden lg:block">
+                  <span className="font-medium text-sm md:text-lg  hidden lg:block">
                     {item.title}
                   </span>
-                  <span className="text-xs text-muted-foreground hidden lg:block leading-tight">
+                  <span className="text-xs md:text-md text-muted-foreground hidden lg:block leading-tight">
                     {item.text}
                   </span>
                 </div>
@@ -242,6 +255,16 @@ export default function FormSection({
                   <a
                     key={index}
                     href={item.href}
+                    target={
+                      item.icon === "facebook" || item.icon === "instagram"
+                        ? "_blank"
+                        : undefined
+                    }
+                    rel={
+                      item.icon === "facebook" || item.icon === "instagram"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="hover:opacity-70 transition-opacity"
                     aria-label={`${item.title}: ${item.text}`}
                   >
@@ -253,9 +276,25 @@ export default function FormSection({
               return <div key={index}>{content}</div>;
             })}
           </div>
+
+          {/* Google Maps Embed */}
+          {mapEmbedUrl && (
+            <div className="mt-8 w-full rounded-md overflow-hidden">
+              <iframe
+                src={mapEmbedUrl}
+                width="100%"
+                height="350"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps location"
+              />
+            </div>
+          )}
         </div>
       </div>
-      <ContactSection {...contactSectionData} />
+      {showContactSection && <ContactSection {...contactSectionData} />}
     </section>
   );
 }

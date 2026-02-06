@@ -216,7 +216,7 @@ interface CountryCodeSelectProps {
 function CountryCodeSelect({
   id = "countryCode",
   name = "countryCode",
-  defaultValue = "+593",
+  defaultValue = "+506",
   className,
   onChange,
 }: CountryCodeSelectProps) {
@@ -233,7 +233,7 @@ function CountryCodeSelect({
           key={`${country.iso}-${country.code}`}
           value={country.code}
         >
-          {country.country} ({country.code})
+          {country.code} - {country.country}
         </NativeSelectOption>
       ))}
     </NativeSelect>

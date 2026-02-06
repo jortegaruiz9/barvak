@@ -45,17 +45,17 @@ export const Default: Story = {
       },
       {
         type: "image",
-        src: "/photos/equestrian/arena-1.webp",
+        src: "/photos/equestrian/caballo-1.webp",
         alt: "Aerial view of jumping arena",
       },
       {
         type: "image",
-        src: "/photos/equestrian/arena-2.webp",
+        src: "/photos/equestrian/caballo-2.webp",
         alt: "Silica-sand arena",
       },
       {
         type: "image",
-        src: "/photos/equestrian/stables.webp",
+        src: "/photos/equestrian/campo.webp",
         alt: "Luxury stables",
       },
     ],

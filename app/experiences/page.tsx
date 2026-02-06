@@ -6,7 +6,7 @@ import { FeatureCarousel } from "@/components/display/featureCarousel";
 
 export default function ExperiencesPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         text="Experiences"
         videoId="VlTSdevWZeQ"

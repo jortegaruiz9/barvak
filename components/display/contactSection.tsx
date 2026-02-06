@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { contactInfo } from "@/lib/data/contact";
+import TelephoneEmail from "./telephoneEmail";
 
 interface ContactSectionProps {
   personImage: string;
@@ -45,13 +45,13 @@ const ContactSection = ({
             />
           </div>
           <span className="font-medium text-lg">{personName}</span>
-          <span className="text-sm text-neutral-500">{personRole}</span>
+          <span className="text-sm text-muted-foreground">{personRole}</span>
         </div>
 
         {/* Column 2: Book a Call */}
         <div className="flex-1 flex flex-col items-center lg:items-end text-center lg:text-right min-w-0">
-          <h3 className="text-xl font-medium mb-2">{bookingTitle}</h3>
-          <p className="text-sm text-neutral-500 mb-4 max-w-md">
+          <h3 className="text-xl md:text-2xl font-medium mb-2">{bookingTitle}</h3>
+          <p className="text-sm text-muted-foreground mb-4 max-w-md">
             {bookingDescription}
           </p>
           <Button variant="normal" size="normal" asChild>
@@ -60,31 +60,12 @@ const ContactSection = ({
         </div>
 
         {/* Column 3: Telephone & Email */}
-        <div className="flex flex-col items-center lg:items-end text-center lg:text-right w-full lg:w-auto min-w-0">
-          <h3 className="text-xl font-medium mb-2">{contactTitle}</h3>
-          <p className="text-sm text-neutral-500 mb-4 max-w-md">
-            {contactDescription}
-          </p>
-          <div className="text-sm mb-2">
-            <span className="font-medium">{countryLabel}</span>{" "}
-            <Link
-              href={contactInfo.phone.href}
-              className="hover:underline"
-              aria-label={`Call ${contactInfo.phone.text}`}
-            >
-              {contactInfo.phone.text}
-            </Link>
-          </div>
-          <Button variant="outline" size="normal" asChild className="max-w-full">
-            <Link
-              href={contactInfo.email.href}
-              className="truncate"
-              aria-label={`Email ${contactInfo.email.text}`}
-            >
-              {contactInfo.email.text}
-            </Link>
-          </Button>
-        </div>
+        <TelephoneEmail
+          title={contactTitle}
+          description={contactDescription}
+          countryLabel={countryLabel}
+          className="flex flex-col items-center lg:items-end text-center lg:text-right w-full lg:w-auto min-w-0"
+        />
       </div>
     </section>
   );

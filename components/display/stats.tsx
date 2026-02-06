@@ -135,7 +135,7 @@ function StatChart({ item, isInView, delay }: StatChartProps) {
           {Math.round(animatedCount).toLocaleString()}
         </text>
       </svg>
-      <p className="mt-4 text-center text-sm text-muted-foreground max-w-42">
+      <p className="mt-6 text-center text-sm md:text-lg text-muted-foreground max-w-62">
         {item.label}
       </p>
     </div>

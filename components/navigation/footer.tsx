@@ -4,12 +4,7 @@ import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Award,
-} from "lucide-react";
+import { MapPin, Phone, Mail, Award } from "lucide-react";
 import { Icon } from "@iconify/react";
 import { cn } from "@/lib/utils";
 import {
@@ -33,18 +28,16 @@ export default function Footer() {
 
   const instagramLink = useMemo(
     () => socialLinks.find((s) => s.label === "Instagram")?.href || "#",
-    []
+    [],
   );
   const facebookLink = useMemo(
     () => socialLinks.find((s) => s.label === "Facebook")?.href || "#",
-    []
+    [],
   );
 
   return (
     <footer className="bg-custom-primary py-12 px-4 md:px-12 text-white">
-       
       <div className="max-w-7xl mx-auto">
-        
         {/* Logo Section */}
         <div className="flex justify-center mb-8 border-b border-white/20 pb-8 lg:border-none lg:pb-0 lg:flex-col">
           <Image
@@ -55,34 +48,32 @@ export default function Footer() {
             className="object-contain"
           />
         </div>
-   
+
         {/* Navigation Links */}
         <div className="flex justify-center mb-12 lg:justify-between">
-        <ul className="hidden lg:flex items-center space-x-3">
-                    <li>
-                        <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={instagramLink}
-                            aria-label="Visit our Instagram page"
-                        >
-                            <Icon icon="ion:logo-instagram" className="text-xl" />
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={facebookLink}
-                            aria-label="Visit our Facebook page"
-                        >
-                            <Icon icon="ion:logo-facebook" className="text-xl" />
-                        </a>
-                    </li>
-                    <li>
-                        Follow us
-                    </li>
-            </ul>
+          <ul className="hidden lg:flex items-center space-x-3">
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={instagramLink}
+                aria-label="Visit our Instagram page"
+              >
+                <Icon icon="ion:logo-instagram" className="text-xl" />
+              </a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={facebookLink}
+                aria-label="Visit our Facebook page"
+              >
+                <Icon icon="ion:logo-facebook" className="text-xl" />
+              </a>
+            </li>
+            <li>Follow us</li>
+          </ul>
           <nav className="flex flex-col items-center space-y-2 lg:flex-row lg:space-x-4 lg:space-y-0 lg:text-sm">
             {footerNavLinks.map((link) => (
               <Link
@@ -91,7 +82,7 @@ export default function Footer() {
                 aria-label={link.label}
                 className={cn(
                   "transition-opacity hover:opacity-60",
-                  pathname === link.path ? "opacity-60" : "opacity-100"
+                  pathname === link.path ? "opacity-60" : "opacity-100",
                 )}
               >
                 {link.label}
@@ -102,9 +93,9 @@ export default function Footer() {
         {/* Main Content Sections */}
         <div className="flex flex-col gap-y-12 mb-12 text-white/60 lg:text-white lg:flex-row-reverse lg:justify-between lg:items-end">
           {/* Our Regulations Section */}
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-col items-center text-center lg:items-end lg:text-right">
             <h3 className="text-lg font-medium mb-4">Our Regulations</h3>
-            <ul className="flex flex-col items-center space-y-2">
+            <ul className="flex flex-col items-center lg:items-end space-y-2">
               {regulations.map((regulation) => (
                 <li key={regulation.download} className="text-balance">
                   <Link
@@ -120,9 +111,9 @@ export default function Footer() {
           </div>
 
           {/* Contact Us Section */}
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-lg font-medium mb-4">Contact Us</h3>
-            <ul className="flex flex-col items-center space-y-3">
+          <div className="flex flex-col items-center text-center lg:items-end lg:text-right">
+            <Link href="/contact" className="text-lg font-medium mb-4 hover:opacity-60 transition-opacity">Contact Us</Link>
+            <ul className="flex flex-col items-center lg:items-end space-y-3">
               <li className="flex items-center space-x-2 text-left">
                 <LocationIcon className="w-5 h-5 shrink-0" aria-hidden="true" />
                 <span>{contactInfo.location.text}</span>
@@ -151,9 +142,9 @@ export default function Footer() {
           </div>
 
           {/* Waze Section */}
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-col items-center text-center lg:items-end lg:text-right">
             <h3 className=" text-lg font-medium mb-4">Waze</h3>
-            <ul className="flex flex-col items-center space-y-2">
+            <ul className="flex flex-col items-center lg:items-end space-y-2">
               <li className="text-left">
                 <a
                   target="_blank"
@@ -169,7 +160,7 @@ export default function Footer() {
           </div>
 
           {/* Awards Section */}
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-col items-center text-center lg:items-end lg:text-right">
             <h3 className=" text-lg font-medium mb-4">Awards</h3>
             <div className="flex items-center space-x-2 text-left">
               <AwardIcon className="w-5 h-5 shrink-0" aria-hidden="true" />
@@ -188,7 +179,11 @@ export default function Footer() {
               href={social.href}
               aria-label={`Visit our ${social.label} page`}
             >
-              <Icon icon={social.icon} className="text-2xl" aria-hidden="true" />
+              <Icon
+                icon={social.icon}
+                className="text-2xl"
+                aria-hidden="true"
+              />
             </a>
           ))}
         </div>

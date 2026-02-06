@@ -3,6 +3,7 @@ import { League_Spartan } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navigation/navbar";
 import Footer from "@/components/navigation/footer";
+import WhatsAppButton from "@/components/display/whatsAppButton";
 const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
   subsets: ["latin"],
@@ -25,8 +26,9 @@ export default function RootLayout({
         <header>
           <Navbar />
         </header>
-        <main className="pt-16 mb-12">
+        <main className="relative pt-16 mb-12">
           {children}
+          <WhatsAppButton />
         </main>
         <footer>
           <Footer/>
