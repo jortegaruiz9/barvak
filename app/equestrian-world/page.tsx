@@ -87,7 +87,7 @@ const services = [
 
 export default function EquestrianWorld() {
   return (
-    <div className="flex flex-col gap-y-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         logoSrc="/logos/barvak-white.png"
         logoAlt="Barvak Estate"

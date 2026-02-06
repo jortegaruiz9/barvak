@@ -82,7 +82,7 @@ export default function ComplaintForm({
                       id="complaintName"
                       name="fullName"
                       placeholder="Full Name"
-                      className="bg-white border-0"
+                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                     />
                   </div>
 
@@ -95,7 +95,7 @@ export default function ComplaintForm({
                       name="email"
                       type="email"
                       placeholder="Email Address"
-                      className="bg-white border-0"
+                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                     />
                   </div>
 
@@ -106,7 +106,7 @@ export default function ComplaintForm({
                     <NativeSelect
                       id="complaintCategory"
                       name="category"
-                      className="bg-white border-0 w-full"
+                      className="bg-white border-0 w-full md:text-lg md:h-auto md:py-3"
                     >
                       <NativeSelectOption value="">
                         Select a category
@@ -130,7 +130,7 @@ export default function ComplaintForm({
                       id="complaintDescription"
                       name="description"
                       placeholder="Describe your complaint"
-                      className="bg-white border-0 min-h-[160px]"
+                      className="bg-white border-0 min-h-[160px] text-sm md:text-lg md:py-3"
                     />
                   </div>
 
@@ -142,7 +142,7 @@ export default function ComplaintForm({
                     />
                     <Label
                       htmlFor="complaintPrivacy"
-                      className="text-sm text-muted-foreground font-normal cursor-pointer"
+                      className="text-sm md:text-md text-muted-foreground font-normal cursor-pointer"
                     >
                       {privacyPolicyText}
                     </Label>

@@ -6,11 +6,11 @@ import { ExperienceGrid } from "@/components/display/experienceGrid";
 import CallToAction from "@/components/display/callToAction";
 
 const BrandBanner = dynamic(() =>
-  import("@/components/display/brandBanner").then((mod) => mod.BrandBanner)
+  import("@/components/display/brandBanner").then((mod) => mod.BrandBanner),
 );
 
 const Stats = dynamic(() =>
-  import("@/components/display/stats").then((mod) => mod.Stats)
+  import("@/components/display/stats").then((mod) => mod.Stats),
 );
 
 const brandBannerItems = [
@@ -29,7 +29,7 @@ const brandBannerItems = [
 ];
 export default function ReforestationPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         videoId="DTGNlk2cXa0"
         logoSrc="/logos/barvak-white.png"

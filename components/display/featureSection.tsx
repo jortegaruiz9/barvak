@@ -64,7 +64,7 @@ const FeatureSection = ({
 
   const renderTextContent = () => (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl md:text-3xl font-medium text-foreground text-pretty">
+      <h2 className="text-2xl md:text-[2.25rem] font-light text-foreground text-pretty">
         {title}
       </h2>
       {descriptionArray.length > 0 && (

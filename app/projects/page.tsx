@@ -5,7 +5,7 @@ import { FeatureSection } from "@/components/display/featureSection";
 
 export default function ProjectsPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         text="Projects"
         videoId="GWaQiFeQ87g"

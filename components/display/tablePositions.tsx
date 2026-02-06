@@ -110,17 +110,17 @@ function PositionCard({
         className="object-cover"
       />
       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-      <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-start text-white font-bold text-3xl sm:text-4xl md:text-5xl leading-none">
+      <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-start text-white font-bold text-3xl sm:text-4xl md:text-6xl leading-none">
         {champion.position.replace(/\D+$/, "")}
         <span className="text-base sm:text-lg md:text-xl font-semibold mt-0.5">
           {champion.position.replace(/^\d+/, "")}
         </span>
       </div>
       <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
-        <p className="text-white font-medium text-xs sm:text-sm leading-tight">
+        <p className="text-white font-medium text-xs sm:text-lg md:text-xl leading-tight">
           {champion.title}
         </p>
-        <p className="text-white/80 text-[10px] sm:text-xs mt-0.5">
+        <p className="text-white text-[10px] sm:text-xs md:text-md mt-0.5">
           {champion.name}
         </p>
       </div>
@@ -155,10 +155,10 @@ export default function TablePositions({ tabs }: TablePositionsProps) {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(index)}
-            className={`text-sm font-semibold pb-1 transition-colors ${
+            className={`text-sm md:text-base font-semibold pb-1 transition-colors ${
               index === activeTab
-                ? "text-muted-foreground/40"
-                : "text-muted-foreground hover:text-muted-foreground/60"
+                ? "text-foreground border-b-2 border-foreground"
+                : "text-muted-foreground border-b-2 border-transparent hover:text-muted-foreground/60"
             }`}
           >
             {tab.label}
@@ -168,7 +168,7 @@ export default function TablePositions({ tabs }: TablePositionsProps) {
 
       {/* Title */}
       <div className="text-center py-8">
-        <h2 className="text-5xl md:text-7xl font-semibold text-muted-foreground">
+        <h2 className="text-5xl md:text-8xl font-semibold text-muted-foreground">
           {active.title}
         </h2>
         <p className="text-2xl text-muted-foreground mt-2 font-semibold">
@@ -196,21 +196,21 @@ export default function TablePositions({ tabs }: TablePositionsProps) {
                 <Table>
                   <TableHeader>
                     <TableRow className="border-b-0">
-                      <TableHead className="text-muted-foreground font-normal text-xs">
+                      <TableHead className="text-muted-foreground font-normal text-xs md:text-sm">
                         <span className="hidden md:inline">Position</span>
                         <span className="md:hidden">#</span>
                       </TableHead>
-                      <TableHead className="text-muted-foreground font-normal text-xs">
+                      <TableHead className="text-muted-foreground font-normal text-xs md:text-sm">
                         Name
                       </TableHead>
-                      <TableHead className="text-muted-foreground font-normal text-xs hidden md:table-cell">
+                      <TableHead className="text-muted-foreground font-normal text-xs md:text-sm hidden md:table-cell">
                         Club
                       </TableHead>
-                      <TableHead className="text-muted-foreground font-normal text-xs text-center">
+                      <TableHead className="text-muted-foreground font-normal text-xs md:text-sm text-center">
                         <span className="hidden md:inline">% Win</span>
                         <span className="md:hidden">%</span>
                       </TableHead>
-                      <TableHead className="text-muted-foreground font-normal text-xs text-right">
+                      <TableHead className="text-muted-foreground font-normal text-xs md:text-sm text-right">
                         Time
                       </TableHead>
                     </TableRow>
@@ -227,26 +227,30 @@ export default function TablePositions({ tabs }: TablePositionsProps) {
                               ? "bg-red-500 text-white border-red-500"
                               : "bg-transparent border-neutral-300";
                       return (
-                      <TableRow key={i}>
-                        <TableCell className="py-4">
-                          <span className="hidden md:inline font-bold text-lg">
-                            {entry.position}
-                          </span>
-                          <span className={`md:hidden inline-flex items-center justify-center size-7 rounded border text-xs font-bold ${badgeColor}`}>
-                            {entry.position.replace(/\D+$/, "")}
-                          </span>
-                        </TableCell>
-                        <TableCell className="py-4">{entry.name}</TableCell>
-                        <TableCell className="py-4 hidden md:table-cell">
-                          {entry.club}
-                        </TableCell>
-                        <TableCell className="py-4 text-center">
-                          {entry.winPercentage}
-                        </TableCell>
-                        <TableCell className="py-4 text-right tabular-nums">
-                          {entry.time}
-                        </TableCell>
-                      </TableRow>
+                        <TableRow key={i}>
+                          <TableCell className="py-4 md:py-5">
+                            <span className="hidden md:inline font-bold text-lg md:text-xl">
+                              {entry.position}
+                            </span>
+                            <span
+                              className={`md:hidden inline-flex items-center justify-center size-7 rounded border text-xs font-bold ${badgeColor}`}
+                            >
+                              {entry.position.replace(/\D+$/, "")}
+                            </span>
+                          </TableCell>
+                          <TableCell className="py-4 md:py-5 md:text-lg">
+                            {entry.name}
+                          </TableCell>
+                          <TableCell className="py-4 md:py-5 hidden md:table-cell md:text-lg">
+                            {entry.club}
+                          </TableCell>
+                          <TableCell className="py-4 md:py-5 text-center md:text-lg tabular-nums">
+                            {entry.winPercentage}
+                          </TableCell>
+                          <TableCell className="py-4 md:py-5 text-right md:text-lg tabular-nums">
+                            {entry.time}
+                          </TableCell>
+                        </TableRow>
                       );
                     })}
                   </TableBody>

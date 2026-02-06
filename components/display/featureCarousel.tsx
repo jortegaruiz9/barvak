@@ -38,18 +38,18 @@ const TextCard = ({
   title: string;
   description: string;
 }) => (
-  <div className="bg-lime-500 text-white lg:bg-transparent lg:text-foreground p-4 lg:p-4 rounded-md h-full flex flex-col justify-center aspect-3/4">
-    <h3 className="text-lg xl:text-xl font-medium mb-2 text-pretty shrink-0">
+  <div className="bg-lime-500 text-white lg:bg-gray-50 lg:text-foreground p-4 lg:p-[clamp(0.75rem,1.5vw,1.5rem)] rounded-md h-full flex flex-col justify-center aspect-3/4 lg:aspect-auto">
+    <h3 className="text-2xl lg:text-[clamp(1.25rem,2.5vw,1.875rem)] font-light mb-2 text-pretty shrink-0 leading-tight">
       {cardTitle}
     </h3>
-    <p className="text-xs xl:text-sm lg:text-muted-foreground leading-relaxed text-pretty">
+    <p className="text-xs md:text-sm lg:text-[clamp(0.75rem,1.2vw,1rem)] lg:text-muted-foreground leading-relaxed text-pretty">
       {cardDescription}
     </p>
   </div>
 );
 
 const ImageCard = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="relative rounded-md overflow-hidden aspect-3/4">
+  <div className="relative rounded-md overflow-hidden aspect-3/4 lg:aspect-auto lg:h-full">
     <Image
       src={src}
       alt={alt?.trim() ? alt : "Image"}

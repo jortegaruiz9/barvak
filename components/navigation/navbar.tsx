@@ -117,7 +117,7 @@ export default function Navbar() {
               transition={{ delay: 0.3 }}
             >
               <NativeSelect
-                defaultValue="es"
+                defaultValue="en"
                 size="sm"
                 className="border-none shadow-none bg-transparent text-sm w-16 pl-2 focus:ring-0 focus:border-none focus-visible:ring-0 focus-visible:border-none"
               >

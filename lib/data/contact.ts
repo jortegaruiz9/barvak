@@ -39,6 +39,58 @@ export const whatsapp = {
   message: "Hola, me gustaría obtener más información sobre Hacienda Barvak.",
 };
 
+// Form shared data
+export const formContactInfoItems = [
+  {
+    icon: "location" as const,
+    title: "Location",
+    text: contactInfo.location.text,
+  },
+  {
+    icon: "mail" as const,
+    title: "Mail",
+    text: contactInfo.email.text,
+    href: contactInfo.email.href,
+  },
+  {
+    icon: "phone" as const,
+    title: "Phone",
+    text: contactInfo.phone.text,
+    href: contactInfo.phone.href,
+  },
+  {
+    icon: "whatsapp" as const,
+    title: "Whatsapp",
+    text: contactInfo.phone.text,
+    href: `https://wa.me/${whatsapp.phone}`,
+  },
+  {
+    icon: "facebook" as const,
+    title: "Facebook",
+    text: "Hacienda Barvak",
+    href: "#",
+  },
+  {
+    icon: "instagram" as const,
+    title: "Instagram",
+    text: "@haciendabarvak",
+    href: "#",
+  },
+];
+
+export const formInfoTexts = [
+  "It will be our pleasure to speak with you and answer any questions you may have about our services, projects, or experiences.",
+  "You can also follow us on social media, write to us directly, or call us whenever you need.",
+  "We're here to help you discover everything Barvak has to offer.",
+];
+
+export const formStageOptions = [
+  { value: "stage1", label: "Stage 1 - Planning" },
+  { value: "stage2", label: "Stage 2 - Development" },
+  { value: "stage3", label: "Stage 3 - Construction" },
+  { value: "stage4", label: "Stage 4 - Completion" },
+];
+
 // Social media links
 export const socialLinks = [
   { href: "#", label: "Instagram", icon: "ion:logo-instagram" },

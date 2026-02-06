@@ -60,7 +60,7 @@ const ShowCard = ({
     <div className="flex flex-col gap-4">
       <h2
         className={cn(
-          "text-2xl md:text-3xl font-medium text-pretty",
+          "text-2xl md:text-[2.25rem] font-light text-pretty",
           light ? "text-white" : "text-foreground",
         )}
       >
@@ -74,7 +74,7 @@ const ShowCard = ({
           )}
         >
           {slide.paragraphs.map((paragraph, index) => (
-            <p key={index} className="text-base leading-relaxed">
+            <p key={index} className="text-base md:text-lg leading-relaxed">
               {paragraph}
             </p>
           ))}

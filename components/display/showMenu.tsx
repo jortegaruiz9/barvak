@@ -136,7 +136,9 @@ const ShowMenu = ({
   const [autoplayPaused, setAutoplayPaused] = React.useState(false);
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   const [hoverPaused, setHoverPaused] = React.useState(false);
-  const hoverTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hoverTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   React.useEffect(() => {
     return () => {
@@ -337,7 +339,7 @@ const ShowMenu = ({
               "absolute inset-x-0 bottom-0 bg-white/80 px-4 py-6 md:px-0 md:py-0 md:relative md:bg-transparent md:flex md:flex-col md:justify-center md:flex-1 md:basis-0 md:min-w-0",
             )}
           >
-            <h2 className="text-2xl md:text-3xl font-medium text-foreground text-pretty md:text-left">
+            <h2 className="text-2xl md:text-[2.25rem] font-light text-foreground text-pretty md:text-left">
               {current.title}
             </h2>
             <p className="mt-2 text-base md:text-lg text-muted-foreground leading-relaxed text-pretty md:text-left">

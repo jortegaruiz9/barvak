@@ -95,7 +95,7 @@ export default function FormEvents({
                   id="fullName"
                   name="fullName"
                   placeholder="Full Name"
-                  className="bg-white border-0"
+                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                 />
               </div>
 
@@ -110,7 +110,7 @@ export default function FormEvents({
                     name="phone"
                     type="tel"
                     placeholder="Phone Number"
-                    className="bg-white border-0"
+                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                   />
                 </div>
                 <div className="w-32">
@@ -119,7 +119,7 @@ export default function FormEvents({
                   </Label>
                   <CountryCodeSelect
                     defaultValue={countryCode}
-                    className="bg-white border-0"
+                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                   />
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function FormEvents({
                   name="email"
                   type="email"
                   placeholder="Email Address"
-                  className="bg-white border-0"
+                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                 />
               </div>
 
@@ -146,7 +146,7 @@ export default function FormEvents({
                 <NativeSelect
                   id="eventType"
                   name="eventType"
-                  className="bg-white border-0 w-full"
+                  className="bg-white border-0 w-full md:text-lg md:h-auto md:py-3"
                 >
                   <NativeSelectOption value="">
                     Type of Event
@@ -172,7 +172,7 @@ export default function FormEvents({
                   onBlur={(e) => {
                     if (!e.target.value) e.target.type = "text";
                   }}
-                  className="bg-white border-0"
+                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                 />
               </div>
 
@@ -185,7 +185,7 @@ export default function FormEvents({
                   id="comments"
                   name="comments"
                   placeholder="Comments or Special Requirements"
-                  className="bg-white border-0 min-h-[120px]"
+                  className="bg-white border-0 min-h-[120px] text-sm md:text-lg md:py-3"
                 />
               </div>
 
@@ -198,7 +198,7 @@ export default function FormEvents({
                 />
                 <Label
                   htmlFor="privacyPolicy"
-                  className="text-sm text-muted-foreground font-normal cursor-pointer"
+                  className="text-sm md:text-md text-muted-foreground font-normal cursor-pointer"
                 >
                   {privacyPolicyText}
                 </Label>

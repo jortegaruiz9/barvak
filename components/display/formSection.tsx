@@ -113,7 +113,7 @@ export default function FormSection({
                   id="fullName"
                   name="fullName"
                   placeholder="Full Name"
-                  className="bg-white border-0"
+                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                 />
               </div>
 
@@ -127,7 +127,7 @@ export default function FormSection({
                   name="email"
                   type="email"
                   placeholder="Email Address"
-                  className="bg-white border-0"
+                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                 />
               </div>
 
@@ -139,7 +139,7 @@ export default function FormSection({
                   </Label>
                   <CountryCodeSelect
                     defaultValue={countryCode}
-                    className="bg-white border-0"
+                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                   />
                 </div>
                 <div className="flex-1">
@@ -151,7 +151,7 @@ export default function FormSection({
                     name="phone"
                     type="tel"
                     placeholder="Phone Number"
-                    className="bg-white border-0"
+                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
                   />
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function FormSection({
                 <NativeSelect
                   id="stage"
                   name="stage"
-                  className="bg-white border-0 w-full"
+                  className="bg-white border-0 w-full md:text-lg md:h-auto md:py-3"
                 >
                   <NativeSelectOption value="">
                     Which stage are you interested in?
@@ -186,7 +186,7 @@ export default function FormSection({
                   id="comments"
                   name="comments"
                   placeholder="Comments"
-                  className="bg-white border-0 min-h-[120px]"
+                  className="bg-white border-0 min-h-[120px] text-sm md:text-lg md:py-3"
                 />
               </div>
 
@@ -199,7 +199,7 @@ export default function FormSection({
                 />
                 <Label
                   htmlFor="privacyPolicy"
-                  className="text-sm text-muted-foreground font-normal cursor-pointer"
+                  className="text-sm md:text-md text-muted-foreground font-normal cursor-pointer"
                 >
                   {privacyPolicyText}
                 </Label>
@@ -224,7 +224,7 @@ export default function FormSection({
             {infoTexts.map((text, index) => (
               <p
                 key={index}
-                className="text-muted-foreground text-base text-center lg:text-right px-4 lg:px-0 text-balance leading-relaxed"
+                className="text-muted-foreground text-sm md:text-lg text-center lg:text-right px-4 lg:px-0 text-balance leading-relaxed"
               >
                 {text}
               </p>
@@ -241,10 +241,10 @@ export default function FormSection({
                     className="size-6 text-muted-foreground"
                     strokeWidth={1.5}
                   />
-                  <span className="font-medium text-sm hidden lg:block">
+                  <span className="font-medium text-sm md:text-lg  hidden lg:block">
                     {item.title}
                   </span>
-                  <span className="text-xs text-muted-foreground hidden lg:block leading-tight">
+                  <span className="text-xs md:text-md text-muted-foreground hidden lg:block leading-tight">
                     {item.text}
                   </span>
                 </div>

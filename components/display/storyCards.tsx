@@ -42,12 +42,12 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
             {(firstCard.title || firstCard.description) && (
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-10 text-white text-center md:text-left">
                 {firstCard.title && (
-                  <h3 className="text-xl md:text-2xl font-medium mb-2 md:mb-3 max-w-4xl">
+                  <h3 className="text-xl md:text-3xl font-light mb-2 md:mb-3 max-w-4xl text-pretty">
                     {firstCard.title}
                   </h3>
                 )}
                 {firstCard.description && (
-                  <p className="text-sm md:text-base lg:text-lg leading-relaxed max-w-4xl">
+                  <p className="text-sm md:text-lg leading-relaxed max-w-4xl">
                     {firstCard.description}
                   </p>
                 )}
@@ -79,14 +79,14 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
                 )}
                 {(card.title || card.description) && (
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white text-center md:text-left w-full lg:w-10/12">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white text-center md:text-left w-full lg:w-10/12 h-52 md:h-96 lg:h-72 flex flex-col justify-end md:justify-start">
                     {card.title && (
-                      <h3 className="text-xl md:text-2xl font-medium mb-2 md:mb-3 text-balance">
+                      <h3 className="text-xl md:text-3xl font-light mb-2 md:mb-3 text-balance">
                         {card.title}
                       </h3>
                     )}
                     {card.description && (
-                      <p className="text-sm md:text-base leading-relaxed">
+                      <p className="text-sm md:text-lg leading-relaxed text-pretty">
                         {card.description}
                       </p>
                     )}

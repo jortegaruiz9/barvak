@@ -21,13 +21,13 @@ const ReviewCard = ({ quote, author }: Review) => (
   <div className="bg-lime-500 rounded-2xl p-8 lg:p-10 flex flex-col justify-between h-[300px] lg:h-[340px]">
     <Icon
       icon="icomoon-free:quotes-left"
-      className="text-4xl text-white opacity-80 mb-4"
+      className="text-4xl text-white mb-4"
     />
 
-    <p className="text-white/90 leading-relaxed tracking-[0.01em] font-normal text-sm lg:text-base line-clamp-6 text-pretty">
+    <p className="text-white leading-relaxed tracking-[0.01em] text-sm lg:text-lg line-clamp-6 text-pretty font-medium">
       {quote}
     </p>
-    <p className="text-white font-medium text-lg mt-6">{author}</p>
+    <p className="text-white font-medium text-lg mt-6 italic">{author}</p>
   </div>
 );
 

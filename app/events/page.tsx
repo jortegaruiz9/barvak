@@ -110,7 +110,7 @@ const eventsMenuItems: ShowMenuItem[] = [
 
 export default function EventsPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         text="Events"
         videoId="k1gj5wCLAhc"
@@ -120,7 +120,7 @@ export default function EventsPage() {
       <Section
         title="At Hacienda Barvak, events aren’t produced… they’re lived."
         description="Here, nature becomes the perfect backdrop: panoramic views of the city, the embrace of the Barva and Poás volcanoes, fresh mountain air, vibrant sunlight, and biodiversity that transforms every experience. Our warm service, the flexibility to adapt to each client, and the magic of the mountain turn every celebration into an unforgettable memory. If you can imagine it, we can make it happen at Barvak."
-        backgroundColor="bg-gray-100"
+        backgroundColor="bg-gray-50"
         textColor="text-gray-800"
       />
       <FeatureSection

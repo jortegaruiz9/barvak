@@ -122,7 +122,7 @@ export default function Hero({
                 />
               </div>
             )}
-            <h1 className="text-lg md:text-2xl lg:text-3xl text-white/90 w-[80vw] max-w-3xl">
+            <h1 className="text-2xl md:text-[2.25rem] font-light text-white/90 w-[80vw] max-w-3xl text-pretty">
               {text}
             </h1>
           </div>

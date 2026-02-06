@@ -6,7 +6,7 @@ import { FullscreenMedia } from "@/components/display/fullscreenMedia";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         text="Here, the wind smells of forest, horses run free, and time flows at the rhythm of the landscape. More than an estate it is a living community in constant evolution."
         videoId="5xqgvRIUffI"
@@ -22,7 +22,7 @@ export default function Home() {
         cards={[
           {
             image: "/photos/home/storyCard-2.png",
-            description:
+            title:
               "In the heart of Costa Rica, Hacienda Barvak was born surrounded by volcanoes, forests, and traditions that reflect the country's purest essence.",
             alt: "Mountain landscape with fog in Costa Rica",
           },

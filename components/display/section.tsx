@@ -64,16 +64,29 @@ const Section = ({
 
         {/* Title */}
         {title && (
-          <h2 className={cn("text-2xl md:text-3xl font-medium text-center max-w-3xl", textColor)}>
+          <h2
+            className={cn(
+              "text-2xl md:text-[2.25rem] font-light text-center lg:w-7/12 text-pretty",
+              textColor,
+            )}
+          >
             {title}
           </h2>
         )}
 
         {/* Description */}
         {descriptionArray.length > 0 && (
-          <div className={cn("flex flex-col gap-4 md:gap-5 text-center max-w-2xl text-balance", textColor)}>
+          <div
+            className={cn(
+              "flex flex-col gap-4 md:gap-5 text-center max-w-2xl text-balance",
+              textColor,
+            )}
+          >
             {descriptionArray.map((paragraph, index) => (
-              <p key={index} className="text-base md:text-lg leading-relaxed">
+              <p
+                key={index}
+                className="text-base md:text-lg leading-relaxed opacity-80"
+              >
                 {paragraph}
               </p>
             ))}

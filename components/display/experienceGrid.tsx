@@ -35,12 +35,12 @@ const ExperienceGrid = ({ items, className }: ExperienceGridProps) => {
           {(item.title || item.description) && (
             <div className="flex flex-col gap-2 px-6 md:px-0">
               {item.title && (
-                <h3 className="text-xl md:text-2xl font-medium text-muted-foreground">
+                <h3 className="text-xl md:text-3xl font-light text-foreground">
                   {item.title}
                 </h3>
               )}
               {item.description && (
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
               )}

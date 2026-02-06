@@ -17,21 +17,21 @@ const competitionTabs: CompetitionTab[] = [
     year: "2026",
     champions: [
       {
-        image: "/photos/competencies/caballo.webp",
+        image: "/photos/competencies/competidor-1.webp",
         alt: "Dressage champion rider",
         position: "1st",
         title: "Champion Dressage",
         name: "Domenica Aspen",
       },
       {
-        image: "/photos/competencies/ganadores.webp",
+        image: "/photos/competencies/competidor-2.webp",
         alt: "Second place rider",
         position: "2nd",
         title: "Freestyle Final",
         name: "Valentina Rojas",
       },
       {
-        image: "/photos/competencies/copa.webp",
+        image: "/photos/competencies/competidor-3.webp",
         alt: "Third place rider",
         position: "3rd",
         title: "Prix St. Georges",
@@ -40,20 +40,92 @@ const competitionTabs: CompetitionTab[] = [
     ],
     resultPages: [
       [
-        { position: "1st", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
-        { position: "2nd", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
-        { position: "3rd", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
-        { position: "4th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
-        { position: "5th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
-        { position: "6th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
-        { position: "7th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
-        { position: "8th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "25.09%", time: "06.35.04" },
+        {
+          position: "1st",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
+        {
+          position: "2nd",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
+        {
+          position: "3rd",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
+        {
+          position: "4th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
+        {
+          position: "5th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
+        {
+          position: "6th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
+        {
+          position: "7th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
+        {
+          position: "8th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "25.09%",
+          time: "06.35.04",
+        },
       ],
       [
-        { position: "9th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "22.15%", time: "06.40.12" },
-        { position: "10th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "21.80%", time: "06.42.08" },
-        { position: "11th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "20.50%", time: "06.45.30" },
-        { position: "12th", name: "Juan Góngora", club: "Cumbaya alta", winPercentage: "19.90%", time: "06.48.15" },
+        {
+          position: "9th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "22.15%",
+          time: "06.40.12",
+        },
+        {
+          position: "10th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "21.80%",
+          time: "06.42.08",
+        },
+        {
+          position: "11th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "20.50%",
+          time: "06.45.30",
+        },
+        {
+          position: "12th",
+          name: "Juan Góngora",
+          club: "Cumbaya alta",
+          winPercentage: "19.90%",
+          time: "06.48.15",
+        },
       ],
     ],
   },
@@ -64,21 +136,21 @@ const competitionTabs: CompetitionTab[] = [
     year: "2026",
     champions: [
       {
-        image: "/photos/competencies/ganadores.webp",
+        image: "/photos/competencies/competidor-3.webp",
         alt: "Show jumping champion",
         position: "1st",
         title: "Grand Prix",
         name: "Carlos Mendez",
       },
       {
-        image: "/photos/competencies/copa.webp",
+        image: "/photos/competencies/competidor-1.webp",
         alt: "Second place rider",
         position: "2nd",
         title: "Speed Challenge",
         name: "Maria Torres",
       },
       {
-        image: "/photos/competencies/ganadores.webp",
+        image: "/photos/competencies/competidor-2.webp",
         alt: "Third place rider",
         position: "3rd",
         title: "Classic Round",
@@ -87,18 +159,78 @@ const competitionTabs: CompetitionTab[] = [
     ],
     resultPages: [
       [
-        { position: "1st", name: "Carlos Mendez", club: "Club Hípico CR", winPercentage: "30.12%", time: "05.22.08" },
-        { position: "2nd", name: "Maria Torres", club: "Hacienda Barvak", winPercentage: "28.45%", time: "05.25.14" },
-        { position: "3rd", name: "Luis Herrera", club: "Club Hípico CR", winPercentage: "27.10%", time: "05.28.30" },
-        { position: "4th", name: "Ana Castillo", club: "Cumbaya alta", winPercentage: "25.80%", time: "05.30.45" },
-        { position: "5th", name: "Pedro Rojas", club: "Hacienda Barvak", winPercentage: "24.60%", time: "05.33.20" },
-        { position: "6th", name: "Sofia Vargas", club: "Club Hípico CR", winPercentage: "23.15%", time: "05.36.10" },
+        {
+          position: "1st",
+          name: "Carlos Mendez",
+          club: "Club Hípico CR",
+          winPercentage: "30.12%",
+          time: "05.22.08",
+        },
+        {
+          position: "2nd",
+          name: "Maria Torres",
+          club: "Hacienda Barvak",
+          winPercentage: "28.45%",
+          time: "05.25.14",
+        },
+        {
+          position: "3rd",
+          name: "Luis Herrera",
+          club: "Club Hípico CR",
+          winPercentage: "27.10%",
+          time: "05.28.30",
+        },
+        {
+          position: "4th",
+          name: "Ana Castillo",
+          club: "Cumbaya alta",
+          winPercentage: "25.80%",
+          time: "05.30.45",
+        },
+        {
+          position: "5th",
+          name: "Pedro Rojas",
+          club: "Hacienda Barvak",
+          winPercentage: "24.60%",
+          time: "05.33.20",
+        },
+        {
+          position: "6th",
+          name: "Sofia Vargas",
+          club: "Club Hípico CR",
+          winPercentage: "23.15%",
+          time: "05.36.10",
+        },
       ],
       [
-        { position: "7th", name: "Diego Mora", club: "Cumbaya alta", winPercentage: "22.00%", time: "05.38.55" },
-        { position: "8th", name: "Laura Jimenez", club: "Hacienda Barvak", winPercentage: "21.30%", time: "05.41.02" },
-        { position: "9th", name: "Roberto Fallas", club: "Club Hípico CR", winPercentage: "20.15%", time: "05.44.30" },
-        { position: "10th", name: "Elena Brenes", club: "Cumbaya alta", winPercentage: "19.40%", time: "05.47.12" },
+        {
+          position: "7th",
+          name: "Diego Mora",
+          club: "Cumbaya alta",
+          winPercentage: "22.00%",
+          time: "05.38.55",
+        },
+        {
+          position: "8th",
+          name: "Laura Jimenez",
+          club: "Hacienda Barvak",
+          winPercentage: "21.30%",
+          time: "05.41.02",
+        },
+        {
+          position: "9th",
+          name: "Roberto Fallas",
+          club: "Club Hípico CR",
+          winPercentage: "20.15%",
+          time: "05.44.30",
+        },
+        {
+          position: "10th",
+          name: "Elena Brenes",
+          club: "Cumbaya alta",
+          winPercentage: "19.40%",
+          time: "05.47.12",
+        },
       ],
     ],
   },
@@ -121,7 +253,7 @@ const brandBannerItems = [
 
 export default function CompetenciesPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
         text="Where every stride reflects precision, and every jump defines excellence."
         videoId="Rkz6X5VrRBU"
@@ -134,7 +266,11 @@ export default function CompetenciesPage() {
           alt: "Barvak Cup icon",
         }}
         title="Equestrian excellence in every stride, in every jump."
-        description="The Barvak Cup is Hacienda Barvak’s official equestrian championship, created to motivate and recognize the dedication of our riders in the disciplines of show jumping and dressage. Endorsed by the Costa Rican Equestrian Federation (FECR) and organized in partnership with ASODHEA, it brings together national and international pairs in a natural, world-class setting. More than a competition, the Barvak Cup is a celebration of discipline, excellence, and passion for horses, consolidating Hacienda Barvak as one of the most outstanding equestrian centers in the region."
+        description={[
+          "The Barvak Cup is Hacienda Barvak's official equestrian championship, created to motivate and recognize the dedication of our riders in the disciplines of show jumping and dressage.",
+          "Endorsed by the Costa Rican Equestrian Federation (FECR) and organized in partnership with ASODHEA, it brings together national and international pairs in a natural, world-class setting.",
+          "More than a competition, the Barvak Cup is a celebration of discipline, excellence, and passion for horses, consolidating Hacienda Barvak as one of the most outstanding equestrian centers in the region.",
+        ]}
         backgroundColor="bg-[#213253]"
       />
       <TablePositions tabs={competitionTabs} />
@@ -162,12 +298,16 @@ export default function CompetenciesPage() {
           alt: "ASODHEA logo",
         }}
         title="What is ASODHEA?"
-        description="The Asociación Deportiva Hípica Espinos de América (ASODHEA) promotes and regulates equestrian sport at Hacienda Barvak. Recognized by the Costa Rican Equestrian Federation, it organizes official dressage and show-jumping competitions, supports rider development, and ensures compliance with the Safe Sport Promotion Regulation. Its mission is to foster an environment guided by ethics, equine welfare, and sporting excellence."
+        description={[
+          "The Asociación Deportiva Hípica Espinos de América (ASODHEA) promotes and regulates equestrian sport at Hacienda Barvak.",
+          "Recognized by the Costa Rican Equestrian Federation, it organizes official dressage and show-jumping competitions, supports rider development, and ensures compliance with the Safe Sport Promotion Regulation.",
+          "Its mission is to foster an environment guided by ethics, equine welfare, and sporting excellence.",
+        ]}
         backgroundColor="bg-gray-100"
         textColor="text-gray-800"
       />
       <ComplaintForm
-        imageSrc="/photos/competencies/caballo.webp"
+        imageSrc="/photos/competencies/form.webp"
         imageAlt="Rider on horseback at the equestrian arena"
       />
       <BrandBanner items={brandBannerItems} />

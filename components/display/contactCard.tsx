@@ -40,11 +40,11 @@ export default function ContactCard({
           />
         </div>
         <div className="bg-neutral-500 text-xs text-white h-64 md:h-96 flex flex-col justify-center items-center gap-4 px-4 md:px-8 md:w-1/2 md:rounded-r-md">
-          <span>{label}</span>
-          <h3 className="text-xl md:text-2xl font-medium text-balance text-center w-8/12">
+          <span className="text-xs md:text-lg">{label}</span>
+          <h3 className="text-xl md:text-3xl font-light text-balance text-center w-8/12">
             {headline}
           </h3>
-          <p className="text-xs">{details}</p>
+          <p className="text-xs md:text-lg">{details}</p>
           <div>
             <Button variant="outline_white" size="normal" asChild>
               <Link href={buttonHref}>{buttonText}</Link>
