@@ -64,7 +64,7 @@ const Section = ({
 
         {/* Title */}
         {title && (
-          <h2 className={cn("text-2xl font-medium lg:font-light lg:text-3xl text-center max-w-3xl", textColor)}>
+          <h2 className={cn("text-2xl md:text-3xl font-medium text-center max-w-3xl", textColor)}>
             {title}
           </h2>
         )}

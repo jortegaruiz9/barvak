@@ -79,17 +79,17 @@ export const Default: Story = {
       {
         icon: "whatsapp",
         title: "Whatsapp",
-        text: "+593 99 999 9999",
+        text: "+506 99 999 9999",
         href: "https://wa.me/5939999999999",
       },
       {
         icon: "phone",
         title: "Phone",
-        text: "+593 99 999 9999",
-        href: "tel:+5939999999999",
+        text: "+506 99 999 9999",
+        href: "tel:+5069999999999",
       },
     ],
-    countryCode: "+593",
+    countryCode: "+506",
     submitButtonText: "Schedule your visit",
     privacyPolicyText:
       "I accept the privacy policy and the processing of my personal data.",

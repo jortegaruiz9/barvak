@@ -18,12 +18,12 @@ const ExperienceGrid = ({ items, className }: ExperienceGridProps) => {
     <div
       className={cn(
         "flex flex-col gap-12 md:px-6 lg:px-12 md:grid md:grid-cols-2",
-        className
+        className,
       )}
     >
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-4 min-w-0">
-          <div className="relative aspect-4/3 w-full overflow-hidden md:rounded-sm">
+          <div className="relative aspect-4/3 w-full overflow-hidden md:rounded-md">
             <Image
               src={item.imageSrc}
               alt={item.imageAlt}
@@ -35,12 +35,12 @@ const ExperienceGrid = ({ items, className }: ExperienceGridProps) => {
           {(item.title || item.description) && (
             <div className="flex flex-col gap-2 px-6 md:px-0">
               {item.title && (
-                <h3 className="text-xl md:text-2xl text-muted-foreground">
+                <h3 className="text-xl md:text-2xl font-medium text-muted-foreground">
                   {item.title}
                 </h3>
               )}
               {item.description && (
-                <p className="text-sm md:text-base text-muted-foreground">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
               )}

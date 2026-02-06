@@ -193,7 +193,7 @@ const HorizontalScroll = ({
         </div>
 
         <div className="relative z-10 flex w-full flex-col justify-end p-6 text-white text-right">
-          <h3 className="mb-3 text-xl font-semibold text-balance">
+          <h3 className="mb-3 text-xl md:text-2xl font-medium text-balance">
             {card.title}
           </h3>
           <p className="text-sm text-white/90 text-pretty">{card.summary}</p>
@@ -225,7 +225,7 @@ const HorizontalScroll = ({
                 isTextTop ? "justify-end pb-12" : "justify-start pt-12",
               )}
             >
-              <h3 className="mb-3 text-xl font-semibold text-balance">
+              <h3 className="mb-3 text-xl md:text-2xl font-medium text-balance">
                 {card.title}
               </h3>
               <p className="text-sm text-muted-foreground text-balance">

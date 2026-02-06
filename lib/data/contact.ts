@@ -33,6 +33,12 @@ export const contactSectionData = {
   countryLabel: "Costa Rica:",
 };
 
+// WhatsApp
+export const whatsapp = {
+  phone: "50672164660",
+  message: "Hola, me gustaría obtener más información sobre Hacienda Barvak.",
+};
+
 // Social media links
 export const socialLinks = [
   { href: "#", label: "Instagram", icon: "ion:logo-instagram" },

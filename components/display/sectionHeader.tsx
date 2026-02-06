@@ -13,7 +13,7 @@ const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <div className={cn("w-full px-4 text-center", className)}>
-      <h2 className="mb-3 text-2xl md:text-3xl font-normal text-balance md:max-w-6/12 text-center mx-auto">
+      <h2 className="mb-3 text-2xl md:text-3xl font-medium text-balance md:max-w-6/12 text-center mx-auto">
         {title}
       </h2>
       {description && (

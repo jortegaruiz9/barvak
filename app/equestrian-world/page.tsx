@@ -130,7 +130,7 @@ export default function EquestrianWorld() {
           title="Discover the Equestrian Competitions at Hacienda Barvak and Meet Our Riders."
           description="Learn about Competitions, the Barvak Cup and Asodhea."
           buttonText="See more"
-          href="/competitions"
+          href="/competencies"
         />
         <VisualStorySection
           topImages={[

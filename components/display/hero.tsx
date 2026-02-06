@@ -66,7 +66,7 @@ export default function Hero({
       <motion.div
         className="relative w-full h-[calc(100vh-4rem)] overflow-hidden"
         animate={{
-          borderRadius: isExpanded ? 0 : "1rem",
+          borderRadius: isExpanded ? 0 : "0.375rem",
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >

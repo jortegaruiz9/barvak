@@ -141,7 +141,7 @@ export default function Navbar() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="size-6" strokeWidth={1} />
+                    <X className="size-6" strokeWidth={1.5} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -151,14 +151,14 @@ export default function Navbar() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="size-6" strokeWidth={1} />
+                    <Menu className="size-6" strokeWidth={1.5} />
                   </motion.div>
                 )}
               </AnimatePresence>
             </button>
 
-            <Button variant="normal" size="normal" className="hidden lg:block">
-              Contact Us
+            <Button variant="normal" size="normal" className="hidden lg:block" asChild>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
         </div>
@@ -200,7 +200,7 @@ export default function Navbar() {
                       >
                         {item.label}
                       </Link>
-                      <ChevronRight strokeWidth={1} size={16} />
+                      <ChevronRight strokeWidth={1.5} size={16} />
                     </div>
                   </motion.li>
                 ))}
@@ -260,9 +260,10 @@ export default function Navbar() {
                   <Button
                     variant="outline"
                     size="normal"
-                    className=" border-neutral-900 text-neutral-900 hover:bg-neutral-50 rounded-full mt-2"
+                    className="border-neutral-900 text-neutral-900 hover:bg-neutral-50 rounded-full mt-2"
+                    asChild
                   >
-                    Contact us
+                    <Link href="/contact">Contact us</Link>
                   </Button>
                 </div>
               </motion.div>

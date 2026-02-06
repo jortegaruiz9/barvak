@@ -26,7 +26,7 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
       <div className="flex flex-col gap-6 md:gap-8">
         {/* First card - full screen height */}
         {firstCard && (
-          <div className="relative w-full aspect-square md:aspect-auto md:h-[calc(100vh-4rem)] rounded-lg overflow-hidden group">
+          <div className="relative w-full aspect-square md:aspect-auto md:h-[calc(100vh-4rem)] rounded-md overflow-hidden group">
             <Image
               src={firstCard.image}
               alt={
@@ -42,7 +42,7 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
             {(firstCard.title || firstCard.description) && (
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-10 text-white text-center md:text-left">
                 {firstCard.title && (
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-medium mb-2 md:mb-3 max-w-4xl">
+                  <h3 className="text-xl md:text-2xl font-medium mb-2 md:mb-3 max-w-4xl">
                     {firstCard.title}
                   </h3>
                 )}
@@ -62,7 +62,7 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
             {remainingCards.map((card, index) => (
               <div
                 key={index}
-                className="relative w-full aspect-square md:aspect-3/4 lg:aspect-4/5 xl:aspect-square rounded-lg overflow-hidden group"
+                className="relative w-full aspect-square md:aspect-3/4 lg:aspect-4/5 xl:aspect-square rounded-md overflow-hidden group"
               >
                 <Image
                   src={card.image}
@@ -81,7 +81,7 @@ const StoryCards = ({ cards, className }: StoryCardsProps) => {
                 {(card.title || card.description) && (
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white text-center md:text-left w-full lg:w-10/12">
                     {card.title && (
-                      <h3 className="text-2xl font-medium mb-2 md:mb-3 text-balance">
+                      <h3 className="text-xl md:text-2xl font-medium mb-2 md:mb-3 text-balance">
                         {card.title}
                       </h3>
                     )}

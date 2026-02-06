@@ -32,7 +32,11 @@ const VisualStorySection = ({
     >
       {/* Title and description */}
       {title && (
-        <SectionHeader title={title} description={description} className="pb-4" />
+        <SectionHeader
+          title={title}
+          description={description}
+          className="pb-4"
+        />
       )}
 
       {/* Top section - Two images side by side */}
@@ -41,7 +45,7 @@ const VisualStorySection = ({
           {displayTopImages.map((image, index) => (
             <div
               key={index}
-              className="relative w-full aspect-16/10 md:aspect-auto md:h-[calc((100svh-4rem-2rem)/2)] rounded-lg overflow-hidden"
+              className="relative w-full aspect-16/10 md:aspect-auto md:h-[calc((100svh-4rem-2rem)/2)] rounded-md overflow-hidden"
             >
               <Image
                 src={image.src}
@@ -62,7 +66,7 @@ const VisualStorySection = ({
             {carouselImages.map((image, index) => (
               <div
                 key={index}
-                className="relative shrink-0 w-[calc((100vw-2rem-0.75rem)/2.2)] md:w-[calc((100vw-6rem)/2.2)] h-[calc((100vw-2.75rem)/2*10/16)] md:h-[calc((100svh-4rem-2rem)/2)] rounded-lg overflow-hidden"
+                className="relative shrink-0 w-[calc((100vw-2rem-0.75rem)/2.2)] md:w-[calc((100vw-6rem)/2.2)] h-[calc((100vw-2.75rem)/2*10/16)] md:h-[calc((100svh-4rem-2rem)/2)] rounded-md overflow-hidden"
               >
                 <Image
                   src={image.src}

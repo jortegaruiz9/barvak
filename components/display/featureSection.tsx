@@ -47,7 +47,7 @@ const FeatureSection = ({
   const [api, setApi] = React.useState<CarouselApi>();
 
   const autoplayPlugin = React.useRef(
-    Autoplay({ delay: autoplayDelay, stopOnInteraction: true })
+    Autoplay({ delay: autoplayDelay, stopOnInteraction: true }),
   );
 
   const hasCarousel = images.length >= 2;
@@ -56,19 +56,19 @@ const FeatureSection = ({
   const descriptionArray = Array.isArray(description)
     ? description
     : description
-    ? [description]
-    : [];
+      ? [description]
+      : [];
 
   // Convert images to string array for CarouselIndicators
   const imageUrls = images.map((img) => img.src);
 
   const renderTextContent = () => (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl lg:text-3xl text-gray-900 text-pretty">
+      <h2 className="text-2xl md:text-3xl font-medium text-foreground text-pretty">
         {title}
       </h2>
       {descriptionArray.length > 0 && (
-        <div className="flex flex-col gap-3 text-gray-600">
+        <div className="flex flex-col gap-3">
           {descriptionArray.map((paragraph, index) => (
             <p key={index} className="text-base leading-relaxed">
               {paragraph}
@@ -162,10 +162,10 @@ const FeatureSection = ({
         {renderMedia("aspect-[16/9] lg:aspect-[21/9]")}
         <div
           className={cn(
-            "absolute top-1/2 -translate-y-1/2 z-10 bg-white/80 p-8 lg:p-10 max-w-md shadow-lg",
+            "absolute top-1/2 -translate-y-1/2 z-10 bg-white/90 rounded-md p-8 lg:p-10 max-w-md shadow-lg",
             cardPosition === "right"
               ? "right-12 lg:right-16"
-              : "left-12 lg:left-16"
+              : "left-12 lg:left-16",
           )}
         >
           {renderTextContent()}

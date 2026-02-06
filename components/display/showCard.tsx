@@ -35,7 +35,7 @@ const ShowCard = ({
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const autoplayPlugin = React.useRef(
-    Autoplay({ delay: autoplayDelay, stopOnInteraction: true })
+    Autoplay({ delay: autoplayDelay, stopOnInteraction: true }),
   );
 
   // Sync selected index with carousel API
@@ -60,8 +60,8 @@ const ShowCard = ({
     <div className="flex flex-col gap-4">
       <h2
         className={cn(
-          "text-2xl lg:text-3xl text-pretty",
-          light ? "text-white" : "text-gray-900"
+          "text-2xl md:text-3xl font-medium text-pretty",
+          light ? "text-white" : "text-foreground",
         )}
       >
         {slide.title}
@@ -70,7 +70,7 @@ const ShowCard = ({
         <div
           className={cn(
             "flex flex-col gap-3",
-            light ? "text-white/90" : "text-gray-600"
+            light ? "text-white/90" : "text-muted-foreground",
           )}
         >
           {slide.paragraphs.map((paragraph, index) => (
@@ -87,8 +87,8 @@ const ShowCard = ({
   const carouselContent = (
     <div
       className={cn(
-        "relative w-full overflow-hidden lg:rounded-sm",
-        aspectClass
+        "relative w-full overflow-hidden lg:rounded-md",
+        aspectClass,
       )}
     >
       <Carousel

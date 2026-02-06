@@ -19,11 +19,11 @@ export default function CallToAction({
   return (
     <section className={`w-full py-16 px-8 md:px-12 ${bgColor}`}>
       <div className="flex flex-col items-center max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl md:text-3xl font-light text-gray-800 text-pretty">
+        <h2 className="text-2xl md:text-3xl font-medium text-foreground text-pretty">
           {title}
         </h2>
         {description && (
-          <p className="mt-2 text-gray-600 leading-relaxed">{description}</p>
+          <p className="mt-2 text-base md:text-lg text-muted-foreground leading-relaxed">{description}</p>
         )}
         <Button
           variant="normal"
