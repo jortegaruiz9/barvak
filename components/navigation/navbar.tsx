@@ -19,7 +19,6 @@ import {
 } from "@/lib/data/navbar";
 
 const navItems = [
-  { path: "/", label: navLabels.home },
   { path: "/barvak", label: navLabels.barvakEstate },
   { path: "/equestrian-world", label: navLabels.equestrianWorld },
   { path: "/reforestation", label: navLabels.reforestation },
@@ -39,6 +38,7 @@ const mobileSocialLinks = socialLinks.filter((link) =>
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const isEventsPage = pathname === "/events";
 
   // Cerrar menú móvil al cambiar de ruta
   const isFirstRender = useRef(true);
@@ -91,23 +91,26 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:block">
-            <ul className="flex items-center gap-x-6 text-xs xl:text-sm">
-              {navItems.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    href={item.path}
-                    className={cn(
-                      "transition-opacity hover:opacity-60",
-                      pathname === item.path ? "opacity-60" : "opacity-100",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {!isEventsPage && (
+            <div className="hidden lg:block">
+              <ul className="flex items-center gap-x-6 text-xs xl:text-sm">
+                {navItems.map((item) => (
+                  <li key={item.path}>
+                    <Link
+                      href={item.path}
+                      {...(item.path === "/events" && { target: "_blank", rel: "noopener noreferrer" })}
+                      className={cn(
+                        "transition-opacity hover:opacity-60",
+                        pathname === item.path ? "opacity-60" : "opacity-100",
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Right side */}
           <div className="flex items-center gap-x-3">
@@ -117,7 +120,7 @@ export default function Navbar() {
               transition={{ delay: 0.3 }}
             >
               <NativeSelect
-                defaultValue="es"
+                defaultValue="en"
                 size="sm"
                 className="border-none shadow-none bg-transparent text-sm w-16 pl-2 focus:ring-0 focus:border-none focus-visible:ring-0 focus-visible:border-none"
               >
@@ -141,7 +144,7 @@ export default function Navbar() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="size-6" strokeWidth={1} />
+                    <X className="size-6" strokeWidth={1.5} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -151,14 +154,19 @@ export default function Navbar() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="size-6" strokeWidth={1} />
+                    <Menu className="size-6" strokeWidth={1.5} />
                   </motion.div>
                 )}
               </AnimatePresence>
             </button>
 
-            <Button variant="normal" size="normal" className="hidden lg:block">
-              Contact Us
+            <Button
+              variant="normal"
+              size="normal"
+              className="hidden lg:block"
+              asChild
+            >
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
         </div>
@@ -178,33 +186,36 @@ export default function Navbar() {
               {/* Sales Inquiry Button */}
 
               {/* Main Menu */}
-              <ul className="flex flex-col w-full gap-y-3">
-                <li className="text-sm font-bold text-green-900">Main Menu</li>
-                {navItems.map((item, index) => (
-                  <motion.li
-                    key={item.path}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (index + 1) * 0.1 }}
-                    className="w-full"
-                  >
-                    <div className="flex items-center justify-between w-full">
-                      <Link
-                        href={item.path}
-                        className={cn(
-                          "text-3xl transition-colors hover:text-lime-500 items-center",
-                          pathname === item.path
-                            ? "text-lime-500"
-                            : "text-neutral-800",
-                        )}
-                      >
-                        {item.label}
-                      </Link>
-                      <ChevronRight strokeWidth={1} size={16} />
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
+              {!isEventsPage && (
+                <ul className="flex flex-col w-full gap-y-3">
+                  <li className="text-sm font-bold text-green-900">Main Menu</li>
+                  {navItems.map((item, index) => (
+                    <motion.li
+                      key={item.path}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: (index + 1) * 0.1 }}
+                      className="w-full"
+                    >
+                      <div className="flex items-center justify-between w-full">
+                        <Link
+                          href={item.path}
+                          {...(item.path === "/events" && { target: "_blank", rel: "noopener noreferrer" })}
+                          className={cn(
+                            "text-3xl transition-colors hover:text-lime-500 items-center",
+                            pathname === item.path
+                              ? "text-lime-500"
+                              : "text-neutral-800",
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                        <ChevronRight strokeWidth={1.5} size={16} />
+                      </div>
+                    </motion.li>
+                  ))}
+                </ul>
+              )}
 
               {/* Property Portal Section */}
               <motion.div
@@ -260,9 +271,10 @@ export default function Navbar() {
                   <Button
                     variant="outline"
                     size="normal"
-                    className=" border-neutral-900 text-neutral-900 hover:bg-neutral-50 rounded-full mt-2"
+                    className="border-neutral-900 text-neutral-900 hover:bg-neutral-50 rounded-full mt-2"
+                    asChild
                   >
-                    Contact us
+                    <Link href="/contact">Contact us</Link>
                   </Button>
                 </div>
               </motion.div>

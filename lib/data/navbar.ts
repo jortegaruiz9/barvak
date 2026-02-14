@@ -1,7 +1,6 @@
 export { contactInfo, socialLinks } from "./contact";
 
 export const navLabels = {
-  home: "Home",
   barvakEstate: "Barvak Estate",
   equestrianWorld: "Equestrian World",
   reforestation: "Reforestation",
@@ -17,6 +16,6 @@ export const propertyPortalLinks = [
 ];
 
 export const logo = {
-  src: "/logos/barvak-black.png",
+  src: "/logos/logo-barvak-black.png",
   alt: "Barvak logo",
 };

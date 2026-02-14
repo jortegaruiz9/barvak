@@ -25,6 +25,7 @@ interface SectionProps {
     | "link";
   backgroundColor?: string;
   textColor?: string;
+  bottomText?: string;
 }
 
 const Section = ({
@@ -35,6 +36,7 @@ const Section = ({
   buttonVariant = "normal",
   backgroundColor = "bg-custom-primary",
   textColor = "text-white",
+  bottomText,
 }: SectionProps) => {
   // Handle description as string or array of strings
   const descriptionArray = Array.isArray(description)
@@ -44,52 +46,76 @@ const Section = ({
       : [];
 
   return (
-    <section className={cn("w-full py-24 lg:py-48 px-6", backgroundColor)}>
-      <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
-        {/* Logo */}
-        {logo?.src && logo.src.trim() !== "" && (
-          <div className="flex justify-center">
-            <div className="w-32 h-32 relative">
-              <Image
-                src={logo.src}
-                alt={logo.alt || "Logo"}
-                width={192}
-                height={192}
-                className="w-full h-full object-contain"
-                priority
-              />
+    <>
+      <section className={cn("w-full py-24 lg:py-32 px-6", backgroundColor)}>
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
+          {/* Logo */}
+          {logo?.src && logo.src.trim() !== "" && (
+            <div className="flex justify-center">
+              <div className="w-32 h-32 md:w-44 md:h-44 relative">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt || "Logo"}
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Title */}
-        {title && (
-          <h2 className={cn("text-2xl font-medium lg:font-light lg:text-3xl text-center max-w-3xl", textColor)}>
-            {title}
-          </h2>
-        )}
+          {/* Title */}
+          {title && (
+            <h2
+              className={cn(
+                "text-2xl md:text-[2.25rem] font-light text-center lg:w-7/12 text-pretty",
+                textColor,
+              )}
+            >
+              {title}
+            </h2>
+          )}
 
-        {/* Description */}
-        {descriptionArray.length > 0 && (
-          <div className={cn("flex flex-col gap-4 md:gap-5 text-center max-w-2xl text-balance", textColor)}>
-            {descriptionArray.map((paragraph, index) => (
-              <p key={index} className="text-base md:text-lg leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        )}
+          {/* Description */}
+          {descriptionArray.length > 0 && (
+            <div
+              className={cn(
+                "flex flex-col gap-4 md:gap-5 text-center max-w-2xl text-balance",
+                textColor,
+              )}
+            >
+              {descriptionArray.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-base md:text-lg leading-relaxed opacity-80"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          )}
 
-        {/* Button */}
-        {button && (
-          <div className="flex justify-center pt-2">
-            <Button variant={buttonVariant} asChild className="rounded-full">
-              <Link href={button.href}>{button.text}</Link>
-            </Button>
-          </div>
-        )}
-      </div>
-    </section>
+          {/* Button */}
+          {button && (
+            <div className="flex justify-center pt-2">
+              <Button variant={buttonVariant} asChild className="rounded-full">
+                <Link href={button.href}>{button.text}</Link>
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Bottom Text */}
+      {bottomText && (
+        <div className="w-full px-6">
+          <p className="mx-auto max-w-3xl text-sm lg:text-lg text-secondary-foreground text-center text-pretty">
+            {bottomText}
+          </p>
+        </div>
+      )}
+    </>
   );
 };
 

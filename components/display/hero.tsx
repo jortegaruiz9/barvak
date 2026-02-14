@@ -6,7 +6,9 @@ import Image from "next/image";
 
 interface HeroProps {
   text: string;
-  videoId: string;
+  videoId?: string;
+  imageSrc?: string;
+  imageAlt?: string;
   logoSrc?: string;
   logoAlt?: string;
   startTime?: number;
@@ -16,6 +18,8 @@ interface HeroProps {
 export default function Hero({
   text,
   videoId,
+  imageSrc,
+  imageAlt = "Hero background",
   logoSrc,
   logoAlt = "Logo",
   startTime,
@@ -56,7 +60,7 @@ export default function Hero({
 
   return (
     <motion.section
-      className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden"
+      className="relative min-h-[clamp(28rem,calc(100vh-4rem),36rem)] md:min-h-[clamp(32rem,calc(100vh-4rem),50rem)] w-full overflow-hidden"
       animate={{
         paddingLeft: isExpanded ? 0 : "clamp(1rem, 4vw, 3rem)",
         paddingRight: isExpanded ? 0 : "clamp(1rem, 4vw, 3rem)",
@@ -64,37 +68,50 @@ export default function Hero({
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <motion.div
-        className="relative w-full h-[calc(100vh-4rem)] overflow-hidden"
+        className="relative w-full h-[clamp(28rem,calc(100vh-4rem),36rem)] md:h-[clamp(32rem,calc(100vh-4rem),50rem)] overflow-hidden"
         animate={{
-          borderRadius: isExpanded ? 0 : "1rem",
+          borderRadius: isExpanded ? 0 : "0.375rem",
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        {/* YouTube iframe - loaded after delay */}
-        {isVideoLoaded && (
-          <iframe
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350%] h-full md:w-[120%] md:h-[120%] md:scale-125 pointer-events-none"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1${startTime ? `&start=${startTime}` : ""}${endTime ? `&end=${endTime}` : ""}`}
-            title="Background video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            aria-hidden="true"
-            tabIndex={-1}
-            loading="lazy"
-          />
-        )}
+        {videoId ? (
+          <>
+            {/* YouTube iframe - loaded after delay */}
+            {isVideoLoaded && (
+              <iframe
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350%] h-full md:w-[120%] md:h-[120%] md:scale-125 pointer-events-none"
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1${startTime ? `&start=${startTime}` : ""}${endTime ? `&end=${endTime}` : ""}`}
+                title="Background video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                aria-hidden="true"
+                tabIndex={-1}
+                loading="lazy"
+              />
+            )}
 
-        {/* YouTube thumbnail as placeholder */}
-        <Image
-          src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-          alt="Video background"
-          fill
-          sizes="100vw"
-          className={`object-cover transition-opacity duration-500 ${
-            isVideoLoaded ? "opacity-0" : "opacity-100"
-          }`}
-          priority
-        />
+            {/* YouTube thumbnail as placeholder */}
+            <Image
+              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+              alt="Video background"
+              fill
+              sizes="100vw"
+              className={`object-cover transition-opacity duration-500 ${
+                isVideoLoaded ? "opacity-0" : "opacity-100"
+              }`}
+              priority
+            />
+          </>
+        ) : imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        ) : null}
 
         <div className="absolute inset-0 bg-black/40" />
       </motion.div>
@@ -122,7 +139,7 @@ export default function Hero({
                 />
               </div>
             )}
-            <h1 className="text-lg md:text-2xl lg:text-3xl text-white/90 w-[80vw] max-w-3xl">
+            <h1 className="text-2xl md:text-[2.25rem] font-light text-white/90 w-[80vw] max-w-3xl text-pretty">
               {text}
             </h1>
           </div>

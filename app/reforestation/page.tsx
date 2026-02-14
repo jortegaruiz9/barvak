@@ -4,35 +4,32 @@ import { FullscreenMedia } from "@/components/display/fullscreenMedia";
 import Section from "@/components/display/section";
 import { ExperienceGrid } from "@/components/display/experienceGrid";
 import CallToAction from "@/components/display/callToAction";
+import { whatsapp } from "@/lib/data/contact";
 
 const BrandBanner = dynamic(() =>
-  import("@/components/display/brandBanner").then((mod) => mod.BrandBanner)
+  import("@/components/display/brandBanner").then((mod) => mod.BrandBanner),
 );
 
 const Stats = dynamic(() =>
-  import("@/components/display/stats").then((mod) => mod.Stats)
+  import("@/components/display/stats").then((mod) => mod.Stats),
 );
 
 const brandBannerItems = [
-  {
-    logo: "/logos/barvak-black.png",
-    alt: "Brand 1",
-  },
-  {
-    logo: "/logos/barvak-black.png",
-    alt: "Brand 2",
-  },
-  {
-    logo: "/logos/barvak-black.png",
-    alt: "Brand 3",
-  },
+  { logo: "/patrocinadores/1.png", alt: "Sponsor 1" },
+  { logo: "/patrocinadores/2.png", alt: "Sponsor 2" },
+  { logo: "/patrocinadores/3.png", alt: "Sponsor 3" },
+  { logo: "/patrocinadores/4.png", alt: "Sponsor 4" },
+  { logo: "/patrocinadores/5.png", alt: "Sponsor 5" },
+  { logo: "/patrocinadores/6.png", alt: "Sponsor 6" },
+  { logo: "/patrocinadores/7.png", alt: "Sponsor 7" },
 ];
 export default function ReforestationPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 md:gap-16">
       <Hero
-        videoId="DTGNlk2cXa0"
-        logoSrc="/logos/barvak-white.png"
+        imageSrc="/content/reforestation/img-volcan-principal.jpg"
+        imageAlt="Reforestation"
+        logoSrc="/logos/logo-barvak.png"
         logoAlt="Barvak Estate"
         text="Where every tree matters"
       />
@@ -45,20 +42,20 @@ export default function ReforestationPage() {
       <ExperienceGrid
         items={[
           {
-            imageSrc: "/photos/reforestation/plantacion.webp",
-            imageAlt: "Reforestation",
+            imageSrc: "/content/reforestation/img-guantes.jpg",
+            imageAlt: "Planting",
           },
           {
-            imageSrc: "/photos/reforestation/reforestacion-abrazo.webp",
-            imageAlt: "Reforestation",
+            imageSrc: "/content/reforestation/img-abrazo.jpg",
+            imageAlt: "Hug",
           },
           {
-            imageSrc: "/photos/reforestation/rio.webp",
-            imageAlt: "Reforestation",
+            imageSrc: "/content/reforestation/img-cascada.jpg",
+            imageAlt: "Cascade",
           },
           {
-            imageSrc: "/photos/reforestation/zona.webp",
-            imageAlt: "Reforestation",
+            imageSrc: "/content/reforestation/img-puente-largo.jpg",
+            imageAlt: "Long bridge",
           },
         ]}
       />
@@ -77,19 +74,19 @@ export default function ReforestationPage() {
             value: 5000,
             total: 5000,
             completed: 3500,
-            label: "Trees planted in 2026",
+            label: "Trees planted in 2024",
           },
           {
             value: 4000,
             total: 4000,
             completed: 3505,
-            label: "Projected for 2026",
+            label: "Trees planted in 2025",
           },
           {
             value: 6000,
             total: 6000,
             completed: 500,
-            label: "Total trees planted",
+            label: "Projected for 2026",
           },
         ]}
       />
@@ -98,7 +95,8 @@ export default function ReforestationPage() {
         title="Grow the future, one tree at a time"
         buttonLabel="Schedule your reforestation day"
         bgColor="bg-white"
-        buttonHref="/contact"
+        buttonHref={`https://wa.me/${whatsapp.phone}?text=${encodeURIComponent(whatsapp.message)}`}
+        buttonTarget="_blank"
       />
     </div>
   );

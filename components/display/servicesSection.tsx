@@ -2,6 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface Service {
+  title?: string;
   description: string;
   image: string;
   alt: string;
@@ -15,7 +16,7 @@ interface ServicesSectionProps {
 const ServicesSection = ({ services, className }: ServicesSectionProps) => {
   const renderImage = (service: Service) => (
     <div className="flex-1 w-full md:px-12">
-      <div className="relative aspect-4/3 w-full overflow-hidden md:rounded-sm">
+      <div className="relative aspect-4/3 w-full overflow-hidden md:rounded-md">
         <Image
           src={service.image}
           alt={service.alt}
@@ -30,9 +31,16 @@ const ServicesSection = ({ services, className }: ServicesSectionProps) => {
 
   const renderText = (service: Service) => (
     <div className="flex-1 flex items-center justify-center px-6 md:px-12">
-      <p className="text-center text-gray-700 text-base md:text-lg leading-relaxed max-w-md text-pretty">
-        {service.description}
-      </p>
+      <div className="text-center max-w-md">
+        {service.title && (
+          <h3 className="text-xl md:text-2xl font-light mb-3 text-pretty">
+            {service.title}
+          </h3>
+        )}
+        <p className="text-muted-foreground text-base md:text-lg leading-relaxed text-pretty">
+          {service.description}
+        </p>
+      </div>
     </div>
   );
 
@@ -40,7 +48,7 @@ const ServicesSection = ({ services, className }: ServicesSectionProps) => {
     <section
       className={cn(
         "w-full flex flex-col gap-16 md:gap-y-0 md:gap-x-24",
-        className
+        className,
       )}
     >
       {services.map((service, index) => {
@@ -52,7 +60,7 @@ const ServicesSection = ({ services, className }: ServicesSectionProps) => {
             className={cn(
               "flex flex-col items-center gap-6",
               "md:flex-row md:gap-12",
-              !isImageRight && "md:flex-row-reverse"
+              !isImageRight && "md:flex-row-reverse",
             )}
           >
             {renderImage(service)}

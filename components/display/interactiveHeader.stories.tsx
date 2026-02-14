@@ -37,7 +37,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "Discover the Equestrian Competitions at Hacienda Barvak and Meet Our Riders.",
+    title: "Discover the Equestrian Competitions at Hacienda Barvak and Meet Our Riders.",
     description: "Learn about Competitions, the Barvak Cup and Asodhea.",
     buttonText: "See more",
     href: "/competitions",

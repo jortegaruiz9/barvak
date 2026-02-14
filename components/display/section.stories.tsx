@@ -46,7 +46,7 @@ type Story = StoryObj<typeof meta>;
 export const Complete: Story = {
   args: {
     logo: {
-      src: "/logos/barvak-white.png",
+      src: "/logos/logo-barvak.png",
       alt: "Barvak Logo",
     },
     title: "Welcome to Barvak Estate",
@@ -87,7 +87,7 @@ export const WithMultipleParagraphs: Story = {
 export const WithLogoOnly: Story = {
   args: {
     logo: {
-      src: "/logos/barvak-white.png",
+      src: "/logos/logo-barvak.png",
       alt: "Barvak Logo",
     },
     title: "Barvak Estate",

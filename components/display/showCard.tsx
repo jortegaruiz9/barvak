@@ -17,6 +17,7 @@ interface ShowCardSlide {
   image: string;
   alt: string;
   title: string;
+  subtitle?: string;
   paragraphs: string[];
 }
 
@@ -35,7 +36,7 @@ const ShowCard = ({
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const autoplayPlugin = React.useRef(
-    Autoplay({ delay: autoplayDelay, stopOnInteraction: true })
+    Autoplay({ delay: autoplayDelay, stopOnInteraction: true }),
   );
 
   // Sync selected index with carousel API
@@ -60,21 +61,31 @@ const ShowCard = ({
     <div className="flex flex-col gap-4">
       <h2
         className={cn(
-          "text-2xl lg:text-3xl text-pretty",
-          light ? "text-white" : "text-gray-900"
+          "text-2xl md:text-[2.25rem] font-light text-pretty",
+          light ? "text-white" : "text-foreground",
         )}
       >
         {slide.title}
       </h2>
+      {slide.subtitle && (
+        <p
+          className={cn(
+            "text-base md:text-lg font-medium leading-relaxed",
+            light ? "text-white/90" : "text-muted-foreground",
+          )}
+        >
+          {slide.subtitle}
+        </p>
+      )}
       {slide.paragraphs.length > 0 && (
         <div
           className={cn(
             "flex flex-col gap-3",
-            light ? "text-white/90" : "text-gray-600"
+            light ? "text-white/90" : "text-muted-foreground",
           )}
         >
           {slide.paragraphs.map((paragraph, index) => (
-            <p key={index} className="text-base leading-relaxed">
+            <p key={index} className="text-base md:text-lg leading-relaxed">
               {paragraph}
             </p>
           ))}
@@ -87,8 +98,8 @@ const ShowCard = ({
   const carouselContent = (
     <div
       className={cn(
-        "relative w-full overflow-hidden lg:rounded-sm",
-        aspectClass
+        "relative w-full overflow-hidden lg:rounded-md",
+        aspectClass,
       )}
     >
       <Carousel
