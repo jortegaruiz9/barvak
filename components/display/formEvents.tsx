@@ -294,7 +294,7 @@ export default function FormEvents({
                   </div>
 
                   {/* Tentative Event Date */}
-                  <div>
+                  <div className="overflow-hidden">
                     <Label htmlFor="eventDate" className="sr-only">
                       Tentative Event Date
                     </Label>
@@ -304,7 +304,7 @@ export default function FormEvents({
                       type="date"
                       defaultValue=""
                       min={new Date().toISOString().split("T")[0]}
-                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3 max-w-full"
                     />
                   </div>
 

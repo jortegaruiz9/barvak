@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 240 240">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #15803d;
+      }
+
+      .st1 {
+        fill: #fff;
+        font-family: LeagueSpartan-Regular, 'League Spartan';
+        font-size: 20.2px;
+      }
+
+      .st1, .st2 {
+        isolation: isolate;
+      }
+
+      .st3 {
+        fill: #c1c1c1;
+        stroke: #fff;
+        stroke-miterlimit: 13.4;
+        stroke-width: .7px;
+      }
+    </style>
+  </defs>
+  <polygon id="lot-16" class="st3" points="111.6 32.2 186.4 61 117.6 207.8 53.6 183.3 111.6 32.2"/>
+  <g>
+    <circle class="st0" cx="123.2" cy="116.1" r="21.2"/>
+    <g class="st2">
+      <g class="st2">
+        <text class="st1" transform="translate(114.5 122.1)"><tspan x="0" y="0">16</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

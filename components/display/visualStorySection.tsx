@@ -33,8 +33,20 @@ const VisualStorySection = ({
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
+    const inner = el.firstElementChild as HTMLElement | null;
+    if (!inner) return;
+    const cards = inner.querySelectorAll<HTMLElement>(":scope > div");
+    const lastCard = cards[cards.length - 1];
+
     setCanScrollPrev(el.scrollLeft > 0);
-    setCanScrollNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+
+    if (lastCard) {
+      // Use last card's right edge as the real end, not the full scrollWidth
+      const lastCardEnd = lastCard.offsetLeft + lastCard.offsetWidth;
+      setCanScrollNext(el.scrollLeft + el.clientWidth < lastCardEnd - 1);
+    } else {
+      setCanScrollNext(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -48,10 +60,24 @@ const VisualStorySection = ({
   const scrollBy = (direction: 1 | -1) => {
     const container = scrollRef.current;
     if (!container) return;
-    const card = container.querySelector<HTMLElement>("div > div");
-    if (!card) return;
+    const inner = container.firstElementChild as HTMLElement | null;
+    if (!inner) return;
+    const cards = inner.querySelectorAll<HTMLElement>(":scope > div");
+    if (cards.length === 0) return;
     const gap = window.innerWidth >= 768 ? 32 : 12;
-    container.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: "smooth" });
+    const cardWidth = cards[0].offsetWidth;
+    const step = cardWidth + gap;
+
+    // Calculate the index of the current first visible card
+    const currentIndex = Math.round(container.scrollLeft / step);
+    const targetIndex = Math.max(0, Math.min(currentIndex + direction, cards.length - 1));
+
+    // Scroll to the target card position, clamping to max meaningful scroll
+    const lastCard = cards[cards.length - 1];
+    const maxScroll = lastCard.offsetLeft + lastCard.offsetWidth - container.clientWidth;
+    const targetScroll = Math.max(0, Math.min(targetIndex * step, maxScroll));
+
+    container.scrollTo({ left: targetScroll, behavior: "smooth" });
   };
 
   // Ensure we have exactly 2 top images

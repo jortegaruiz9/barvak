@@ -110,11 +110,11 @@ export default function EquestrianWorld() {
           },
         ]}
       />
-      <div>
-        <SectionHeader
-          title="Where Everyone Can Live the Equestrian Experience"
-          description="From the very first steps to professional training, Hacienda Barvak opens its doors to those who wish to learn, grow, and experience the magic of the equestrian world. "
-        />
+      <SectionHeader
+        title="Where Everyone Can Live the Equestrian Experience"
+        description="From the very first steps to professional training, Hacienda Barvak opens its doors to those who wish to learn, grow, and experience the magic of the equestrian world. "
+      />
+      <div className="flex flex-col pb-12">
         <InteractiveHeader
           title="Discover the Equestrian Competitions at Hacienda Barvak and Meet Our Riders."
           buttonText="See more"

@@ -1,0 +1,376 @@
+{
+  "settings": {
+    "title": "Lot Map",
+    "hoverTooltip": true,
+    "deeplinking": true,
+    "sidebar": true,
+    "toggleSidebar": true,
+    "thumbnails": false,
+    "ordered": true,
+    "orderBy": "title",
+    "portrait": 480,
+    "maxZoom": 6,
+    "mapWidth": 2369.5,
+    "mapHeight": 2543.3,
+    "animations": false,
+    "filters": true,
+    "filtersOpened": false,
+    "layer": "master",
+    "location": null,
+    "primaryColor": "#15803d",
+    "zoomButtons": "bottom-right",
+    "zoom": true,
+    "geo": false,
+    "groupBy": true,
+    "mouseWheel": true,
+    "mouseWheelShift": true,
+    "hoverAbout": true,
+    "rightSidebar": false,
+    "sidebarClosed": false,
+    "fullscreen": "bottom-left",
+    "layerSwitcher": "top-right",
+    "resetButton": "bottom-right",
+    "css": ".mapplic-marker,.mapplic-marker > span,.mapplic-marker > svg,.mapplic-marker-icon,.mapplic-marker-pulse{display:none !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}\n.mapplic-pin,.mapplic-pin.circle,.mapplic-pin.square,.mapplic-pin.transparent{display:none !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}\n.mapplic-element,.mapplic-element *{font-family:\"Geist\",system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif !important;}\n.mapplic-popup h3,.mapplic-popup h4,.mapplic-dir-item h3,.mapplic-dir-item h4{font-family:\"Geist\",system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif !important;}"
+  },
+  "layers": [
+    {
+      "id": "master",
+      "name": "Map",
+      "file": "/mapplic/standalone-hb-cr/assets/maps/hb-cr-interactive.svg"
+    }
+  ],
+  "locations": [
+    {
+      "id": "lot-2",
+      "title": "Lot #02",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "Available",
+      "desc": "<p>Information pending.</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-2.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4458, 0.4959]
+    },
+    {
+      "id": "lot-3",
+      "title": "Lot #03",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Forest",
+      "desc": "<p>Lot size: 7,215.65 m² / 77,668.61 sq ft</p><p>View: Forest</p><p>Slope: Gentle slope</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-3.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.374, 0.4804]
+    },
+    {
+      "id": "lot-4",
+      "title": "Lot #04",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Forest",
+      "desc": "<p>Lot size: 7,130.17 m² / 76,748.51 sq ft</p><p>View: Forest</p><p>Semi-flat property</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-4.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4236, 0.4683]
+    },
+    {
+      "id": "lot-5",
+      "title": "Lot #05",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Forest",
+      "desc": "<p>Lot size: 7,146.07 m² / 76,919.65 sq ft</p><p>View: Forest</p><p>Semi-flat property</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-5.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4175, 0.4368]
+    },
+    {
+      "id": "lot-6",
+      "title": "Lot #06",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Forest & Vegetation",
+      "desc": "<p>Lot size: 7,144.59 m² / 76,903.72 sq ft</p><p>View: Forest & vegetation</p><p>Semi-flat</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-6.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.3919, 0.4386]
+    },
+    {
+      "id": "lot-7",
+      "title": "Lot #07",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Vegetation",
+      "desc": "<p>Lot size: 7,091.36 m² / 76,330.76 sq ft</p><p>View: Vegetation</p><p>Semi-flat</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-7.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.3701, 0.4386]
+    },
+    {
+      "id": "lot-8",
+      "title": "Lot #08",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Mountain & City",
+      "desc": "<p>Lot size: 7,263.08 m² / 78,179.14 sq ft</p><p>View: Mountain & city</p><p>Slope: Moderate</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-8.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.3406, 0.4408]
+    },
+    {
+      "id": "lot-9",
+      "title": "Lot #09",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: City",
+      "desc": "<p>Lot size: 7,163.19 m² / 77,103.93 sq ft</p><p>View: City</p><p>Slope: Moderate</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-9.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.3186, 0.4057]
+    },
+    {
+      "id": "lot-10",
+      "title": "Lot #10",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: City",
+      "desc": "<p>Lot size: 7,645.24 m² / 82,292.67 sq ft</p><p>View: City</p><p>Slope: Moderate</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-10.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.351, 0.3987]
+    },
+    {
+      "id": "lot-11",
+      "title": "Lot #11",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Mountain",
+      "desc": "<p>Lot size: 7,003.06 m² / 75,380.31 sq ft</p><p>View: Mountain</p><p>Slope: Gentle slope</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-11.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.3839, 0.3877]
+    },
+    {
+      "id": "lot-12",
+      "title": "Lot #12",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Mountain & City",
+      "desc": "<p>Lot size: 7,000.06 m² / 75,348.01 sq ft</p><p>View: Mountain & city</p><p>Slope: Gentle slope</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-12.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4051, 0.3847]
+    },
+    {
+      "id": "lot-13",
+      "title": "Lot #13",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Mountain & Vegetation",
+      "desc": "<p>Lot size: 7,008.25 m² / 75,436.17 sq ft</p><p>View: Mountain & vegetation</p><p>Slope: Gentle slope</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-13.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4278, 0.3864]
+    },
+    {
+      "id": "lot-14",
+      "title": "Lot #14",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: City & Mountain",
+      "desc": "<p>Lot size: 7,003.06 m² / 75,380.31 sq ft</p><p>View: City & mountain</p><p>Slope: Steep</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-14.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4395, 0.3545]
+    },
+    {
+      "id": "lot-15",
+      "title": "Lot #15",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Forest",
+      "desc": "<p>Lot size: 7,154.54 m² / 77,010.82 sq ft</p><p>View: Forest</p><p>Slope: Mixed</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-15.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.448, 0.4152]
+    },
+    {
+      "id": "lot-16",
+      "title": "Lot #16",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Forest",
+      "desc": "<p>Lot size: 7,154.54 m² / 77,010.82 sq ft</p><p>View: Forest</p><p>Slope: Steep</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-16.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4657, 0.3752]
+    },
+    {
+      "id": "lot-17",
+      "title": "Lot #17",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Forest",
+      "desc": "<p>Lot size: 7,404.57 m² / 79,702.12 sq ft</p><p>View: Forest</p><p>Slope: Steep</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-17.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4874, 0.3389]
+    },
+    {
+      "id": "lot-18",
+      "title": "Lot #18",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: City",
+      "desc": "<p>Lot size: 7,023.56 m² / 75,600.97 sq ft</p><p>View: City</p><p>Slope: Mixed</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-18.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.5368, 0.2813]
+    },
+    {
+      "id": "lot-19",
+      "title": "Lot #19",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "View: Vegetation",
+      "desc": "<p>Lot size: 7,007.77 m² / 75,431.00 sq ft</p><p>View: Vegetation</p><p>Slope: Mixed</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-19.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.5511, 0.2513]
+    },
+    {
+      "id": "lot-20",
+      "title": "Lot #20",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "Available",
+      "desc": "<p>Information pending.</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-20.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4926, 0.4704]
+    },
+    {
+      "id": "lot-21",
+      "title": "Lot #21",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "Available",
+      "desc": "<p>Information pending.</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-21.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.4941, 0.4386]
+    },
+    {
+      "id": "lot-22",
+      "title": "Lot #22",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "Available",
+      "desc": "<p>Information pending.</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-22.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.5582, 0.3506]
+    },
+    {
+      "id": "lot-23",
+      "title": "Lot #23",
+      "group": "Lots",
+      "layer": "master",
+      "style": "lot",
+      "about": "Available",
+      "desc": "<p>Information pending.</p>",
+      "thumb": "/mapplic/standalone-hb-cr/assets/thumbs/lots/lot-23.svg",
+      "action": "open",
+      "zoom": "3",
+      "coord": [0.6505, 0.3083]
+    }
+  ],
+  "styles": [
+    {
+      "class": "lot",
+      "svg": true,
+      "base-color": "#e5e7eb",
+      "hover-color": "#bbf7d0",
+      "active-color": "#86efac",
+      "base-stroke": "#9ca3af",
+      "hover-stroke": "#15803d",
+      "active-stroke": "#166534",
+      "stroke-width": 1
+    }
+  ],
+  "groups": [
+    {
+      "id": "lotes",
+      "name": "Lots"
+    }
+  ],
+  "breakpoints": [
+    {
+      "name": "mobile",
+      "below": 768,
+      "portrait": true,
+      "container": 540
+    },
+    {
+      "name": "tablet",
+      "below": 1024,
+      "container": 680
+    },
+    {
+      "name": "desktop",
+      "below": 8000,
+      "container": 880
+    }
+  ],
+  "filters": [
+    {
+      "id": "categories",
+      "type": "tags",
+      "name": "Categories",
+      "default": []
+    }
+  ],
+  "routes": []
+}

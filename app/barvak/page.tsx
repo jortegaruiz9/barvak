@@ -6,6 +6,7 @@ import ContactCard from "@/components/display/contactCard";
 import { VideoPlay } from "@/components/display/videoPlay";
 import FormSection from "@/components/display/formSection";
 import { formContactInfoItems, formInfoTexts } from "@/lib/data/contact";
+import MapplicMap from "@/components/display/mapplicMap";
 
 export default function BarvakState() {
   return (
@@ -56,7 +57,7 @@ export default function BarvakState() {
           },
         ]}
       />
-
+      <MapplicMap />
       <ContactCard
         title="Each lot is a unique opportunity to build your vision of life."
         description="Design & build your own bespok home prime plot available"

@@ -36,7 +36,7 @@ export default function ReforestationPage() {
       <FullscreenMedia
         title="At Barvak, planting means regenerating"
         description="Our reforestation program invites companies, schools, and families to help restore native forests, strengthen the biological corridor, and reconnect with the land through a guided, safe, and meaningful experience"
-        images={["/photos/reforestation/actividad.webp"]}
+        images={["/content/reforestation/img-arboles.jpg"]}
         imageAlt="Reforestation"
       />
       <ExperienceGrid

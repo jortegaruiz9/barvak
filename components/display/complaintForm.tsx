@@ -172,7 +172,7 @@ export default function ComplaintForm({
                       />
                     </div>
 
-                    <div>
+                    <div className="overflow-hidden">
                       <Label htmlFor="complaintDate" className="sr-only">
                         Date of Incident
                       </Label>
@@ -181,7 +181,7 @@ export default function ComplaintForm({
                         name="incidentDate"
                         type="date"
                         defaultValue=""
-                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3 max-w-full"
                       />
                     </div>
 

@@ -414,7 +414,7 @@ export default function CompetenciesPage() {
         textColor="text-gray-800"
       />
       <ComplaintForm
-        imageSrc="/photos/competencies/form.webp"
+        imageSrc="/content/competencies/img-form-caballo.jpg"
         imageAlt="Rider on horseback at the equestrian arena"
       />
       <BrandBanner items={brandBannerItems} />
