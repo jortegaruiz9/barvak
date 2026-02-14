@@ -52,6 +52,26 @@ const ExperienceGrid = ({ items, className }: ExperienceGridProps) => {
                     {item.description}
                   </p>
                 )}
+                {item.href && (
+                  <span className="inline-flex items-center gap-2 text-sm md:text-base text-primary font-medium mt-2 group-hover:gap-3 transition-all duration-300">
+                    View more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                )}
               </div>
             )}
           </div>
