@@ -6,6 +6,7 @@ interface CallToActionProps {
   description?: string;
   buttonLabel: string;
   buttonHref: string;
+  buttonTarget?: string;
   bgColor?: string;
 }
 
@@ -14,6 +15,7 @@ export default function CallToAction({
   description,
   buttonLabel,
   buttonHref,
+  buttonTarget,
   bgColor = "bg-gray-100",
 }: CallToActionProps) {
   return (
@@ -33,7 +35,7 @@ export default function CallToAction({
           asChild
           className="mt-4 rounded-full"
         >
-          <Link href={buttonHref}>{buttonLabel}</Link>
+          <Link href={buttonHref} target={buttonTarget} rel={buttonTarget === "_blank" ? "noopener noreferrer" : undefined}>{buttonLabel}</Link>
         </Button>
       </div>
     </section>

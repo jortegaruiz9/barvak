@@ -25,6 +25,7 @@ const AwardIcon = Award;
 
 export default function Footer() {
   const pathname = usePathname();
+  const isEventsPage = pathname === "/events";
 
   const instagramLink = useMemo(
     () => socialLinks.find((s) => s.label === "Instagram")?.href || "#",
@@ -50,46 +51,49 @@ export default function Footer() {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex justify-center mb-12 lg:justify-between">
-          <ul className="hidden lg:flex items-center space-x-3">
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={instagramLink}
-                aria-label="Visit our Instagram page"
-              >
-                <Icon icon="ion:logo-instagram" className="text-xl" />
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={facebookLink}
-                aria-label="Visit our Facebook page"
-              >
-                <Icon icon="ion:logo-facebook" className="text-xl" />
-              </a>
-            </li>
-            <li>Follow us</li>
-          </ul>
-          <nav className="flex flex-col items-center space-y-2 lg:flex-row lg:space-x-4 lg:space-y-0 lg:text-sm">
-            {footerNavLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                aria-label={link.label}
-                className={cn(
-                  "transition-opacity hover:opacity-60",
-                  pathname === link.path ? "opacity-60" : "opacity-100",
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        {!isEventsPage && (
+          <div className="flex justify-center mb-12 lg:justify-between">
+            <ul className="hidden lg:flex items-center space-x-3">
+              <li>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={instagramLink}
+                  aria-label="Visit our Instagram page"
+                >
+                  <Icon icon="ion:logo-instagram" className="text-xl" />
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={facebookLink}
+                  aria-label="Visit our Facebook page"
+                >
+                  <Icon icon="ion:logo-facebook" className="text-xl" />
+                </a>
+              </li>
+              <li>Follow us</li>
+            </ul>
+            <nav className="flex flex-col items-center space-y-2 lg:flex-row lg:space-x-4 lg:space-y-0 lg:text-sm">
+              {footerNavLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  aria-label={link.label}
+                  {...(link.path === "/events" && { target: "_blank", rel: "noopener noreferrer" })}
+                  className={cn(
+                    "transition-opacity hover:opacity-60",
+                    pathname === link.path ? "opacity-60" : "opacity-100",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
         {/* Main Content Sections */}
         <div className="flex flex-col gap-y-12 mb-12 text-white/60 lg:text-white lg:flex-row-reverse lg:justify-between lg:items-end">
           {/* Our Regulations Section */}
@@ -100,8 +104,11 @@ export default function Footer() {
                 <li key={regulation.download} className="text-balance">
                   <Link
                     href={regulation.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     download={regulation.download}
                     aria-label={`Download ${regulation.label} PDF`}
+                    className="hover:opacity-60 transition-opacity"
                   >
                     {regulation.label} - Download PDF
                   </Link>
@@ -121,7 +128,7 @@ export default function Footer() {
               <li className="text-left">
                 <a
                   href={contactInfo.phone.href}
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-2 hover:opacity-60 transition-opacity"
                   aria-label={`Call ${contactInfo.phone.text}`}
                 >
                   <PhoneIcon className="w-5 h-5 shrink-0" aria-hidden="true" />
@@ -131,7 +138,7 @@ export default function Footer() {
               <li className="text-left">
                 <a
                   href={contactInfo.email.href}
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-2 hover:opacity-60 transition-opacity"
                   aria-label={`Email ${contactInfo.email.text}`}
                 >
                   <MailIcon className="w-5 h-5 shrink-0" aria-hidden="true" />
@@ -151,6 +158,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   href={wazeInfo.link.href}
                   aria-label={wazeInfo.link.label}
+                  className="hover:opacity-60 transition-opacity"
                 >
                   {wazeInfo.link.label}
                 </a>

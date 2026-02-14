@@ -8,10 +8,11 @@ import { FeatureSection } from "@/components/display/featureSection";
 import { ServicesSection } from "@/components/display/servicesSection";
 import { ShowCard } from "@/components/display/showCard";
 import CallToAction from "@/components/display/callToAction";
+import { whatsapp } from "@/lib/data/contact";
 
 const showCardSlides = [
   {
-    image: "/photos/equestrian/showCard.webp",
+    image: "/content/equestrian/img-campamento.jpg",
     alt: "Young rider on horseback at Barvak Camp",
     title: "Barvak Camp",
     subtitle: "Adventure, learning, and a deep connection with nature.",
@@ -20,67 +21,55 @@ const showCardSlides = [
       "Over the course of a week, participants live the rhythm of the hacienda: caring for horses, learning riding techniques, exploring trails and rivers, discovering mountain survival skills, and building teamwork through hands-on experience.",
     ],
   },
-  {
-    image: "/photos/equestrian/equestrian-2.webp",
-    alt: "Equestrian facilities at Hacienda Barvak",
-    title: "Equestrian School",
-    subtitle: "From first steps to competition level.",
-    paragraphs: [
-      "Our Pony Club offers lessons for children, youth, and adults. Guided by experienced instructors, students develop confidence, respect for animals, and a deep connection with the equestrian world.",
-    ],
-  },
-  {
-    image: "/photos/equestrian/equestrian-4.webp",
-    alt: "Show jumping at Hacienda Barvak",
-    title: "Show Jumping",
-    subtitle: "Precision, power, and partnership.",
-    paragraphs: [
-      "Focused training to strengthen concentration, power, and technique. Our facilities and coaching support riders on the path to competition-level performance.",
-    ],
-  },
 ];
 
 const services = [
   {
+    title: "Dressage Lessons",
     description:
-      "Dressage Lessons: Refinement of precision, elegance, and connection between horse and rider under the guidanceof specialized trainers.",
-    image: "/photos/equestrian/equestrian-1.webp",
+      "Refinement of precision, elegance, and connection between horse and rider under the guidance of specialized trainers.",
+    image: "/content/equestrian/img-guia-blanco.jpg",
     alt: "Horseback riding lessons for children, youth, and adults.",
   },
   {
+    title: "Show Jumping Lessons",
     description:
-      "Show Jumping Lessons: Focused training to strengthen concentration, power, and technique to reach competition-level performance.",
-    image: "/photos/equestrian/equestrian-4.webp",
+      "Focused training to strengthen concentration, power, and technique to reach competition-level performance.",
+    image: "/content/equestrian/img-salto-niño.jpg",
     alt: "Horseback riding lessons for children, youth, and adults.",
   },
   {
+    title: "Stable Rental",
     description:
-      "Stable Rental: Luxury stables with professional maintenance, personalized feeding, and full access to all facilities. ",
-    image: "/photos/equestrian/equestrian-2.webp",
+      "Luxury stables with professional maintenance, personalized feeding, and full access to all facilities.",
+    image: "/content/equestrian/img-cabeza-caballo.jpg",
     alt: "Horseback riding lessons for children, youth, and adults.",
   },
   {
-    description:
-      "Paddock Rental: Spacious, secure areas for horses to rest and enjoy nature.",
-    image: "/photos/equestrian/equestrian-5.webp",
+    title: "Paddock Rental",
+    description: "Spacious, secure areas for horses to rest and enjoy nature.",
+    image: "/content/equestrian/img-caballo-libertad.jpg",
     alt: "Horseback riding lessons for children, youth, and adults.",
   },
   {
+    title: "Horse-drawn carriage",
     description:
-      "Horse-drawn carriage: At the hacienda, we offer carriage transportation services with our mares Dakota and América, ideal for weddings, social, and corporate events, both on and off the hacienda grounds.",
-    image: "/photos/equestrian/equestrian-7.webp",
+      "At the hacienda, we offer carriage transportation services with our mares Dakota and América, ideal for weddings, social, and corporate events, both on and off the hacienda grounds.",
+    image: "/content/equestrian/img-señora-carroza.jpg",
     alt: "Horseback riding lessons for children, youth, and adults.",
   },
   {
+    title: "Facility and Event Rental",
     description:
-      "Facility and Event Rental: Our arenas and grandstands are available for equestrian, corporate, or social events,supported by expert logistics in an unmatched natural setting.",
-    image: "/photos/equestrian/equestrian-6.webp",
+      "Our arenas and grandstands are available for equestrian, corporate, or social events, supported by expert logistics in an unmatched natural setting.",
+    image: "/content/equestrian/img-ecuestre-montura.jpg",
     alt: "Horseback riding lessons for children, youth, and adults.",
   },
   {
+    title: "Equestrian Show Haute École",
     description:
-      "Equestrian Show Haute École: A performance that celebrates elegance, mastery, and the connection between horse and rider inspired by Europe's great classical schools.",
-    image: "/photos/equestrian/equestrian-3.webp",
+      "A performance that celebrates elegance, mastery, and the connection between horse and rider inspired by Europe's great classical schools.",
+    image: "/content/equestrian/img-joven-caballo-blanco.jpg",
     alt: "Horseback riding lessons for children, youth, and adults.",
   },
 ];
@@ -89,7 +78,7 @@ export default function EquestrianWorld() {
   return (
     <div className="flex flex-col gap-12 md:gap-16">
       <Hero
-        logoSrc="/logos/barvak-white.png"
+        logoSrc="/logos/logo-barvak.png"
         logoAlt="Barvak Estate"
         text="Where equestrian passion and excellence meet, a place where every stride inspires, and every step reflects discipline, elegance, and respect for the horse."
         videoId="3xGvgtsLmq4"
@@ -106,17 +95,17 @@ export default function EquestrianWorld() {
           },
           {
             type: "image",
-            src: "/photos/equestrian/pista.webp",
+            src: "/content/equestrian/img-instalacion-campo.jpg",
             alt: "Aerial view of jumping arena",
           },
           {
             type: "image",
-            src: "/photos/equestrian/campo.webp",
+            src: "/content/equestrian/img-ecuestre-campo-arena.jpg",
             alt: "Silica-sand arena",
           },
           {
             type: "image",
-            src: "/photos/equestrian/instalaciones.webp",
+            src: "/content/equestrian/img-ecuestre-establo.jpg",
             alt: "Luxury stables",
           },
         ]}
@@ -128,32 +117,31 @@ export default function EquestrianWorld() {
         />
         <InteractiveHeader
           title="Discover the Equestrian Competitions at Hacienda Barvak and Meet Our Riders."
-          description="Learn about Competitions, the Barvak Cup and Asodhea."
           buttonText="See more"
           href="/competencies"
         />
         <VisualStorySection
           topImages={[
             {
-              src: "/photos/equestrian/caballo-1.webp",
+              src: "/content/equestrian/img-ecuestre-clases.jpg",
               alt: "Equestrian facilities",
             },
             {
-              src: "/photos/equestrian/caballo-2.webp",
+              src: "/content/equestrian/img-ecuestre-niño.jpg",
               alt: "Equestrian facilities",
             },
           ]}
           carouselImages={[
             {
-              src: "/photos/equestrian/competencia.webp",
+              src: "/content/equestrian/img-caballo-blanco.jpg",
               alt: "Equestrian facilities",
             },
             {
-              src: "/photos/equestrian/horse.webp",
+              src: "/content/equestrian/img-primera-posicion.jpg",
               alt: "Equestrian facilities",
             },
             {
-              src: "/photos/equestrian/medallas.webp",
+              src: "/content/equestrian/img-ecuestre-medallas.jpg",
               alt: "Equestrian facilities",
             },
           ]}
@@ -162,10 +150,11 @@ export default function EquestrianWorld() {
 
       <FeatureSection
         title="Pony Club & Equestrian School"
-        description="Learn, grow and dream on horseback. Our Pony Club offers lessons for children, youth, and adults, from those taking their first ride to riders seeking to refine their skills in show jumping or dressage. Guided by experienced instructors, students develop confidence, respect for animals, and a deep connection with the equestrian world."
+        subtitle="Learn, grow and dream on horseback."
+        description="Our Pony Club offers lessons for children, youth, and adults, from those taking their first ride to riders seeking to refine their skills in show jumping or dressage. Guided by experienced instructors, students develop confidence, respect for animals, and a deep connection with the equestrian world."
         images={[
           {
-            src: "/photos/equestrian/coach-1.webp",
+            src: "/content/equestrian/img-ecuestre-acompañante.jpg",
             alt: "Equestrian facilities",
           },
         ]}
@@ -174,7 +163,7 @@ export default function EquestrianWorld() {
       <FullscreenMedia
         title="Our Trainers"
         description="Passion, technique, and dedication in every lesson. The Hacienda Barvak coaching team is composed of certified professionals with extensive national and international experience. Their commitment to teaching, horse welfare, and the integral development of each student defines the level of excellence that sets us apart."
-        images={["/photos/equestrian/triunfo.webp"]}
+        images={["/content/equestrian/img-ecuestre-foto.jpg"]}
         imageAlt="Equestrian facilities"
       />
       <div className="flex flex-col gap-6">
@@ -184,7 +173,7 @@ export default function EquestrianWorld() {
           description="Comprehensive training for all ages, focused on technique, discipline, and love for horses."
           images={[
             {
-              src: "/photos/equestrian/coach-2.webp",
+              src: "/content/equestrian/img-coach.jpg",
               alt: "Equestrian facilities",
             },
           ]}
@@ -197,7 +186,8 @@ export default function EquestrianWorld() {
       <CallToAction
         title="Feel the Passion of the Equestrian World"
         buttonLabel="Let's Talk"
-        buttonHref="/contact"
+        buttonHref={`https://wa.me/${whatsapp.phone}?text=${encodeURIComponent(whatsapp.message)}`}
+        buttonTarget="_blank"
         bgColor="color-white"
       />
     </div>

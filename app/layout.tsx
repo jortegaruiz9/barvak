@@ -12,7 +12,7 @@ const leagueSpartan = League_Spartan({
 
 export const metadata: Metadata = {
   title: "Barvak Estate",
-  description: "Welcome to Hacienda Barvak",
+  description: "Welcome to Hacienda Barvak",
 };
 
 export default function RootLayout({

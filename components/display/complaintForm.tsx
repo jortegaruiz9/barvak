@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
-import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { NativeSelect, NativeSelectOption } from "../ui/native-select";
 import { Textarea } from "../ui/textarea";
 
 interface ComplaintFormProps {
@@ -15,34 +13,57 @@ interface ComplaintFormProps {
   imageSrc: string;
   imageAlt: string;
   submitButtonText?: string;
-  privacyPolicyText?: string;
-  categoryOptions?: { value: string; label: string }[];
   onSubmit?: (data: FormData) => void;
 }
-
-const defaultCategoryOptions = [
-  { value: "safety", label: "Safe Sport Violation" },
-  { value: "welfare", label: "Equine Welfare Concern" },
-  { value: "rules", label: "Competition Rules Violation" },
-  { value: "other", label: "Other" },
-];
 
 export default function ComplaintForm({
   buttonText = "Complaint Submission Form – ASODHEA",
   imageSrc,
   imageAlt,
-  submitButtonText = "Submit complaint",
-  privacyPolicyText = "I accept the privacy policy and the processing of my personal data.",
-  categoryOptions = defaultCategoryOptions,
+  submitButtonText = "Submit Complaint",
   onSubmit,
 }: ComplaintFormProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (onSubmit) {
+    setError("");
+    setLoading(true);
+
+    try {
       const formData = new FormData(e.currentTarget);
-      onSubmit(formData);
+      const payload = {
+        fullName: String(formData.get("fullName") ?? "").trim(),
+        email: String(formData.get("email") ?? "").trim(),
+        phone: String(formData.get("phone") ?? "").trim(),
+        age: String(formData.get("age") ?? "").trim(),
+        incidentDate: String(formData.get("incidentDate") ?? "").trim(),
+        description: String(formData.get("description") ?? "").trim(),
+      };
+
+      const response = await fetch("/api/complaint", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to send form.");
+      }
+
+      if (onSubmit) onSubmit(formData);
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred.",
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,95 +90,128 @@ export default function ComplaintForm({
           <div className="flex flex-col lg:flex-row lg:justify-center gap-12 pt-4">
             {/* Form */}
             <div className="w-full lg:w-5/12">
-              <form
-                onSubmit={handleSubmit}
-                className="bg-neutral-200 p-6 md:p-10 rounded-md"
-              >
-                <div className="space-y-4">
-                  <div>
-                    <Label htmlFor="complaintName" className="sr-only">
-                      Full Name
-                    </Label>
-                    <Input
-                      id="complaintName"
-                      name="fullName"
-                      placeholder="Full Name"
-                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="complaintEmail" className="sr-only">
-                      Email Address
-                    </Label>
-                    <Input
-                      id="complaintEmail"
-                      name="email"
-                      type="email"
-                      placeholder="Email Address"
-                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="complaintCategory" className="sr-only">
-                      Category
-                    </Label>
-                    <NativeSelect
-                      id="complaintCategory"
-                      name="category"
-                      className="bg-white border-0 w-full md:text-lg md:h-auto md:py-3"
+              {submitted ? (
+                <div className="bg-neutral-200 p-6 md:p-10 rounded-md flex flex-col items-center justify-center min-h-[400px] text-center">
+                  <div className="w-16 h-16 rounded-full bg-lime-500 flex items-center justify-center mb-6">
+                    <svg
+                      className="w-8 h-8 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
                     >
-                      <NativeSelectOption value="">
-                        Select a category
-                      </NativeSelectOption>
-                      {categoryOptions.map((option) => (
-                        <NativeSelectOption
-                          key={option.value}
-                          value={option.value}
-                        >
-                          {option.label}
-                        </NativeSelectOption>
-                      ))}
-                    </NativeSelect>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
                   </div>
-
-                  <div>
-                    <Label htmlFor="complaintDescription" className="sr-only">
-                      Description
-                    </Label>
-                    <Textarea
-                      id="complaintDescription"
-                      name="description"
-                      placeholder="Describe your complaint"
-                      className="bg-white border-0 min-h-[160px] text-sm md:text-lg md:py-3"
-                    />
-                  </div>
-
-                  <div className="flex items-start gap-3 py-4">
-                    <Checkbox
-                      id="complaintPrivacy"
-                      name="privacyPolicy"
-                      className="mt-0.5 bg-white"
-                    />
-                    <Label
-                      htmlFor="complaintPrivacy"
-                      className="text-sm md:text-md text-muted-foreground font-normal cursor-pointer"
-                    >
-                      {privacyPolicyText}
-                    </Label>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="normal"
-                    className="w-full md:w-auto justify-between px-6"
-                  >
-                    {submitButtonText}
-                    <ArrowRight className="size-4" />
-                  </Button>
+                  <h3 className="text-2xl md:text-3xl font-light text-foreground mb-4">
+                    Thank you for your report.
+                  </h3>
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
+                    Your complaint has been received and will be reviewed by our
+                    team.
+                  </p>
                 </div>
-              </form>
+              ) : (
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-neutral-200 p-6 md:p-10 rounded-md"
+                >
+                  <div className="space-y-5">
+                    <div>
+                      <Label htmlFor="complaintName" className="sr-only">
+                        Complainant Name
+                      </Label>
+                      <Input
+                        id="complaintName"
+                        name="fullName"
+                        placeholder="Complainant Name"
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="complaintEmail" className="sr-only">
+                        Email Address
+                      </Label>
+                      <Input
+                        id="complaintEmail"
+                        name="email"
+                        type="email"
+                        placeholder="Email Address"
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="complaintPhone" className="sr-only">
+                        Phone Number
+                      </Label>
+                      <Input
+                        id="complaintPhone"
+                        name="phone"
+                        type="tel"
+                        placeholder="Phone Number"
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="complaintAge" className="sr-only">
+                        Age
+                      </Label>
+                      <Input
+                        id="complaintAge"
+                        name="age"
+                        type="number"
+                        placeholder="Age"
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="complaintDate" className="sr-only">
+                        Date of Incident
+                      </Label>
+                      <Input
+                        id="complaintDate"
+                        name="incidentDate"
+                        type="date"
+                        defaultValue=""
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="complaintDescription" className="sr-only">
+                        Detailed Description
+                      </Label>
+                      <Textarea
+                        id="complaintDescription"
+                        name="description"
+                        placeholder="Provide a detailed description of the incident"
+                        className="bg-white border-0 min-h-[160px] text-sm md:text-lg md:py-3"
+                      />
+                    </div>
+
+                    {error && (
+                      <p className="text-red-500 text-sm">{error}</p>
+                    )}
+
+                    <Button
+                      type="submit"
+                      variant="normal"
+                      className="w-full md:w-auto justify-between px-6"
+                      disabled={loading}
+                    >
+                      {loading ? "Sending..." : submitButtonText}
+                    </Button>
+                  </div>
+                </form>
+              )}
             </div>
 
             {/* Image */}

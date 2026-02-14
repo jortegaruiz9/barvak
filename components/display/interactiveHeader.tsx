@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 interface InteractiveHeaderProps {
   title: string;
-  description: string;
+  description?: string;
   buttonText: string;
   href: string;
   className?: string;
@@ -30,13 +30,15 @@ const InteractiveHeader = ({
       </h2>
 
       <div className="flex flex-col items-center lg:items-end gap-4 text-center lg:text-right shrink-0">
-        <p className="text-sm md:text-base text-muted-foreground max-w-md text-pretty leading-relaxed">
-          {description}
-        </p>
+        {description && (
+          <p className="text-sm md:text-base text-muted-foreground max-w-md text-pretty leading-relaxed">
+            {description}
+          </p>
+        )}
         <Button asChild variant="normal" className="px-6 py-5 lg:py-2">
           <Link href={href}>
             {buttonText}
-            <ArrowRight className="size-4 hidden lg:block" />
+            <ArrowRight className="size-4" />
           </Link>
         </Button>
       </div>

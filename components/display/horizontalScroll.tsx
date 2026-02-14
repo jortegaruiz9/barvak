@@ -13,6 +13,7 @@ interface HorizontalScrollCard {
   id: string;
   url: string;
   title: string;
+  subtitle?: string;
   summary: string;
   image: string;
   imageAlt: string;
@@ -26,6 +27,9 @@ interface HorizontalScrollProps {
 }
 
 const MOBILE_BREAKPOINT = 768;
+const NAVBAR_HEIGHT = 64; // 4rem
+const MIN_STICKY_HEIGHT = 544; // 34rem
+const MAX_STICKY_HEIGHT = 832; // 52rem
 
 const HorizontalScroll = ({
   cards,
@@ -102,7 +106,11 @@ const HorizontalScroll = ({
       // Wait for next frame to ensure DOM is fully rendered
       requestAnimationFrame(() => {
         const scrollDistance = track.scrollWidth - window.innerWidth;
-        setWrapperHeight(`${window.innerHeight + scrollDistance}px`);
+        const stickyHeight = Math.min(
+          Math.max(window.innerHeight - NAVBAR_HEIGHT, MIN_STICKY_HEIGHT),
+          MAX_STICKY_HEIGHT,
+        );
+        setWrapperHeight(`${stickyHeight + NAVBAR_HEIGHT + scrollDistance}px`);
 
         ctx = gsap.context(() => {
           gsap.to(track, {
@@ -175,7 +183,7 @@ const HorizontalScroll = ({
       key={`mobile-${card.id}`}
       href={card.url}
       aria-label={`${card.title} - ${card.summary}`}
-      className="group shrink-0 h-[78vh] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      className="group shrink-0 h-[65vh] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
     >
       <article className="relative flex h-full overflow-clip rounded-md aspect-3/5">
         <div className="absolute inset-0">
@@ -193,10 +201,17 @@ const HorizontalScroll = ({
         </div>
 
         <div className="relative z-10 flex w-full flex-col justify-end p-6 text-white text-right">
-          <h3 className="mb-3 text-xl md:text-2xl font-light text-balance">
+          <h3 className="mb-3 text-2xl md:text-2xl font-light text-balance">
             {card.title}
           </h3>
-          <p className="text-sm text-white/90 text-pretty">{card.summary}</p>
+          {card.subtitle && (
+            <p className="text-base font-medium text-white/90 mb-2 text-pretty">
+              {card.subtitle}
+            </p>
+          )}
+          <p className="text-sm md:text-base text-white/90 text-pretty">
+            {card.summary}
+          </p>
         </div>
       </article>
     </Link>
@@ -216,7 +231,7 @@ const HorizontalScroll = ({
         <Link
           href={card.url}
           aria-label={`${card.title} - Ver más`}
-          className="group shrink-0 h-[calc(100vh-6rem)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="group shrink-0 h-[clamp(32rem,calc(100vh-6rem),50rem)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           <article className="flex h-full overflow-clip rounded-md aspect-[3/5.5]">
             <div
@@ -228,6 +243,11 @@ const HorizontalScroll = ({
               <h3 className="mb-3 text-xl md:text-3xl font-light text-balance">
                 {card.title}
               </h3>
+              {card.subtitle && (
+                <p className="text-lg font-medium text-muted-foreground mb-2 text-pretty">
+                  {card.subtitle}
+                </p>
+              )}
               <p className="text-lg text-muted-foreground text-balance">
                 {card.summary}
               </p>
@@ -239,7 +259,7 @@ const HorizontalScroll = ({
         <Link
           href={card.url}
           aria-label={`${card.title} - Ver imagen`}
-          className="group shrink-0 h-[calc(100vh-6rem)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="group shrink-0 h-[clamp(32rem,calc(100vh-6rem),50rem)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           <article className="flex h-full overflow-clip rounded-md aspect-[3/5.5]">
             <div className="relative h-full w-full">
@@ -271,7 +291,7 @@ const HorizontalScroll = ({
       )}
 
       {/* Mobile Layout - CSS controlled visibility */}
-      <div className="block md:hidden w-full h-[78vh] overflow-x-auto scrollbar-hide">
+      <div className="block md:hidden w-full h-[65vh] overflow-x-auto scrollbar-hide">
         <div className="flex h-full w-max items-center gap-3 px-4">
           {cards.map(renderMobileCard)}
         </div>
@@ -283,7 +303,7 @@ const HorizontalScroll = ({
         className="hidden md:block relative"
         style={{ height: wrapperHeight }}
       >
-        <div className="sticky top-16 h-[calc(100vh-4rem)] w-full overflow-hidden flex items-start">
+        <div className="sticky top-16 h-[clamp(34rem,calc(100vh-4rem),52rem)] w-full overflow-hidden flex items-start">
           <div ref={trackRef} className="flex w-max gap-6 px-12">
             {cards.map(renderDesktopCards)}
           </div>

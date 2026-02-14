@@ -33,7 +33,7 @@ const FullscreenMedia = ({
   const [api, setApi] = React.useState<CarouselApi>();
 
   const autoplayPlugin = React.useRef(
-    Autoplay({ delay: autoplayDelay, stopOnInteraction: true })
+    Autoplay({ delay: autoplayDelay, stopOnInteraction: true }),
   );
 
   const renderTextSection = () => {
@@ -61,7 +61,7 @@ const FullscreenMedia = ({
       <div className={cn("w-full", className)}>
         {renderTextSection()}
         <section
-          className="relative w-full aspect-4/3 md:aspect-auto md:h-[calc(100vh-4rem)] overflow-hidden"
+          className="relative w-full aspect-3/4 md:aspect-auto md:h-[clamp(850px,95vh,1300px)] overflow-hidden"
           aria-label="Fullscreen media"
         >
           <Image
@@ -90,7 +90,7 @@ const FullscreenMedia = ({
     <div className={cn("w-full", className)}>
       {renderTextSection()}
       <section
-        className="relative w-full aspect-4/3 md:aspect-auto md:h-[calc(100vh-4rem)] overflow-hidden"
+        className="relative w-full aspect-3/4 md:aspect-auto md:h-[clamp(850px,95vh,1300px)] overflow-hidden"
         aria-label="Fullscreen media carousel"
       >
         <Carousel

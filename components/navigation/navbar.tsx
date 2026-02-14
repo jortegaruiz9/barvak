@@ -19,7 +19,6 @@ import {
 } from "@/lib/data/navbar";
 
 const navItems = [
-  { path: "/", label: navLabels.home },
   { path: "/barvak", label: navLabels.barvakEstate },
   { path: "/equestrian-world", label: navLabels.equestrianWorld },
   { path: "/reforestation", label: navLabels.reforestation },
@@ -39,6 +38,7 @@ const mobileSocialLinks = socialLinks.filter((link) =>
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const isEventsPage = pathname === "/events";
 
   // Cerrar menú móvil al cambiar de ruta
   const isFirstRender = useRef(true);
@@ -91,23 +91,26 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:block">
-            <ul className="flex items-center gap-x-6 text-xs xl:text-sm">
-              {navItems.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    href={item.path}
-                    className={cn(
-                      "transition-opacity hover:opacity-60",
-                      pathname === item.path ? "opacity-60" : "opacity-100",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {!isEventsPage && (
+            <div className="hidden lg:block">
+              <ul className="flex items-center gap-x-6 text-xs xl:text-sm">
+                {navItems.map((item) => (
+                  <li key={item.path}>
+                    <Link
+                      href={item.path}
+                      {...(item.path === "/events" && { target: "_blank", rel: "noopener noreferrer" })}
+                      className={cn(
+                        "transition-opacity hover:opacity-60",
+                        pathname === item.path ? "opacity-60" : "opacity-100",
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Right side */}
           <div className="flex items-center gap-x-3">
@@ -157,7 +160,12 @@ export default function Navbar() {
               </AnimatePresence>
             </button>
 
-            <Button variant="normal" size="normal" className="hidden lg:block" asChild>
+            <Button
+              variant="normal"
+              size="normal"
+              className="hidden lg:block"
+              asChild
+            >
               <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
@@ -178,33 +186,36 @@ export default function Navbar() {
               {/* Sales Inquiry Button */}
 
               {/* Main Menu */}
-              <ul className="flex flex-col w-full gap-y-3">
-                <li className="text-sm font-bold text-green-900">Main Menu</li>
-                {navItems.map((item, index) => (
-                  <motion.li
-                    key={item.path}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (index + 1) * 0.1 }}
-                    className="w-full"
-                  >
-                    <div className="flex items-center justify-between w-full">
-                      <Link
-                        href={item.path}
-                        className={cn(
-                          "text-3xl transition-colors hover:text-lime-500 items-center",
-                          pathname === item.path
-                            ? "text-lime-500"
-                            : "text-neutral-800",
-                        )}
-                      >
-                        {item.label}
-                      </Link>
-                      <ChevronRight strokeWidth={1.5} size={16} />
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
+              {!isEventsPage && (
+                <ul className="flex flex-col w-full gap-y-3">
+                  <li className="text-sm font-bold text-green-900">Main Menu</li>
+                  {navItems.map((item, index) => (
+                    <motion.li
+                      key={item.path}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: (index + 1) * 0.1 }}
+                      className="w-full"
+                    >
+                      <div className="flex items-center justify-between w-full">
+                        <Link
+                          href={item.path}
+                          {...(item.path === "/events" && { target: "_blank", rel: "noopener noreferrer" })}
+                          className={cn(
+                            "text-3xl transition-colors hover:text-lime-500 items-center",
+                            pathname === item.path
+                              ? "text-lime-500"
+                              : "text-neutral-800",
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                        <ChevronRight strokeWidth={1.5} size={16} />
+                      </div>
+                    </motion.li>
+                  ))}
+                </ul>
+              )}
 
               {/* Property Portal Section */}
               <motion.div

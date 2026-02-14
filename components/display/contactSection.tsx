@@ -9,7 +9,6 @@ interface ContactSectionProps {
   personName: string;
   personRole: string;
   bookingTitle: string;
-  bookingDescription: string;
   bookingButtonText: string;
   bookingButtonHref: string;
   contactTitle: string;
@@ -23,7 +22,6 @@ const ContactSection = ({
   personName,
   personRole,
   bookingTitle,
-  bookingDescription,
   bookingButtonText,
   bookingButtonHref,
   contactTitle,
@@ -50,10 +48,7 @@ const ContactSection = ({
 
         {/* Column 2: Book a Call */}
         <div className="flex-1 flex flex-col items-center lg:items-end text-center lg:text-right min-w-0">
-          <h3 className="text-xl md:text-2xl font-medium mb-2">{bookingTitle}</h3>
-          <p className="text-sm text-muted-foreground mb-4 max-w-md">
-            {bookingDescription}
-          </p>
+          <h3 className="text-xl md:text-2xl font-medium mb-4">{bookingTitle}</h3>
           <Button variant="normal" size="normal" asChild>
             <Link href={bookingButtonHref}>{bookingButtonText}</Link>
           </Button>
@@ -67,6 +62,10 @@ const ContactSection = ({
           className="flex flex-col items-center lg:items-end text-center lg:text-right w-full lg:w-auto min-w-0"
         />
       </div>
+
+      <p className="text-center text-sm lg:text-lg text-muted-foreground mt-12 max-w-3xl mx-auto text-pretty leading-relaxed">
+        Build your story on the land that inspires. Welcome to Hacienda Barvak State.
+      </p>
     </section>
   );
 };

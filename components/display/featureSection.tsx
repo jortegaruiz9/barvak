@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 
 interface FeatureSectionProps {
   title: string;
+  subtitle?: string;
   description: string | string[];
   button?: { text: string; href: string };
   buttonVariant?:
@@ -35,6 +36,7 @@ interface FeatureSectionProps {
 
 const FeatureSection = ({
   title,
+  subtitle,
   description,
   button,
   buttonVariant = "normal",
@@ -67,6 +69,11 @@ const FeatureSection = ({
       <h2 className="text-2xl md:text-[2.25rem] font-light text-foreground text-pretty">
         {title}
       </h2>
+      {subtitle && (
+        <p className="text-base font-medium leading-relaxed">
+          {subtitle}
+        </p>
+      )}
       {descriptionArray.length > 0 && (
         <div className="flex flex-col gap-3">
           {descriptionArray.map((paragraph, index) => (

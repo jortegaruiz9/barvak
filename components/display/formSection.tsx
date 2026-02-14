@@ -1,26 +1,25 @@
 "use client";
 
+import { useState, useRef } from "react";
 import {
   ArrowRight,
-  Facebook,
-  Instagram,
   Mail,
   MapPin,
   Phone,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
 import { CountryCodeSelect } from "../ui/country-code-select";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { NativeSelect, NativeSelectOption } from "../ui/native-select";
 import { Textarea } from "../ui/textarea";
 import { SectionHeader } from "./sectionHeader";
 import ContactSection from "./contactSection";
 import { contactSectionData } from "@/lib/data/contact";
 
 interface ContactInfo {
-  icon: "mail" | "location" | "whatsapp" | "phone" | "facebook" | "instagram";
+  icon: "mail" | "location" | "whatsapp" | "phone";
   title: string;
   text: string;
   href?: string;
@@ -29,7 +28,6 @@ interface ContactInfo {
 interface FormSectionProps {
   title: string;
   description?: string;
-  stageOptions: { value: string; label: string }[];
   contactInfoItems: ContactInfo[];
   infoTexts: string[];
   mapEmbedUrl?: string;
@@ -67,28 +65,62 @@ const iconComponents = {
   location: MapPin,
   whatsapp: WhatsappIcon,
   phone: Phone,
-  facebook: Facebook,
-  instagram: Instagram,
 };
 
 export default function FormSection({
   title,
   description,
-  stageOptions,
   contactInfoItems,
   infoTexts,
   mapEmbedUrl,
   showContactSection = true,
   countryCode = "+506",
-  submitButtonText = "Schedule your visit",
+  submitButtonText = "Send",
   privacyPolicyText = "I accept the privacy policy and the processing of my personal data.",
   onSubmit,
 }: FormSectionProps) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [privacyChecked, setPrivacyChecked] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (onSubmit) {
+    setError("");
+    setLoading(true);
+
+    try {
       const formData = new FormData(e.currentTarget);
-      onSubmit(formData);
+      const payload = {
+        fullName: String(formData.get("fullName") ?? "").trim(),
+        email: String(formData.get("email") ?? "").trim(),
+        countryCode: String(formData.get("countryCode") ?? "").trim(),
+        phone: String(formData.get("phone") ?? "").trim(),
+        message: String(formData.get("message") ?? "").trim(),
+        privacyPolicyAccepted: privacyChecked,
+      };
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error || "Unable to send form.");
+      }
+
+      if (onSubmit) onSubmit(formData);
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred.",
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -99,123 +131,165 @@ export default function FormSection({
       <div className="flex flex-col px-4 lg:px-0 lg:flex-row lg:justify-center gap-y-8 lg:gap-x-16">
         {/* Form Section */}
         <div className="w-full lg:w-4/12">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-neutral-200 p-6 md:p-10 rounded-md"
-          >
-            <div className="space-y-4">
-              {/* Full Name */}
-              <div>
-                <Label htmlFor="fullName" className="sr-only">
-                  Full Name
-                </Label>
-                <Input
-                  id="fullName"
-                  name="fullName"
-                  placeholder="Full Name"
-                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
-                />
-              </div>
-
-              {/* Email Address */}
-              <div>
-                <Label htmlFor="email" className="sr-only">
-                  Email Address
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Email Address"
-                  className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
-                />
-              </div>
-
-              {/* Country Code and Phone Number */}
-              <div className="flex gap-4">
-                <div className="w-32">
-                  <Label htmlFor="countryCode" className="sr-only">
-                    Country Code
-                  </Label>
-                  <CountryCodeSelect
-                    defaultValue={countryCode}
-                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
-                  />
-                </div>
-                <div className="flex-1">
-                  <Label htmlFor="phone" className="sr-only">
-                    Phone Number
-                  </Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
-                  />
-                </div>
-              </div>
-
-              {/* Stage Select */}
-              <div>
-                <Label htmlFor="stage" className="sr-only">
-                  Which stage are you interested in?
-                </Label>
-                <NativeSelect
-                  id="stage"
-                  name="stage"
-                  className="bg-white border-0 w-full md:text-lg md:h-auto md:py-3"
-                >
-                  <NativeSelectOption value="">
-                    Which stage are you interested in?
-                  </NativeSelectOption>
-                  {stageOptions.map((option) => (
-                    <NativeSelectOption key={option.value} value={option.value}>
-                      {option.label}
-                    </NativeSelectOption>
-                  ))}
-                </NativeSelect>
-              </div>
-
-              {/* Comments */}
-              <div>
-                <Label htmlFor="comments" className="sr-only">
-                  Comments
-                </Label>
-                <Textarea
-                  id="comments"
-                  name="comments"
-                  placeholder="Comments"
-                  className="bg-white border-0 min-h-[120px] text-sm md:text-lg md:py-3"
-                />
-              </div>
-
-              {/* Privacy Policy Checkbox */}
-              <div className="flex items-start gap-3 py-4">
-                <Checkbox
-                  id="privacyPolicy"
-                  name="privacyPolicy"
-                  className="mt-0.5 bg-white"
-                />
-                <Label
-                  htmlFor="privacyPolicy"
-                  className="text-sm md:text-md text-muted-foreground font-normal cursor-pointer"
-                >
-                  {privacyPolicyText}
-                </Label>
-              </div>
-
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                variant="normal"
-                className="w-full md:w-auto justify-between px-6"
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="bg-neutral-200 p-6 md:p-10 rounded-md flex flex-col items-center justify-center min-h-[400px] text-center"
               >
-                {submitButtonText}
-                <ArrowRight className="size-4" />
-              </Button>
-            </div>
-          </form>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
+                  className="w-16 h-16 rounded-full bg-lime-500 flex items-center justify-center mb-6"
+                >
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </motion.div>
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.35, duration: 0.4 }}
+                  className="text-2xl md:text-3xl font-light text-foreground mb-4"
+                >
+                  Thank you for contacting us.
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.4 }}
+                  className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md"
+                >
+                  We have received your message and will get back to you soon.
+                </motion.p>
+              </motion.div>
+            ) : (
+              <motion.form
+                key="form"
+                ref={formRef}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                onSubmit={handleSubmit}
+                className="bg-neutral-200 p-6 md:p-10 rounded-md"
+              >
+                <div className="space-y-4">
+                  {/* Full Name */}
+                  <div>
+                    <Label htmlFor="fullName" className="sr-only">
+                      Full Name
+                    </Label>
+                    <Input
+                      id="fullName"
+                      name="fullName"
+                      placeholder="Full Name"
+                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                    />
+                  </div>
+
+                  {/* Email Address */}
+                  <div>
+                    <Label htmlFor="email" className="sr-only">
+                      Email Address
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Email Address"
+                      className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                    />
+                  </div>
+
+                  {/* Country Code and Phone Number */}
+                  <div className="flex gap-4">
+                    <div className="w-32">
+                      <Label htmlFor="countryCode" className="sr-only">
+                        Country Code
+                      </Label>
+                      <CountryCodeSelect
+                        defaultValue={countryCode}
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <Label htmlFor="phone" className="sr-only">
+                        Phone Number
+                      </Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="Phone Number"
+                        className="bg-white border-0 text-sm md:text-lg md:h-auto md:py-3"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <Label htmlFor="message" className="sr-only">
+                      Message
+                    </Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Message"
+                      className="bg-white border-0 min-h-[120px] text-sm md:text-lg md:py-3"
+                    />
+                  </div>
+
+                  {/* Privacy Policy Checkbox */}
+                  <div className="flex items-start gap-3 py-4">
+                    <Checkbox
+                      id="privacyPolicy"
+                      name="privacyPolicy"
+                      className="mt-0.5 bg-white"
+                      checked={privacyChecked}
+                      onCheckedChange={(checked) =>
+                        setPrivacyChecked(checked === true)
+                      }
+                    />
+                    <Label
+                      htmlFor="privacyPolicy"
+                      className="text-sm md:text-md text-muted-foreground font-normal cursor-pointer"
+                    >
+                      {privacyPolicyText}
+                    </Label>
+                  </div>
+
+                  {/* Error Message */}
+                  {error && (
+                    <p className="text-red-500 text-sm">{error}</p>
+                  )}
+
+                  {/* Submit Button */}
+                  <Button
+                    type="submit"
+                    variant="normal"
+                    className="w-full md:w-auto justify-between px-6"
+                    disabled={loading}
+                  >
+                    {loading ? "Sending..." : submitButtonText}
+                    {!loading && <ArrowRight className="size-4" />}
+                  </Button>
+                </div>
+              </motion.form>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Info Section */}
@@ -255,16 +329,6 @@ export default function FormSection({
                   <a
                     key={index}
                     href={item.href}
-                    target={
-                      item.icon === "facebook" || item.icon === "instagram"
-                        ? "_blank"
-                        : undefined
-                    }
-                    rel={
-                      item.icon === "facebook" || item.icon === "instagram"
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
                     className="hover:opacity-70 transition-opacity"
                     aria-label={`${item.title}: ${item.text}`}
                   >

@@ -50,7 +50,7 @@ export const WithLogo: Story = {
   args: {
     text: "Here, the wind smells of forest, horses run free, and time flows at the rhythm of the landscape. More than an estate it is a living community in constant evolution.",
     videoId: "5xqgvRIUffI",
-    logoSrc: "/logos/barvak-white.png",
+    logoSrc: "/logos/logo-barvak.png",
     logoAlt: "Barvak Estate",
   },
 };

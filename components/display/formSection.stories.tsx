@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import FormSection from "./formSection";
-import { formContactInfoItems, formInfoTexts, formStageOptions } from "@/lib/data/contact";
+import { formContactInfoItems, formInfoTexts } from "@/lib/data/contact";
 
 const meta = {
   title: "Display/FormSection",
@@ -20,10 +20,6 @@ const meta = {
     description: {
       control: "text",
       description: "Optional section description",
-    },
-    stageOptions: {
-      control: "object",
-      description: "Options for the stage select dropdown",
     },
     contactInfoItems: {
       control: "object",
@@ -54,7 +50,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: "Request information about your lot",
-    stageOptions: formStageOptions,
     infoTexts: formInfoTexts,
     contactInfoItems: formContactInfoItems,
     countryCode: "+506",

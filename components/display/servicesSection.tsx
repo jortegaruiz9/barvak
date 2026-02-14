@@ -2,6 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface Service {
+  title?: string;
   description: string;
   image: string;
   alt: string;
@@ -30,9 +31,16 @@ const ServicesSection = ({ services, className }: ServicesSectionProps) => {
 
   const renderText = (service: Service) => (
     <div className="flex-1 flex items-center justify-center px-6 md:px-12">
-      <p className="text-center text-muted-foreground text-base md:text-lg leading-relaxed max-w-md text-pretty">
-        {service.description}
-      </p>
+      <div className="text-center max-w-md">
+        {service.title && (
+          <h3 className="text-xl md:text-2xl font-light mb-3 text-pretty">
+            {service.title}
+          </h3>
+        )}
+        <p className="text-muted-foreground text-base md:text-lg leading-relaxed text-pretty">
+          {service.description}
+        </p>
+      </div>
     </div>
   );
 

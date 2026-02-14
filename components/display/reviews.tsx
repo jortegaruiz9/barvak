@@ -18,13 +18,13 @@ interface ReviewsProps {
 }
 
 const ReviewCard = ({ quote, author }: Review) => (
-  <div className="bg-lime-500 rounded-2xl p-8 lg:p-10 flex flex-col justify-between h-[300px] lg:h-[340px]">
+  <div className="bg-lime-500 rounded-2xl p-8 lg:p-10 flex flex-col justify-between h-[300px] md:h-[320px] lg:h-[340px]">
     <Icon
       icon="icomoon-free:quotes-left"
       className="text-4xl text-white mb-4"
     />
 
-    <p className="text-white leading-relaxed tracking-[0.01em] text-sm lg:text-lg line-clamp-6 text-pretty font-medium">
+    <p className="text-white leading-relaxed tracking-[0.01em] text-sm md:text-base lg:text-lg text-pretty font-medium flex-1 line-clamp-6">
       {quote}
     </p>
     <p className="text-white font-medium text-lg mt-6 italic">{author}</p>

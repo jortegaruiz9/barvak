@@ -17,7 +17,6 @@ export interface ShowMenuItem {
 
 interface ShowMenuProps {
   items: ShowMenuItem[];
-  autoplayDelay?: number;
   className?: string;
   /** Max items per row on desktop grid (default 3). Used if desktopRowPattern is not provided. */
   desktopMaxPerRow?: number;
@@ -127,70 +126,16 @@ const getRowSpans = (
 
 const ShowMenu = ({
   items,
-  autoplayDelay = 5000,
   className,
   desktopMaxPerRow = 3,
   desktopRowPattern,
 }: ShowMenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [autoplayPaused, setAutoplayPaused] = React.useState(false);
-  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
-  const [hoverPaused, setHoverPaused] = React.useState(false);
-  const hoverTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
-
-  React.useEffect(() => {
-    return () => {
-      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-    };
-  }, []);
-
-  // Autoplay: advance every autoplayDelay ms when not paused (and not hover-paused on desktop)
-  React.useEffect(() => {
-    if (items.length <= 1 || autoplayPaused || hoverPaused) return;
-    const id = setInterval(() => {
-      setSelectedIndex((prev) => (prev + 1) % items.length);
-    }, autoplayDelay);
-    return () => clearInterval(id);
-  }, [items.length, autoplayDelay, autoplayPaused, hoverPaused]);
-
-  const handleOptionClick = React.useCallback((index: number) => {
-    setSelectedIndex(index);
-    setAutoplayPaused(true);
-  }, []);
-
-  const handleKeyDown = React.useCallback(
-    (e: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        handleOptionClick(index);
-      }
-    },
-    [handleOptionClick],
-  );
-
-  const handlePillMouseEnter = React.useCallback((index: number) => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
-    setHoveredIndex(index);
-    setHoverPaused(true);
-  }, []);
-
-  const handlePillMouseLeave = React.useCallback(() => {
-    setHoveredIndex(null);
-    hoverTimeoutRef.current = setTimeout(() => {
-      setHoverPaused(false);
-      hoverTimeoutRef.current = null;
-    }, 1000);
-  }, []);
+  const [mobileOpenIndex, setMobileOpenIndex] = React.useState<number | null>(null);
 
   if (items.length === 0) return null;
 
-  const displayIndex = hoveredIndex ?? selectedIndex;
-  const current = items[displayIndex] ?? items[0];
+  const current = items[selectedIndex] ?? items[0];
 
   // Desktop: split items into rows using pattern or fixed max per row
   const desktopRows = desktopRowPattern
@@ -204,66 +149,64 @@ const ShowMenu = ({
     : desktopMaxPerRow;
   const colorClasses = getColorClasses(items.length, maxRowSize);
 
-  // Mobile: scrollable rows of max 6
-  const mobileMaxPerRow = 4;
-  const mobileRow1 = items.slice(0, mobileMaxPerRow);
-  const mobileRow2 = items.slice(mobileMaxPerRow, mobileMaxPerRow * 2);
-
-  const scrollContainerClass =
-    "overflow-x-auto overflow-y-hidden touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden";
-
-  /** Mobile: pill row with independent horizontal scroll */
-  const renderMobilePillRow = (rowItems: ShowMenuItem[], rowOffset: number) => (
-    <div
-      key={rowOffset}
-      className={scrollContainerClass}
-      style={{ WebkitOverflowScrolling: "touch" }}
-      role="tablist"
-      aria-label={`Event options row ${rowOffset + 1}`}
-    >
-      <div className="flex gap-2 w-max min-w-full shrink-0 py-1 first:pt-2 last:pb-2 ml-3 mr-3">
-        {rowItems.map((item, i) => {
-          const index = rowOffset + i;
-          const isSelected = index === selectedIndex;
-          return (
-            <button
-              key={index}
-              type="button"
-              role="tab"
-              aria-selected={isSelected}
-              aria-label={item.label}
-              tabIndex={isSelected ? 0 : -1}
-              className={cn(
-                "rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap transition shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-custom-primary",
-                isSelected
-                  ? "bg-lime-500 text-white"
-                  : `${colorClasses[index]} text-white`,
-              )}
-              onClick={() => handleOptionClick(index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-            >
-              {item.label}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
+  const handleMobileToggle = (index: number) => {
+    setMobileOpenIndex((prev) => (prev === index ? null : index));
+  };
 
   return (
     <section className={cn("w-full", className)} aria-label="Events menu">
-      {/* Mobile: scrollable rows */}
+      {/* Mobile: accordion layout */}
       <div className="w-full flex flex-col md:hidden">
-        {renderMobilePillRow(mobileRow1, 0)}
-        {mobileRow2.length > 0 &&
-          renderMobilePillRow(mobileRow2, mobileMaxPerRow)}
+        {items.map((item, index) => {
+          const isOpen = mobileOpenIndex === index;
+          return (
+            <div key={index}>
+              <button
+                type="button"
+                className={cn(
+                  "w-full py-4 text-xl font-medium text-center cursor-pointer text-white",
+                  colorClasses[index],
+                )}
+                onClick={() => handleMobileToggle(index)}
+              >
+                {item.label}
+              </button>
+              <div
+                className={cn(
+                  "grid transition-[grid-template-rows] duration-300 ease-out",
+                  isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                )}
+              >
+                <div className="overflow-hidden">
+                  <div className="relative w-full aspect-video">
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      sizes="100vw"
+                      quality={85}
+                      className="object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="px-4 py-6">
+                    <h2 className="text-2xl font-light text-foreground text-pretty">
+                      {item.title}
+                    </h2>
+                    <p className="mt-2 text-base text-muted-foreground leading-relaxed text-pretty">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      {/* Desktop: fixed 12-column grid; hover over menu pauses autoplay (click still fixes selection) */}
+      {/* Desktop: fixed 12-column grid */}
       <div
         className="hidden md:flex flex-col w-full"
-        role="tablist"
-        aria-label="Event options"
       >
         {desktopRows.map((rowItems, rowIndex) => {
           // Calculate offset as sum of items in previous rows
@@ -281,29 +224,21 @@ const ShowMenu = ({
             >
               {rowItems.map((item, i) => {
                 const index = rowOffset + i;
-                const isSelected = index === selectedIndex;
                 const span = spans[i] ?? 1;
                 return (
                   <button
                     key={index}
                     type="button"
-                    role="tab"
-                    aria-selected={isSelected}
-                    aria-label={item.label}
-                    tabIndex={isSelected ? 0 : -1}
                     className={cn(
-                      "py-3 lg:py-4 text-base lg:text-lg font-medium whitespace-nowrap transition text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/50",
-                      isSelected
-                        ? "bg-lime-500 text-white"
-                        : `${colorClasses[index]} text-white`,
+                      "group/pill py-3 lg:py-4 text-base lg:text-lg font-medium whitespace-nowrap transition-transform duration-300 ease-out text-center cursor-pointer hover:scale-x-110",
+                      `${colorClasses[index]} text-white`,
                     )}
                     style={{ gridColumn: `span ${span}` }}
-                    onClick={() => handleOptionClick(index)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
-                    onMouseEnter={() => handlePillMouseEnter(index)}
-                    onMouseLeave={handlePillMouseLeave}
+                    onClick={() => setSelectedIndex(index)}
                   >
-                    {item.label}
+                    <span className="inline-block transition-transform duration-300 ease-out group-hover/pill:scale-x-[0.909]">
+                      {item.label}
+                    </span>
                   </button>
                 );
               })}
@@ -312,37 +247,25 @@ const ShowMenu = ({
         })}
       </div>
 
-      {/* Image and text: mobile = overlay at bottom; desktop = centered two-column (image left, text right) */}
-      <div className="flex justify-center w-full px-4 md:px-6 mt-3">
-        <div
-          className={cn(
-            "relative w-full overflow-hidden",
-            "aspect-4/5 min-h-[280px] max-w-2xl mx-auto",
-            "md:aspect-auto md:max-w-6xl md:mx-auto md:h-[calc(100vh-4rem)] md:flex md:items-center md:gap-8 lg:gap-12",
-          )}
-        >
-          {/* Image: full width on mobile, half on desktop (left) */}
-          <div className="relative w-full h-full min-h-[280px] md:min-h-0 md:h-full md:flex-1 md:basis-0 md:mt-24">
+      {/* Desktop only: image and text content */}
+      <div className="hidden md:flex justify-center w-full px-4 md:px-6 mt-6">
+        <div className="w-full max-w-6xl mx-auto grid grid-cols-[3fr_2fr] gap-8 lg:gap-12 items-center">
+          <div className="relative w-full aspect-4/5 overflow-hidden rounded-sm">
             <Image
               src={current.image}
               alt={current.alt}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="60vw"
               quality={85}
-              className="object-cover rounded-sm"
+              className="object-cover"
               loading="lazy"
             />
           </div>
-          {/* Text: overlay on mobile, column on desktop (right, centered) */}
-          <div
-            className={cn(
-              "absolute inset-x-0 bottom-0 bg-white/80 px-4 py-6 md:px-0 md:py-0 md:relative md:bg-transparent md:flex md:flex-col md:justify-center md:flex-1 md:basis-0 md:min-w-0",
-            )}
-          >
-            <h2 className="text-2xl md:text-[2.25rem] font-light text-foreground text-pretty md:text-left">
+          <div className="flex flex-col justify-center min-w-0">
+            <h2 className="text-[2.25rem] font-light text-foreground text-pretty text-left">
               {current.title}
             </h2>
-            <p className="mt-2 text-base md:text-lg text-muted-foreground leading-relaxed text-pretty md:text-left">
+            <p className="mt-2 text-lg text-muted-foreground leading-relaxed text-pretty text-left">
               {current.description}
             </p>
           </div>

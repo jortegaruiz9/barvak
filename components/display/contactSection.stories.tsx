@@ -32,10 +32,6 @@ const meta = {
       control: "text",
       description: "Title for the booking section",
     },
-    bookingDescription: {
-      control: "text",
-      description: "Description for the booking section",
-    },
     bookingButtonText: {
       control: "text",
       description: "Text for the booking button",
@@ -69,8 +65,6 @@ export const Default: Story = {
     personName: "Juan Perez",
     personRole: "Director of Residential Sales",
     bookingTitle: "Book a Personal Call",
-    bookingDescription:
-      "Schedule a private consultation with our sales team to discuss your residential needs and explore available properties.",
     bookingButtonText: "Book a Call",
     bookingButtonHref: "/contact",
     contactTitle: "Telephone & Email",

@@ -17,6 +17,7 @@ interface ShowCardSlide {
   image: string;
   alt: string;
   title: string;
+  subtitle?: string;
   paragraphs: string[];
 }
 
@@ -66,6 +67,16 @@ const ShowCard = ({
       >
         {slide.title}
       </h2>
+      {slide.subtitle && (
+        <p
+          className={cn(
+            "text-base md:text-lg font-medium leading-relaxed",
+            light ? "text-white/90" : "text-muted-foreground",
+          )}
+        >
+          {slide.subtitle}
+        </p>
+      )}
       {slide.paragraphs.length > 0 && (
         <div
           className={cn(
